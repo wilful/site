@@ -1,0 +1,19 @@
+<% render 'default' do %>
+<div>
+  <div>
+  Network Working Group                                         <%= item[:author] %>
+  Posted at:                                <%= get_pretty_date(item) %>
+  Links: <a href="http://habrahabr.ru/post/194482/">habr</a>
+  Tags: <%= item[:tags] %>
+  Test: <%= get_url_list(item[:links]) %>
+  </div>
+
+  <h1><%= item[:title] %></h1>
+
+  <article>
+      <%= yield %>
+  </article>
+  </pre><!--NewPage--><pre class='newpage'><a  href="#" class="invisible"> </a>
+  <span class="grey"><%= link_to item[:title], item.path %></span>
+</div>
+<% end %>
