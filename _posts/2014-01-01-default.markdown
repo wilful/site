@@ -8,3 +8,4 @@ author: A. Semenov
 tags: 
     - default
 ---
+<!--more-->

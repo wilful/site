@@ -1,3 +1,6 @@
 [submodule "_plugins/jekyll-plugins"]
 	path = _plugins/jekyll-plugins
 	url = https://github.com/kinnetica/jekyll-plugins
+[submodule "_plugins/jekyll-rss"]
+	path = _plugins/jekyll-rss
+	url = https://github.com/agelber/jekyll-rss

@@ -12,6 +12,10 @@ excerpt_separator: <!--more-->
 tag_page_layout:  tag_page
 tag_page_dir:     tags
 
+rss_path: /
+rss_name: rss.xml
+rss_post_limit: 50
+
 sitemap:
   file: "/sitemap.xml"
   exclude:
