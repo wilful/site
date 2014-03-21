@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>/linux/2014/02/19/build-nginx.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/freebsd/2014/03/20/freebsd-munin.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/linux/2014/03/21/centos-openldap.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/linux/2014/03/21/modem-huawei.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/linux/2014/03/21/openldap-tls.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+    <url>
+        <loc>/tags.html</loc>
+        <lastmod>2014-03-21T13:49:55+06:00</lastmod>
+    </url>
+</urlset>

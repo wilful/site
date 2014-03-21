@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        {{ page.author }}<br/>
+        {{ page.date | date_to_string }}<br/>
+    </div>
+</header>
+<h4 class="b-document-title">{{ page.title }}</h1>
+<div class="b-document-body">
+    <section>
+        {{ content }}
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href={{ page.url }}>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            {{ page | tags }}
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>

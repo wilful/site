@@ -1,0 +1,21 @@
+name:         SRV-NIX.COM
+markdown:     redcarpet
+pygments:     true
+destination:  ./www
+source:       .
+
+tag_page_layout:  tag_page
+tag_page_dir:     tags
+
+sitemap:
+  file: "/sitemap.xml"
+  exclude:
+    - "/atom.xml"
+    - "/feed.xml"
+    - "/feed/index.xml"
+  include_posts:
+    - "/index.html"
+    - "/tags.html"
+  change_frequency_name: "change_frequency"
+  priority_name: "priority"
+

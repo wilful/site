@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CentOS. Подымаем аутентификацию на sssd и OpenLDAP</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        21 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">CentOS. Подымаем аутентификацию на sssd и OpenLDAP</h1>
+<div class="b-document-body">
+    <section>
+        <p>В <a href="/linux/2014/03/21/openldap-tls.html">предыдущем</a> топике я показал, как можно быстро настроить ваш сервер OpenLDAP на использование TLS соединений, чтобы наши враги не могли получить сведения из трафика между сервером и клиентом. В дополнении хотелось бы продемонстрировать настройку групповых политик доступа на сервер под управлением CentOS 6. В качестве клиента будем использовать демона SSSD, который начиная с 6.4 ветки стал сервисом аутентификации по умолчанию. </p>
+
+<p>Я не являюсь специалистом в LDAP и по этому моя конфигурации DIT не была стандартизирована, как хотелось бы, она в целом напоминает <a href="http://www.padl.com/%7Elukeh/rfc2307bis.txt">RFC2307bis</a> с небольшими изменениями в группах. Ниже будет понятно в чем отличия, хотя они совершенно не критичные.
+Если вы используете сторонние репозитории или свои сборки, то необходимо убедиться, что OpenLDAP собран с поддержкой memberOf. Это необходимо для того, чтобы мы могли с помощью фильтра демона sssd разграничивать доступ на сервер. Сам атрибут является динамическим и создается в момент обновления сведений о пользователях и группах на сервере. 
+Конфигурация сервера
+Чтобы активировать модуль нужно добавить в slapd.conf следующее (подробнее тут)</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Загружаем наложение</span>
+moduleload      memberof.la 
+<span class="c"># После инициализации БД указываем наш оверлей и дополнительные опции (man slapo-memberof)</span>
+overlay                 memberof
+memberof-group-oc       groupOfUniqueNames
+memberof-member-ad      uniqueMember
+</code></pre></div>
+
+<p>Замечание: memberof-group-oc и memberof-member-ad я указал именно потому, что конфигурация дерева на сервере у меня отличается от стандартной. По умолчанию наложение использует класс объекта группы groupOfNames и ждет, что участники групп хранятся в атрибуте member.
+Вот так выглядит рабочий конфиг на моем тестовом окружении</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># cat slapd.conf                                                                                                                                  </span>
+include         /etc/openldap/schema/core.schema
+include         /etc/openldap/schema/cosine.schema
+
+TLSCertificateFile      /etc/openldap/cacerts/ldapscert.pem
+TLSCertificateKeyFile   /etc/openldap/cacerts/keys/ldapskey.pem
+TLSCipherSuite TLSv1+RSA:!NULL
+
+moduleload      back_bdb.la
+moduleload      memberof.la 
+
+pidfile         /var/run/openldap/slapd.pid
+argsfile        /var/run/openldap/slapd.args
+
+database        bdb
+suffix          <span class="s2">&quot;o=example,c=ru&quot;</span>
+rootdn          <span class="s2">&quot;cn=root,o=example,c=ru&quot;</span>
+rootpw          secret
+directory       /var/lib/ldap
+
+overlay                 memberof
+memberof-group-oc       groupOfUniqueNames
+memberof-member-ad      uniqueMember
+</code></pre></div>
+
+<p>У меня сервер уже был заполнен под завязку, по этому для генерации нового атрибута потребовалось перезалить всю базу на сервер.
+Делаем дамп текущей рабочей конфигурации</p>
+
+<div class="highlight"><pre><code class="bash">ldapsearch -x -LLL -D <span class="s1">&#39;cn=root,o=example,c=ru&#39;</span> -w secret  -b <span class="s1">&#39;o=example,c=ru&#39;</span> &gt; /tmp/init.ldif
+</code></pre></div>
+
+<p>Чистим DIT</p>
+
+<div class="highlight"><pre><code class="bash">service slapd stop
+rm -rf /var/lib/ldap/*
+service slapd start
+</code></pre></div>
+
+<p>Возвращаем все записи на исходную</p>
+
+<div class="highlight"><pre><code class="bash">ldapmodify -a -v -x -D <span class="s1">&#39;cn=root,o=example,c=ru&#39;</span> -w sercret  -f /tmp/init.ldif
+</code></pre></div>
+
+<p>После чего проверяем наличие атрибута memberOf</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c">#ldapsearch -x -LL  -b &#39;o=example,c=ru&#39; &#39;(uid=user)&#39; memberOf</span>
+version: 1
+
+dn: <span class="nv">cn</span><span class="o">=</span>NameSecond,ou<span class="o">=</span>Sysadmins,ou<span class="o">=</span>SoftwareDevelopment,ou<span class="o">=</span>IT,ou<span class="o">=</span>Accounts,o<span class="o">=</span>
+ example,c<span class="o">=</span>ru
+memberOf: <span class="nv">cn</span><span class="o">=</span>groupname,ou<span class="o">=</span>WebApps,ou<span class="o">=</span>Services,o<span class="o">=</span>example,c<span class="o">=</span>ru
+</code></pre></div>
+
+<p>Если все прошло успешно, переходим к настройке клиента
+Конфигурация клиента
+На стороне клиента нужно добавить фильтр для демона sssd. Делается это добавлением следующих опций в /etc/sssd/sssd.conf</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">access_provider</span> <span class="o">=</span> ldap
+<span class="nv">ldap_access_filter</span> <span class="o">=</span> <span class="nv">memberOf</span><span class="o">=</span><span class="nv">cn</span><span class="o">=</span>usergroup,ou<span class="o">=</span>UnixShell,ou<span class="o">=</span>Services,o<span class="o">=</span>example,c<span class="o">=</span>ru
+</code></pre></div>
+
+<p>Тем самым мы сообщаем серверу что нужно пропускать только тех пользователей, у которых доступен атрибут &quot;memberOf&quot; и его значение равно &quot;cn=usergroup...&quot;
+Рабочий файл конфигурации у меня получился такой</p>
+
+<div class="highlight"><pre><code class="bash"><span class="o">[</span>domain/default<span class="o">]</span>
+<span class="nv">ldap_uri</span> <span class="o">=</span> ldaps://ldap.example.ru
+<span class="nv">ldap_tls_cacertdir</span> <span class="o">=</span> /etc/openldap/cacerts
+<span class="nv">ldap_id_use_start_tls</span> <span class="o">=</span> True
+<span class="nv">cache_credentials</span> <span class="o">=</span> False
+<span class="nv">ldap_search_base</span> <span class="o">=</span> <span class="nv">o</span><span class="o">=</span>example,c<span class="o">=</span>ru
+<span class="nv">krb5_realm</span> <span class="o">=</span> EXAMPLE.COM
+<span class="nv">krb5_server</span> <span class="o">=</span> kerberos.example.com
+<span class="nv">id_provider</span> <span class="o">=</span> ldap
+<span class="nv">auth_provider</span> <span class="o">=</span> ldap
+<span class="nv">chpass_provider</span> <span class="o">=</span> ldap
+<span class="nv">access_provider</span> <span class="o">=</span> ldap
+<span class="nv">ldap_access_filter</span> <span class="o">=</span> <span class="nv">memberOf</span><span class="o">=</span><span class="nv">cn</span><span class="o">=</span>usergroup,ou<span class="o">=</span>UnixShell,ou<span class="o">=</span>Services,o<span class="o">=</span>example,c<span class="o">=</span>ru
+<span class="o">[</span>sssd<span class="o">]</span>
+<span class="nv">services</span> <span class="o">=</span> nss, pam
+<span class="nv">config_file_version</span> <span class="o">=</span> 2
+<span class="nv">domains</span> <span class="o">=</span> default
+<span class="o">[</span>nss<span class="o">]</span>
+<span class="o">[</span>pam<span class="o">]</span>
+<span class="o">[</span>sudo<span class="o">]</span>
+<span class="o">[</span>autofs<span class="o">]</span>
+<span class="o">[</span>ssh<span class="o">]</span>
+<span class="o">[</span>pac<span class="o">]</span>
+Перезапускаем демона
+service sssd restart
+</code></pre></div>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/21/centos-openldap.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/openldap.html" rel="tag">openldap</a>, <a href="/tags/howto.html" rel="tag">howto</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

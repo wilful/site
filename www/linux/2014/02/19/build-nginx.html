@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        19 Feb 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)</h1>
+<div class="b-document-body">
+    <section>
+        <p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких &quot;make install&quot;.  </p>
+
+<!-- more -->
+
+<h4>Подготовка сервера к сборке</h4>
+
+<p>1. Для начала нужно установить пакеты:</p>
+
+<div class="highlight"><pre><code class="bash">yum install -y rpmdevtools gcc make yum-utils <span class="c"># Дописать пакеты, необходимые для сборки</span>
+</code></pre></div>
+
+<p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
+
+<div class="highlight"><pre><code class="bash">useradd -m rpmbuild
+</code></pre></div>
+
+<p>3. Готовим дерево сборки для пакетов:</p>
+
+<div class="highlight"><pre><code class="bash">sudo -u rpmbuild -i
+rpmdev-setuptree
+tree -L 1 rpmbuild/
+rpmbuild/
+├── BUILD <span class="c"># Директория сборки</span>
+├── BUILDROOT <span class="c"># Директория сборки</span>
+├── RPMS <span class="c"># Содержит готовые rpm-пакеты</span>
+├── SOURCES <span class="c"># Исходные коды</span>
+├── SPECS <span class="c"># Файлы описаний (SPEC)</span>
+└── SRPMS <span class="c"># Исходные srpm-пакеты</span>
+</code></pre></div>
+
+<h4>Сборка собственного пакета на примере nginx+ldap</h4>
+
+<p><strong>внимание: не выполняй сборку от имени root!!!</strong></p>
+
+<p>1. Все операции выполняются от пользователя rpmbuild (чтобы не нанести вред системе)</p>
+
+<div class="highlight"><pre><code class="bash">sudo -u rpmbuild -i 
+</code></pre></div>
+
+<p>2. Качаем необходимые исходники/пачи/файлы
+    Для nginx я взял SRC пакет из официального 
+    <a href="http://wiki.nginx.org/Install#Official_Red_Hat.2FCentOS_packages">репозитория nginx</a> для CentOS. 
+    Модуль для авторизации с официального <a href="https://github.com/kvspb/nginx-auth-ldap">репозитория GIT</a> </p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> ~/rpmbuild/SRPMS/
+<span class="nv">VERSION_NG</span><span class="o">=</span><span class="s2">&quot;1.2.5&quot;</span>
+wget -nd -r -l 1 -A <span class="s2">&quot;nginx-${VERSION_NG}*src.rpm&quot;</span>  http://nginx.org/packages/centos/6/SRPMS/ 2&gt;/dev/null
+<span class="nb">cd</span> ~/rpmbuild/SOURCES/
+git clone https://github.com/kvspb/nginx-auth-ldap 
+</code></pre></div>
+
+<p>3. Устанавливаем необходимые для сборки пакеты</p>
+
+<div class="highlight"><pre><code class="bash">yum-builddep nginx-<span class="k">${</span><span class="nv">VERSION_NG</span><span class="k">}</span>-*.ngx.src.rpm --nogpgcheck 
+</code></pre></div>
+
+<p>4. Устанавливаем пакет (он будет распакован в предварительно подготовленное дерево 
+    каталогов /home/rpmbuild/rpmbuild)</p>
+
+<div class="highlight"><pre><code class="bash">rpm -ivh nginx-<span class="k">${</span><span class="nv">VERSION_NG</span><span class="k">}</span>-*.ngx.src.rpm
+</code></pre></div>
+
+<p>5. Вносим изменения в файл сборки</p>
+
+<div class="highlight"><pre><code class="bash">vim ~/rpmbuild/SPECS/nginx.spec
+</code></pre></div>
+
+<p>6. Меняем в строке номер релиза (чтобы пакет обновился при установке)</p>
+
+<div class="highlight"><pre><code class="bash">---
+Release: 4%<span class="o">{</span>?dist<span class="o">}</span>.wil
+---  
+</code></pre></div>
+
+<p><em>ЗАМЕЧАНИЕ:</em> Я также указал суффикс wil для уникальности пакета 
+7. Добавляем строку описания источника с исходными текстами модуля</p>
+
+<div class="highlight"><pre><code class="bash">---
+Source1001: nginx-auth-ldap
+--- 
+</code></pre></div>
+
+<p>8. Добавляем модуль в параметры сборки nginx (так же как при обычной сборке)</p>
+
+<div class="highlight"><pre><code class="bash">---
+./configure <span class="se">\</span>
+--add-module<span class="o">=</span>%<span class="o">{</span>SOURCE1001<span class="o">}</span> <span class="se">\</span>
+---  
+</code></pre></div>
+
+<p><em>ЗАМЕЧАНИЕ:</em> Возможно потребуется добавить параметры сборки дважды для debug и original версий пакета 
+9. Теперь можем приступить к сборке нашего пакета</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> ~/rpmbuild/SPECS/
+rpmbuild -bb nginx.spec 
+</code></pre></div>
+
+<p>10. После сборки будет примерно следующая запись:</p>
+
+<div class="highlight"><pre><code class="bash">Записан: /home/rpmbuild/rpmbuild/RPMS/x86_64/nginx-1.bla.bla.rpm
+Записан: /home/rpmbuild/rpmbuild/RPMS/x86_64/nginx-debug-1.bla.bla.rpm 
+</code></pre></div>
+
+<p>11. Это наши готовые для установки пакеты, теперь можно установить через rpm или 
+     использовать локальный репозиторий для установки через yum
+12. Так же рекомендую создать srpm-пакет, чтобы не потерять ваши изменения и можно было 
+     развернуть его на любом сервере</p>
+
+<div class="highlight"><pre><code class="bash">rpmbuild -bs nginx.spec
+</code></pre></div>
+
+<p>13. Файл будет тут</p>
+
+<div class="highlight"><pre><code class="bash">Записан: /home/rpmbuild/rpmbuild/SRPMS/nginx-1.bla.bla.src.rpm
+</code></pre></div>
+
+<p>14. PROFIT?</p>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/02/19/build-nginx.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/CentOS.html" rel="tag">CentOS</a>, <a href="/tags/nginx.html" rel="tag">nginx</a>, <a href="/tags/rpmdev.html" rel="tag">rpmdev</a>, <a href="/tags/howto.html" rel="tag">howto</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

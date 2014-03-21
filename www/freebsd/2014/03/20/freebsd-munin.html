@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FreeBSD. Munin - мониторинг на коленке</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        20 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">FreeBSD. Munin - мониторинг на коленке</h1>
+<div class="b-document-body">
+    <section>
+        <p>Munin - простое и надежное средство для мониторинга и визуализации &quot;what just happened to kill our performance?&quot; проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются на красивых графиках.</p>
+
+<p><img src="/upload/ef6961.png" alt="graph"></p>
+
+<p>Установка сервера</p>
+
+<div class="highlight"><pre><code class="bash">make install -C /usr/ports/sysutils/munin-master
+</code></pre></div>
+
+<p>После установки порта создаётся каталог /usr/local/www/munin/, в котором хранятся графики. Для их отображения потребуется любой веб сервер. Неплохо справляется с этими задачами сервер Nginx, с минимальной конфигурацией:</p>
+
+<div class="highlight"><pre><code class="bash">server <span class="o">{</span>
+    listen 78.xxx.xxx.xxx:80<span class="p">;</span>
+
+    server_name munin.site.ltd<span class="p">;</span> 
+
+    <span class="nb">set</span> <span class="nv">$docroot</span>      <span class="s2">&quot;/usr/local/www/munin/&quot;</span><span class="p">;</span>
+
+    index   index.html<span class="p">;</span>
+    charset utf-8<span class="p">;</span>
+    root    <span class="nv">$docroot</span><span class="p">;</span>
+
+    access_log /var/log/nginx/munin.site.ltd-access.log<span class="p">;</span>
+    error_log /var/log/nginx/munin.site.ltd-error.log warn<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>Установка клиента</p>
+
+<div class="highlight"><pre><code class="bash">make install -C /usr/ports/sysutils/munin-node
+</code></pre></div>
+
+<p>Клиент использует &quot;плагины&quot; для получения сведений о сервере и отправляет их в БД munin-master&#39;а. Плагин может быть написан на любом языке, доступном на сервере, а также в каталоге /usr/local/share/munin/plugins/ находятся уже готовые к использованию скрипты для основных служб и подсистем сервера.
+Замечание: Если будете использовать плагины nginx<em>* и mysql</em>*, то дополнительно нужно установить два порта:</p>
+
+<div class="highlight"><pre><code class="bash">make install -C databases/p5-DBI
+make install -C www/p5-libwww/
+</code></pre></div>
+
+<p>Пример использования
+Для активации плагина необходимо создать символическую ссылку или скопировать скрипт в рабочую директорию ноды</p>
+
+<div class="highlight"><pre><code class="bash">ln -s /usr/local/share/munin/plugins/nginx_status /usr/local/etc/munin/plugins/
+</code></pre></div>
+
+<p>Далее вносятся дополнительные изменения в параметры передаваемые скрипту, если это необходимо. Для этого используется файл /usr/local/etc/munin/plugin-conf.d/plugins.conf.
+Синтаксис примерно такой:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="o">[</span>nginx*<span class="o">]</span>                                                                                                                                                              
+env.url http://localhost:8081/server-status 
+</code></pre></div>
+
+<p>В квадратных скобках содержится имя или regexp, совпадающий с именем файла «плагина», т.е. в данном случае настройки будут применены для всех «плагинов», содержащих в начале своего имени слово «nginx».</p>
+
+<div class="highlight"><pre><code class="bash">/usr/local/etc/munin/plugins<span class="o">]</span><span class="c"># ls -l | grep &#39;nginx*&#39;                                                                                                         </span>
+lrwxr-xr-x  1 root  wheel  44 19 мар 14:03 nginx_request -&gt; /usr/local/share/munin/plugins/nginx_request
+lrwxr-xr-x  1 root  wheel  43 19 мар 14:03 nginx_status -&gt; /usr/local/share/munin/plugins/nginx_status
+</code></pre></div>
+
+<p>Параметр env.url указывает URL-адрес для «плагина», с которого нужно считывать сведения о сервере Nginx.
+Более детально о параметрах, а так же о правилах использования, можно прочитать в заголовках всех доступных из порта плагинов. Пример для nginx_status:</p>
+
+<div class="highlight"><pre><code class="perl"><span class="c1">#!/usr/local/bin/perl -w                                                                                                                                                </span>
+<span class="c1"># -*- cperl -*-                                                                                                                                                         </span>
+                                                                                                                                                                        
+<span class="cm">=head1 NAME                                                                                                                                                             </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">nginx_status - Munin plugin to show connection status for nginx                                                                                                         </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 APPLICABLE SYSTEMS                                                                                                                                               </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">Any nginx host                                                                                                                                                          </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 CONFIGURATION                                                                                                                                                    </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">This shows the default configuration of this plugin.  You can override                                                                                                  </span>
+<span class="cm">the status URL.                                                                                                                                                         </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">  [nginx*]                                                                                                                                                              </span>
+<span class="cm">      env.url http://localhost/nginx_status                                                                                                                             </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">Nginx must also be configured.  Firstly the stub-status module must be                                                                                                  </span>
+<span class="cm">compiled, and secondly it must be configured like this:                                                                                                                 </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">  server {                                                                                                                                                              </span>
+<span class="cm">        listen 127.0.0.1;                                                                                                                                               </span>
+<span class="cm">        server_name localhost;                                                                                                                                          </span>
+<span class="cm">        location /nginx_status {                                                                                                                                        </span>
+<span class="cm">                stub_status on;                                                                                                                                         </span>
+<span class="cm">                access_log   off;                                                                                                                                       </span>
+<span class="cm">                allow 127.0.0.1;                                                                                                                                        </span>
+<span class="cm">                deny all;                                                                                                                                               </span>
+<span class="cm">        }                                                                                                                                                               </span>
+<span class="cm">  }                                                                                                                                                                     </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 MAGIC MARKERS                                                                                                                                                    </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">  #%# family=auto                                                                                                                                                       </span>
+<span class="cm">  #%# capabilities=autoconf   </span>
+<span class="cm">                                                                                                                                          </span>
+<span class="cm">=head1 VERSION                                                                                                                                                          </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">  $Id$                                                                                                                                                                  </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 BUGS                                                                                                                                                             </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">None known                                                                                                                                                              </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 AUTHOR                                                                                                                                                           </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">Unknown                                                                                                                                                                 </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=head1 LICENSE                                                                                                                                                          </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">Unknown.  Not specified by the unknown author.  Nginx has a BSD                                                                                                         </span>
+<span class="cm">license.  Munin is GPLv2 licensed.                                                                                                                                      </span>
+<span class="cm">                                                                                                                                                                        </span>
+<span class="cm">=cut</span>
+</code></pre></div>
+
+<p>После всех необходимых операций запускаем демона</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s1">&#39;munin_node_enable=&quot;YES&quot;&#39;</span> &gt;&gt; /etc/rc.conf 
+service munin-node start
+</code></pre></div>
+
+<p>Для генерации HTML-страниц с графиками запускаем вручную</p>
+
+<div class="highlight"><pre><code class="bash">sudo -u munin /usr/local/bin/munin-cron
+</code></pre></div>
+
+<p>И проверяем наличие этой команды в crontab</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># sudo -u munin crontab -l                                                                                                                        </span>
+<span class="c">#BEGIN_MUNIN_MAIN</span>
+<span class="nv">MAILTO</span><span class="o">=</span>root
+
+*/5 * * * *     /usr/local/bin/munin-cron
+<span class="c">#END_MUNIN_MAIN</span>
+</code></pre></div>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/freebsd/2014/03/20/freebsd-munin.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/FreeBSD.html" rel="tag">FreeBSD</a>, <a href="/tags/munin.html" rel="tag">munin</a>, <a href="/tags/howto.html" rel="tag">howto</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linux. 3G modem Huawei [E171]</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        21 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">Linux. 3G modem Huawei [E171]</h1>
+<div class="b-document-body">
+    <section>
+        <p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
+
+<p>Всё просто.
+Во-первых, нужно переключить его в режим модема. 
+Подключаем модем и смотрим его заводские маркеры:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c">#lsusb</span>
+Bus 002 Device 009: ID 12d1:1446 Huawei Technologies Co., BLA-BLA-BLA
+</code></pre></div>
+
+<p>12d1:1446 - Это как раз нужные нам значения.
+Я заранее побеспокоился и установил необходимые пакеты, это </p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">local</span>/usb_modeswitch 1.2.5-2
+    Activating switchable USB devices on Linux.
+<span class="nb">local</span>/gnome-ppp 0.3.23-8
+    A GNOME 2 WvDial frontend
+</code></pre></div>
+
+<p>В пакет usb<em>modeswitch входят наборы пресетов для переключения девайса в режим модема, они находятся в папке /usr/share/usb</em>modeswitch/[МАРКЕР из lsusb]
+Для включения модема вводим команду:</p>
+
+<div class="highlight"><pre><code class="bash">usb_modeswitch  -v 0x12d1 -p 0x1446 -c /usr/share/usb_modeswitch/12d1<span class="se">\:</span>1446
+</code></pre></div>
+
+<p>И снова проверяем вывод lsusb:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c">#lsusb</span>
+Bus 002 Device 009: ID 12d1:1436 Huawei Technologies Co., BLA-BLA-BLA
+</code></pre></div>
+
+<p>Как видно из примера, значения изменились, что свидетельствует об успешном переключении устройства. Также должно было появиться устройство вида:</p>
+
+<div class="highlight"><pre><code class="bash">/dev/ttyUSB<span class="o">[</span>0-9+<span class="o">]</span>
+</code></pre></div>
+
+<p>Теперь можно запустить gnome-ppp, указать настройки и подключиться к сети.
+Настройки для Beeline
+Логин  beeline
+Пароль beeline
+Номер  *99#</p>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/21/modem-huawei.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/modem.html" rel="tag">modem</a>, <a href="/tags/3g.html" rel="tag">3g</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+
