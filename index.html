@@ -10,7 +10,11 @@ title: SRV-NIX.COM
       <li>
       <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; {{ post.title }} <a href="{{ post.url }}">reading</a>
         <span class="b-content-list__item-preview">
-            {{ post.excerpt }}
+            {% if post.content contains '<!--more-->' %}
+                {{ post.content | split:'<!--more-->' | first }}
+            {% else %}
+                {{ post.excerpt }}
+            {% endif %}
         </span>
       </li>
     {% endfor %}

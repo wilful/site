@@ -7,6 +7,8 @@ exclude:      [ 'commit.sh' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
 
+excerpt_separator: <!--more-->
+
 tag_page_layout:  tag_page
 tag_page_dir:     tags
 
