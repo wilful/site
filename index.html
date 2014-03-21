@@ -7,7 +7,12 @@ title: SRV-NIX.COM
   <h1 class="b-document-title">Posts</h1>
   <ol class="b-content-list">
     {% for post in site.posts %}
-      <li><span class="b-content-list__item-text">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li>
+      <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; {{ post.title }} <a href="{{ post.url }}">reading</a>
+        <span class="b-content-list__item-preview">
+            {{ post.excerpt }}
+        </span>
+      </li>
     {% endfor %}
   </ul>
   <footer class="b-footer">

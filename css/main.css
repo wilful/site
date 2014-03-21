@@ -184,11 +184,11 @@ br {
   line-height: 1.75em;
 }
 
-.b-content-list span {
+/*.b-content-list span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
   font-size: 80%;
-}
+}*/
 
 .b-content-list__item {
     display: block;
@@ -208,6 +208,17 @@ br {
     min-width:3em;
 }
 .b-content-list__item-text {
+    display:inline-block;
+    white-space:normal;
+}
+.b-content-list__item-preview {
+    display:inline-block;
+    white-space:normal;
+  color: #aaa;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 100%;
+}
+.b-content-list__item-date {
     display:inline-block;
     white-space:normal;
   color: #aaa;
