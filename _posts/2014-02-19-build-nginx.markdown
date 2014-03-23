@@ -15,7 +15,7 @@ links: habr|http://habrahabr.ru/post/194482/ test|http://test.com
 
 _Правильная_ сборка пакетов на сервере под rpm-based системами. Никаких "make install".  
 
-<!-- more -->
+<!--more-->
 
 #### Подготовка сервера к сборке
 

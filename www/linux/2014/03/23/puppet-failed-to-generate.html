@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'....</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        23 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'....</h1>
+<div class="b-document-body">
+    <section>
+        <p>Проблема возникла на одной из нод puppet после смены hostname и генерации нового сертификата SSL.</p>
+
+<!--more-->
+
+<div class="highlight"><pre><code class="ruby"><span class="ss">warning</span><span class="p">:</span> <span class="n">peer</span> <span class="n">certificate</span> <span class="n">won</span><span class="s1">&#39;t be verified in this SSL session</span>
+<span class="s1">info: Caching certificate for node01.wilful.org</span>
+<span class="s1">info: Retrieving plugin</span>
+<span class="s1">info: Caching certificate_revocation_list for ca</span>
+<span class="s1">err: /File[/var/lib/puppet/lib]: Failed to generate additional resources using &#39;</span><span class="n">eval_generate</span><span class="err">&#39;</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">ce</span>
+<span class="n">rtificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="ss">err</span><span class="p">:</span> <span class="sr">/File[/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">puppet</span><span class="o">/</span><span class="n">lib</span><span class="o">]</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="ss">evaluate</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span> <span class="no">Could</span> <span class="ow">not</span> <span class="n">retrieve</span> 
+<span class="n">file</span> <span class="n">metadata</span> <span class="k">for</span> <span class="ss">puppet</span><span class="p">:</span><span class="sr">//se</span><span class="n">rvice</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="ss">plugins</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="ss">info</span><span class="p">:</span> <span class="no">Loading</span> <span class="n">facts</span> <span class="k">in</span> <span class="n">iptables</span>
+<span class="ss">info</span><span class="p">:</span> <span class="no">Loading</span> <span class="n">facts</span> <span class="k">in</span> <span class="n">iptables</span>
+<span class="ss">err</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="n">retrieve</span> <span class="n">catalog</span> <span class="n">from</span> <span class="n">remote</span> <span class="ss">server</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="ss">warning</span><span class="p">:</span> <span class="no">Not</span> <span class="n">using</span> <span class="n">cache</span> <span class="n">on</span> <span class="n">failed</span> <span class="n">catalog</span>
+<span class="ss">err</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="n">retrieve</span> <span class="n">catalog</span><span class="p">;</span> <span class="n">skipping</span> <span class="n">run</span>
+<span class="ss">err</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="nb">send</span> <span class="ss">report</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+</code></pre></div>
+
+<p>Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например так
+Теперь удаляем все ранее сгенерированые сертификаты</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">puppet</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span>
+</code></pre></div>
+
+<p>Тоже самое на сервере для этой ноды</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">puppet</span> <span class="n">cert</span> <span class="n">clean</span> <span class="n">node01</span>
+</code></pre></div>
+
+<p>Генерируем новый сертификат</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">puppetd</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="nb">test</span> <span class="o">--</span><span class="n">onetime</span> 
+</code></pre></div>
+
+<p>или</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">puppet</span> <span class="n">agent</span> <span class="o">--</span><span class="nb">test</span> 
+</code></pre></div>
+
+<p>Подписываем сертификат на сервере</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">puppet</span> <span class="n">cert</span> <span class="n">sign</span> <span class="n">node01</span>
+</code></pre></div>
+
+<p>Проверяем результат на ноде</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">puppet</span> <span class="n">agent</span> <span class="o">--</span><span class="nb">test</span> 
+</code></pre></div>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/23/puppet-failed-to-generate.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/puppet.html" rel="tag">puppet</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+
