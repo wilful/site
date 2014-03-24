@@ -3,9 +3,11 @@ markdown:     redcarpet
 pygments:     true
 destination:  ./www
 source:       .
-exclude:      [ 'commit.sh' ]
+exclude:      [ 'commit.sh', 'scripts' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
+
+paginate:     7
 
 excerpt_separator: <!--more-->
 

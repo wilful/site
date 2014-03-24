@@ -6,15 +6,38 @@ title: SRV-NIX.COM
 <div>
   <h1 class="b-document-title">Posts</h1>
   <ol class="b-content-list">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
       <li>
-      <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; {{ post.title }} <a href="{{ post.url }}">reading</a>
+      <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; <span class="b-document-title__item-list"> {{ post.title }} </span> <a href="{{ post.url }}">reading</a><br/>
         <span class="b-content-list__item-preview">
             {{ post.excerpt }}
         </span>
       </li>
     {% endfor %}
   </ul>
+  {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+    {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+    {% else %}
+        <span>&laquo; Prev</span>
+    {% endif %}
+    {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+            <em>{{ page }}</em>
+        {% elsif page == 1 %}
+            <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+        {% else %}
+            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+        <span>Next &raquo;</span>
+    {% endif %}
+    </div>
+  {% endif %}
   <footer class="b-footer">
       <div class="b-footer__row">
           <div class="b-footer__section b-footer__section_type_left">
