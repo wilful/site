@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>webalizer, простейшая статистика для сайта</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        23 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">webalizer, простейшая статистика для сайта</h1>
+<div class="b-document-body">
+    <section>
+        <p>Пример программы для анализа логов nginx/apache на вашем сервере. Входит в репозитории всех известных мне дистрибутивов GNU\Linux. Утилита webalizer принимает в качестве параметра логи веб-сервера в формате combined и на выхлопе получает HTML с Блэк Джеком и картинками.
+&lt;!--more--&gt;</p>
+
+<p>В простейшей конфигурации вот так выглядит сервер на nginx, который будем использовать для просмотра нашей статистики</p>
+
+<div class="highlight"><pre><code class="nginx"><span class="k">server</span> <span class="p">{</span>                                                                                                                                                                
+    <span class="kn">listen</span> <span class="nv">${IP}:80</span><span class="p">;</span>
+
+    <span class="kn">server_name</span> <span class="s">webalizer.site.ru</span><span class="p">;</span>
+
+    <span class="kn">set</span> <span class="nv">$docroot</span>      <span class="s">&quot;/var/www/webalizer.site.ru&quot;</span><span class="p">;</span>
+
+    <span class="kn">index</span>   <span class="s">index.html</span><span class="p">;</span>
+    <span class="kn">charset</span> <span class="s">utf-8</span><span class="p">;</span>
+    <span class="kn">root</span>    <span class="nv">$docroot</span><span class="p">;</span>
+
+    <span class="kn">access_log</span> <span class="s">/var/log/nginx/webalizer.site.ru-access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/var/log/nginx/webalizer.site.ru-error.log</span> <span class="s">warn</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(ico|jpg|gif|png|htm|jpeg|swf|txt|avi|wmv|7z|tmp)</span>$ <span class="p">{</span>                                                                                                      
+        <span class="kn">root</span> <span class="nv">$docroot</span><span class="p">;</span>
+        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">allow</span> <span class="mi">79</span><span class="s">.140.xxx.xxx</span><span class="p">;</span>                                                                                                                                                    
+    <span class="kn">deny</span>  <span class="s">all</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Устанавливаем webalizer</p>
+
+<div class="highlight"><pre><code class="bash">apt-get update <span class="o">&amp;&amp;</span> apt-get install webalizer
+</code></pre></div>
+
+<p>OR</p>
+
+<div class="highlight"><pre><code class="bash">yum install webalizer
+</code></pre></div>
+
+<p>OR</p>
+
+<div class="highlight"><pre><code class="bash">pacman -Sy webalizer
+</code></pre></div>
+
+<p>OR 
+etc...
+В cron добавляем с нужной переодичностью</p>
+
+<div class="highlight"><pre><code class="bash">00  00  *   *   *    webalizer -o /var/www/webalizer.site.ru/ /var/log/nginx/site.ru-access.log
+</code></pre></div>
+
+<p>Не забываем указывать свои пути и файлы с логами.</p>
+
+<div class="highlight"><pre><code class="bash">/var/www/webalizer.site.ru/ - папка с отчетами webalizer<span class="err">&#39;</span>а
+/var/log/nginx/site.ru-access.log - combined access лог для моего сервера
+</code></pre></div>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/23/webalizer-site.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/web.html" rel="tag">web</a>, <a href="/tags/webalizer.html" rel="tag">webalizer</a>, <a href="/tags/nginx.html" rel="tag">nginx</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

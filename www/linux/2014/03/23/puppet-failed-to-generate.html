@@ -55,8 +55,9 @@
 <span class="ss">err</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="nb">send</span> <span class="ss">report</span><span class="p">:</span> <span class="no">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="no">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="ss">B</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
 </code></pre></div>
 
-<p>Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например так
-Теперь удаляем все ранее сгенерированые сертификаты</p>
+<p>Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например <a href="http://srv-nix.com/linux/2014/03/23/ntpd-centos.html">так</a></p>
+
+<p>Теперь удаляем все ранее сгенерированые сертификаты</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">puppet</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span>
 </code></pre></div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Простейшая настройка сервера NTPD на CentOS 6</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        23 Mar 2014<br/>
+    </div>
+</header>
+<h4 class="b-document-title">Простейшая настройка сервера NTPD на CentOS 6</h1>
+<div class="b-document-body">
+    <section>
+        <!--more-->
+
+<div class="highlight"><pre><code class="bash">yum install -y ntp
+service ntpd restart
+chkconfig ntpd on
+</code></pre></div>
+
+<p>После чего ждем правки времени</p>
+
+<div class="highlight"><pre><code class="bash">date
+</code></pre></div>
+
+<p>Не знаю, как вызвать принудительно, в Debian достаточно было вызвать ntpdate</p>
+
+<p>Делается почти так же, до запуска демона ntpd</p>
+
+<div class="highlight"><pre><code class="bash">ntpdate pool.ntp.org
+</code></pre></div>
+
+    </section>
+</div>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            Tags
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/23/ntpd-centos.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/ntpd.html" rel="tag">ntpd</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

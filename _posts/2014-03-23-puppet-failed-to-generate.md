@@ -30,7 +30,8 @@ err: Could not retrieve catalog; skipping run
 err: Could not send report: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 {% endhighlight %}
 
-Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например так
+Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например [так][link01]
+
 Теперь удаляем все ранее сгенерированые сертификаты
 
 {% highlight ruby  %}
@@ -58,3 +59,5 @@ puppet cert sign node01
 puppet agent --test 
 {% endhighlight %}
 
+
+[link01]: {{ site.url }}/linux/2014/03/23/ntpd-centos.html
