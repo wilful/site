@@ -1,6 +1,6 @@
 #!/bin/bash
 : ${1?"Not enough parameters. Usage: $SCRIPTNAME NameOfFile"}
-FILENAME="../_drafts/`date +%F`-$1.markdown"
+FILENAME="../_posts/`date +%F`-$1.markdown"
 
 if [[ ! -e $FILENAME ]]; then
 cat > $FILENAME <<EOF

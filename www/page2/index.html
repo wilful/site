@@ -23,28 +23,54 @@
 
   <article class="b-document">
       <div>
-  <h1 class="b-document-title">Posts</h1>
-  <ol class="b-content-list">
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        POSTS
+    </dt>
     
-      <li>
-      <span class="b-content-list__item-date">20 Mar 2014</span> &raquo; <span class="b-document-title__item-list"> FreeBSD. Munin - мониторинг на коленке </span> <a href="/freebsd/2014/03/20/freebsd-munin.html">reading</a><br/>
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">21 Mar 2014</span> &raquo; <span class="b-document-title__item-list"> Linux. 3G modem Huawei [E171] </span> <a href="/linux/2014/03/21/modem-huawei.html">reading</a><br/>
+        <span class="b-content-list__item-preview">
+            <p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
+
+        </span>
+    </dd>
+    
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">21 Mar 2014</span> &raquo; <span class="b-document-title__item-list"> CentOS. Подымаем аутентификацию на sssd и OpenLDAP </span> <a href="/linux/2014/03/21/centos-openldap.html">reading</a><br/>
+        <span class="b-content-list__item-preview">
+            <p>В <a href="http://srv-nix.com/linux/2014/03/21/openldap-tls.html">предыдущем</a> топике я показал, как можно быстро настроить ваш сервер OpenLDAP на использование TLS соединений, чтобы наши враги не могли получить сведения из трафика между сервером и клиентом. В дополнении хотелось бы продемонстрировать настройку групповых политик доступа на сервер под управлением CentOS 6. В качестве клиента будем использовать демона SSSD, который начиная с 6.4 ветки стал сервисом аутентификации по умолчанию. </p>
+
+        </span>
+    </dd>
+    
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">20 Mar 2014</span> &raquo; <span class="b-document-title__item-list"> FreeBSD. Munin - мониторинг на коленке </span> <a href="/freebsd/2014/03/20/freebsd-munin.html">reading</a><br/>
         <span class="b-content-list__item-preview">
             <p>Munin - простое и надежное средство для мониторинга и визуализации &quot;what just happened to kill our performance?&quot; проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются на красивых графиках.</p>
 
         </span>
-      </li>
+    </dd>
     
-      <li>
-      <span class="b-content-list__item-date">19 Feb 2014</span> &raquo; <span class="b-document-title__item-list"> Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP) </span> <a href="/linux/2014/02/19/build-nginx.html">reading</a><br/>
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">25 Feb 2014</span> &raquo; <span class="b-document-title__item-list"> Скрипты на все случаи жизни </span> <a href="/linux/2014/02/25/bash-scripts-help.html">reading</a><br/>
+        <span class="b-content-list__item-preview">
+            <p>Хотел просто сделать коллекцию скриптов, которые приходится писать довольно часто, а получился модульный фреймворк для работы с любыми скриптами. В базовый функционал вынесены только функции для работы с логированием, навешиванием lock-файла при необходимости, почтовые рассылки, функции для работы с выводом и прочее.</p>
+
+        </span>
+    </dd>
+    
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">19 Feb 2014</span> &raquo; <span class="b-document-title__item-list"> Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP) </span> <a href="/linux/2014/02/19/build-nginx.html">reading</a><br/>
         <span class="b-content-list__item-preview">
             <p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких &quot;make install&quot;.  </p>
 
         </span>
-      </li>
+    </dd>
     
-  </ul>
+</dl>
   
-    <div class="pagination">
+    <div  class="b-content-list__item-list">
     
         <a href="/index.html">&laquo; Prev</a>
     

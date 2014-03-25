@@ -8,7 +8,24 @@
     <title>SRV-NIX.COM</title>
     <link>http://srv-nix.com</link>
     <description>RSS feed for SRV-NIX.COM</description>
-    <pubDate>Mon, 24 Mar 2014 09:00:00 -0000</pubDate>
+    <pubDate>Tue, 25 Mar 2014 12:16:25 -0000</pubDate>
+    <item>
+      <title>Puppet dashboard [pending tasks] - накопил уже мужик!</title>
+      <link>http://srv-nix.com/linux/2014/03/25/puppet-dashboard.html</link>
+      <description>&lt;p&gt;Puppet Dashboard состоит из двух частей - это собственно рельсовый веб движок (puppet-dashboard для CentOS) и демон собирающий статистику puppet-dashboard-worker. Со вторым у меня получилась неприятная ситуация: он просто перестал обрабатывать поступающие запросы на обновление данных. Как выяснилось позже - это происходило из-за одного проблемного запроса, который не позволял демону пройти до конца очереди. На тот момент очередь уже состояла из более чем 6000 запросов.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 25 Mar 2014 12:16:25 -0000</pubDate>
+      <guid>http://srv-nix.com/linux/2014/03/25/puppet-dashboard.html</guid>
+      <dc:date>2014-03-25T12:16:25Z</dc:date>
+    </item>
+    <item>
+      <title>Пишем свой модуль для wilshell, краткое HOWTO</title>
+      <link>http://srv-nix.com/shell/2014/03/25/wilshell-module.html</link>
+      <description></description>
+      <pubDate>Tue, 25 Mar 2014 05:52:16 -0000</pubDate>
+      <guid>http://srv-nix.com/shell/2014/03/25/wilshell-module.html</guid>
+      <dc:date>2014-03-25T05:52:16Z</dc:date>
+    </item>
     <item>
       <title>Eve Online, Ссылка для бесплатного 21-дневного периода игры</title>
       <link>http://srv-nix.com/games/2014/03/24/eve-online-trial.html</link>
@@ -81,14 +98,23 @@
       <dc:date>2014-03-20T09:00:00Z</dc:date>
     </item>
     <item>
+      <title>Скрипты на все случаи жизни</title>
+      <link>http://srv-nix.com/linux/2014/02/25/bash-scripts-help.html</link>
+      <description>&lt;p&gt;Хотел просто сделать коллекцию скриптов, которые приходится писать довольно часто, а получился модульный фреймворк для работы с любыми скриптами. В базовый функционал вынесены только функции для работы с логированием, навешиванием lock-файла при необходимости, почтовые рассылки, функции для работы с выводом и прочее.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 25 Feb 2014 05:52:31 -0000</pubDate>
+      <guid>http://srv-nix.com/linux/2014/02/25/bash-scripts-help.html</guid>
+      <dc:date>2014-02-25T05:52:31Z</dc:date>
+    </item>
+    <item>
       <title>Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)</title>
       <link>http://srv-nix.com/linux/2014/02/19/build-nginx.html</link>
       <description>&lt;p&gt;&lt;em&gt;Правильная&lt;/em&gt; сборка пакетов на сервере под rpm-based системами. Никаких &amp;quot;make install&amp;quot;.  &lt;/p&gt;
 </description>
-      <pubDate>Wed, 19 Feb 2014 09:00:00 -0000</pubDate>
+      <pubDate>Wed, 19 Feb 2014 09:01:00 -0000</pubDate>
       <guid>http://srv-nix.com/linux/2014/02/19/build-nginx.html</guid>
-      <dc:date>2014-02-19T09:00:00Z</dc:date>
+      <dc:date>2014-02-19T09:01:00Z</dc:date>
     </item>
-    <dc:date>2014-03-24T09:00:00Z</dc:date>
+    <dc:date>2014-03-25T12:16:25Z</dc:date>
   </channel>
 </rss>

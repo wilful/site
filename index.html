@@ -4,19 +4,21 @@ title: SRV-NIX.COM
 ---
 
 <div>
-  <h1 class="b-document-title">Posts</h1>
-  <ol class="b-content-list">
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        POSTS
+    </dt>
     {% for post in paginator.posts %}
-      <li>
-      <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; <span class="b-document-title__item-list"> {{ post.title }} </span> <a href="{{ post.url }}">reading</a><br/>
+    <dd class="b-document-section__body b-pure-content">
+        <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; <span class="b-document-title__item-list"> {{ post.title }} </span> <a href="{{ post.url }}">reading</a><br/>
         <span class="b-content-list__item-preview">
             {{ post.excerpt }}
         </span>
-      </li>
+    </dd>
     {% endfor %}
-  </ul>
+</dl>
   {% if paginator.total_pages > 1 %}
-    <div class="pagination">
+    <div  class="b-content-list__item-list">
     {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
     {% else %}

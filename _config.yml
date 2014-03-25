@@ -21,9 +21,8 @@ rss_post_limit: 50
 sitemap:
   file: "/sitemap.xml"
   exclude:
-    - "/atom.xml"
-    - "/feed.xml"
-    - "/feed/index.xml"
+    - '/hidden/2014-01-01-default.html'
+    - '/hidden/feed.html'
   include_posts:
     - "/index.html"
   change_frequency_name: "change_frequency"
