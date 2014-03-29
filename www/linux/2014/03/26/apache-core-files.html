@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CentOS. Настройка CoreDump для apache</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        26 Mar 2014<br/>
+    </div>
+</header>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        NAME
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+                <h1>CentOS. Настройка CoreDump для apache</h1>
+    </dd>
+</dl>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        Description
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+        <div class="b-document-body">
+            <div class="b-pure-content">
+                <section>
+                    <!--more-->
+
+<p>Активируем параметр в конфигурации</p>
+
+<div class="highlight"><pre><code class="bash">CoreDumpDirectory /tmp
+</code></pre></div>
+
+<p>Насколько я понял, фиолетово какое значение выставлять, просто без этой директивы не работает (:
+Говорим ядру где будем хранить &quot;корки&quot;</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;/var/tmp/httpd-core.%p&quot;</span> &gt; /proc/sys/kernel/core_pattern
+</code></pre></div>
+
+<p>В папке должны быть права для пользователя, от которого запущен apache
+Разрешаем создание &quot;корок&quot;</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># cat /etc/security/limits.conf | grep apache</span>
+apache           -       core            -1
+</code></pre></div>
+
+<p>Перезапускаем сервер</p>
+
+<div class="highlight"><pre><code class="bash">service httpd restart
+</code></pre></div>
+
+                </section>
+            </div>
+        </div>
+    </dd>
+</dl>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="http://jabber.srv-nix.com/linux/2014/03/26/apache-core-files.html" target="_blank">Join the discussion</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/linux/2014/03/26/apache-core-files.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/apache.html" rel="tag">apache</a>, <a href="/tags/linux.html" rel="tag">linux</a>, <a href="/tags/core.html" rel="tag">core</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

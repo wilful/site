@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<head>
+    <link rel="shortcut icon" href="/candy/res/img/favicon.png" type="image/gif" />
+    <link rel="stylesheet" type="text/css" href="/candy/res/default.css" />
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/candy/libs/libs.min.js"></script>
+    <script type="text/javascript" src="/candy/candy.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Candy.init('http://jabber.srv-nix.com/http-bind/', {
+                core: {
+                    debug: true,
+                    autojoin: [ "{{ page.room }}" ]
+                            
+                },
+                view: { 
+                    resources: '/candy/res/',
+                    language: 'ru'
+                }
+            });
+
+            Candy.Core.connect('jabber.srv-nix.com')
+        });
+    </script>
+</head>
+<body>
+    <div id="candy"></div>
+    {{ page.room }}
+</body>
+</html>

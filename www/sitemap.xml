@@ -2,66 +2,94 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://srv-nix.com/linux/2014/02/19/build-nginx.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/02/25/bash-scripts-help.html</loc>
-        <lastmod>2014-03-25T12:14:12+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/freebsd/2014/03/20/freebsd-munin.html</loc>
-        <lastmod>2014-03-24T18:38:19+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/21/centos-openldap.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/21/modem-huawei.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/21/openldap-tls.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/23/ntpd-centos.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/23/puppet-failed-to-generate.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/23/webalizer-site.html</loc>
-        <lastmod>2014-03-24T20:28:04+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/games/2014/03/24/eve-online-trial.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/shell/2014/03/25/wilshell-module.html</loc>
-        <lastmod>2014-03-25T18:18:59+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/linux/2014/03/25/puppet-dashboard.html</loc>
-        <lastmod>2014-03-25T12:21:23+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/dayz/2014/03/25/dayz-drunk.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/game/2014/03/25/create-logo-arma-2.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/linux/2014/03/26/apache-core-files.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/freebsd/2014/03/26/freebsd-openldap-client.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/freebsd/2014/03/26/freebsd-utf-8.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/freebsd/2014/03/26/gpt-freebsd-spark.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/linux/2014/03/26/zabbix-ldap-admin-password.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://srv-nix.com/linux/2014/03/26/lvm-ext4-kvm.html</loc>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/</loc>
-        <lastmod>2014-03-25T18:18:59+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://srv-nix.com/tags.html</loc>
-        <lastmod>2014-03-23T04:52:33+00:00</lastmod>
+        <lastmod>2014-03-26T19:12:02+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/hidden/2014-01-01-default.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
     <url>
         <loc>http://srv-nix.com/hidden/2014-03-24-iptables.html</loc>
-        <lastmod>2014-03-24T18:28:35+00:00</lastmod>
+        <lastmod>2014-03-27T05:29:17+00:00</lastmod>
     </url>
 </urlset>

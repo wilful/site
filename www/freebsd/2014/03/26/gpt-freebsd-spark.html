@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Использование gpart на сервере FreeBSD (Sparc64 Sun v215)</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        26 Mar 2014<br/>
+    </div>
+</header>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        NAME
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+                <h1>Использование gpart на сервере FreeBSD (Sparc64 Sun v215)</h1>
+    </dd>
+</dl>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        Description
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+        <div class="b-document-body">
+            <div class="b-pure-content">
+                <section>
+                    <p>Собственно всё как в мануалах, для разметки используем VTOC8.</p>
+
+<!--more-->
+
+<div class="highlight"><pre><code class="bash">gpart create -s VTOC8 -f x /dev/xxx
+gpart commit
+</code></pre></div>
+
+<p>У меня получилось вот так</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c">#gpart show</span>
+<span class="o">=</span>&gt;        0  143203410  da0  VTOC8  <span class="o">(</span>68G<span class="o">)</span>
+          0   10474380    1  freebsd-ufs  <span class="o">(</span>5G<span class="o">)</span>
+   10474380   16771860    2  freebsd-swap  <span class="o">(</span>8G<span class="o">)</span>
+   27246240  111137670    4  freebsd-ufs  <span class="o">(</span>53G<span class="o">)</span>
+  138383910    4674915    5  freebsd-ufs  <span class="o">(</span>2.2G<span class="o">)</span>
+  143058825     144585       - free -  <span class="o">(</span>70M<span class="o">)</span>
+</code></pre></div>
+
+                </section>
+            </div>
+        </div>
+    </dd>
+</dl>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="http://jabber.srv-nix.com/freebsd/2014/03/26/gpt-freebsd-spark.html" target="_blank">Join the discussion</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/freebsd/2014/03/26/gpt-freebsd-spark.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/freebsd.html" rel="tag">freebsd</a>, <a href="/tags/gpart.html" rel="tag">gpart</a>, <a href="/tags/sparc.html" rel="tag">sparc</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

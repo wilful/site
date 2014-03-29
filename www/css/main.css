@@ -1,6 +1,6 @@
 .b-pure-content .highlight {margin-left: 2.4em}
 
-img {
+img, iframe {
     border: 1px solid #eee;
     display: block;
     margin: auto;

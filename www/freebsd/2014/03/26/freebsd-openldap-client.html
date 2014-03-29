@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Установка и настройка OpenLDAP клиента на сервер FreeBSD (Sparc64 Sun v215)</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        26 Mar 2014<br/>
+    </div>
+</header>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        NAME
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+                <h1>Установка и настройка OpenLDAP клиента на сервер FreeBSD (Sparc64 Sun v215)</h1>
+    </dd>
+</dl>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        Description
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+        <div class="b-document-body">
+            <div class="b-pure-content">
+                <section>
+                    <p>Чего меньше всего ожидаешь, работая системным администратором? Правильно! Того, что после первой установки придется еще 3 раза разворачивать FreeBSD на Sun v215 5-6 летней давности, удалённо, без доступа к KVM. Поэтому оставлю тут куски трудов для памятки. </p>
+
+<!--more-->
+
+<p>Для подключения к OpenLDAP серверу нам нужны следующие порты: security/pam<em>mkhomedir security/pam</em>ldap net/nss_ldap</p>
+
+<div class="highlight"><pre><code class="bash">make install clean -C /usr/ports/security/pam_mkhomedir
+make install clean -C /usr/ports/security/pam_ldap
+</code></pre></div>
+
+<p>При сборке ядра я отключил поддержку WITHOUT<em>KERBEROS=yes, по-этому 
+для сборки net/nss</em>ldap порта FreeBSD под архитектуру sparc64 нужно исходники пропатчить</p>
+
+<div class="highlight"><pre><code class="bash">cp -R /usr/ports/net/nss_ldap/ /usr/local/src/nss_ldap/
+</code></pre></div>
+
+<p>Сам патч выглядит так:</p>
+
+<div class="highlight"><pre><code class="bash">cat /root/nss.patch
+diff -u -r /usr/ports/net/nss_ldap/Makefile /usr/local/src/nss_ldap/Makefile
+--- /usr/ports/net/nss_ldap/Makefile    2009-01-05 22:04:27.000000000 +0300
++++ /home/bakhtin/work/nss_ldap/Makefile    2009-04-03 20:01:18.000000000 +0400
+@@ -33,8 +33,7 @@
+ <span class="nv">CONFIGURE_ARGS</span><span class="o">=</span>  --with-ldap-conf-file<span class="o">=</span><span class="k">${</span><span class="nv">PREFIX</span><span class="k">}</span>/etc/nss_ldap.conf <span class="se">\</span>
+            --with-ldap-secret-file<span class="o">=</span><span class="k">${</span><span class="nv">PREFIX</span><span class="k">}</span>/etc/nss_ldap.secret <span class="se">\</span>
+                --enable-rfc2307bis <span class="se">\</span>
+-         --enable-paged-results <span class="se">\</span>
+-              --enable-configurable-krb5-ccname-env
++         --enable-paged-results 
+ 
+ <span class="nv">MAN5</span><span class="o">=</span>        nss_ldap.5
+ 
+diff -u -r /usr/ports/net/nss_ldap/files/patch-ldap-nss.c  /usr/local/src/nss_ldap/files/patch-ldap-nss.c
+--- /usr/ports/net/nss_ldap/files/patch-ldap-nss.c    2006-05-27 20:31:57.000000000 +0400
++++ /home/bakhtin/work/nss_ldap/files/patch-ldap-nss.c      2009-04-03 20:00:30.000000000 +0400
+@@ -9,3 +9,11 @@
+  <span class="c">#include </span>
+  <span class="c">#elif defined(HAVE_SASL_H)</span>
+  <span class="c">#include </span>
++@@ -84,7 +84,7 @@
++ <span class="c">#include </span>
++ <span class="c">#include </span>
++ <span class="c">#endif</span>
++-#ifdef CONFIGURE_KRB5_CCNAME
+++#if defined<span class="o">(</span>CONFIGURE_KRB5_CCNAME<span class="o">)</span> <span class="o">&amp;&amp;</span> defined<span class="o">(</span>HAVE_KRB5_H<span class="o">)</span>
++ <span class="c">#include </span>
++ <span class="c">#endif</span>
+</code></pre></div>
+
+<p>Зашиваем &quot;заплатку&quot;</p>
+
+<div class="highlight"><pre><code class="bash">patch &lt; /root/nss.patch
+</code></pre></div>
+
+<p>И наконец, собираем и устанавливаем порт</p>
+
+<div class="highlight"><pre><code class="bash">make install clean -C /usr/local/src/nss_ldap
+</code></pre></div>
+
+<p>Правим файл конфигурации /usr/local/etc/nss_ldap.conf
+Сам файл достаточно хорошо документирован, так же есть информация в <a href="http://www.freebsd.org/doc/en/articles/ldap-auth/client.html">handbook</a> <a href="http://www.freebsd.org/doc/ru/books/handbook/">ещё</a></p>
+
+<div class="highlight"><pre><code class="bash">vim /usr/local/etc/nss_ldap.conf
+</code></pre></div>
+
+<p>Приведу примеры основных директив</p>
+
+<div class="highlight"><pre><code class="bash">base <span class="nv">o</span><span class="o">=</span>,c<span class="o">=</span>ru
+uri ldap://ldap..ru/
+pam_groupdn <span class="nv">cn</span><span class="o">=</span>,ou<span class="o">=</span>,ou<span class="o">=</span>,o<span class="o">=</span>,c<span class="o">=</span>ru
+pam_member_attribute uniqueMember
+pam_password md5
+sudoers_base <span class="nv">ou</span><span class="o">=</span>sudoers,ou<span class="o">=</span>,ou<span class="o">=</span>,o<span class="o">=</span>,c<span class="o">=</span>ru
+sudoers_debug 0
+</code></pre></div>
+
+<p>На всякий случай создаю симлинк для файла конфигурации, некоторые приложения ищут его именно по этому пути</p>
+
+<div class="highlight"><pre><code class="bash">ln -s /usr/local/etc/nss_ldap.conf /usr/local/etc/ldap.conf
+</code></pre></div>
+
+<p>Настраиваем сервис pam для подключения  к SSH серверу</p>
+
+<div class="highlight"><pre><code class="bash">vim /etc/pam.d/sshd
+</code></pre></div>
+
+<p>Добавим в файл следующие строки</p>
+
+<div class="highlight"><pre><code class="bash">auth        sufficient  /usr/local/lib/pam_ldap.so no_warn
+account     sufficient  /usr/local/lib/pam_ldap.so debug
+session     sufficient  /usr/local/lib/pam_ldap.so
+session     required    /usr/local/lib/pam_mkhomedir.so  debug <span class="nb">umask</span><span class="o">=</span>0077 <span class="nv">skel</span><span class="o">=</span>/usr/local/share/skel
+password    required    /usr/local/lib/pam_ldap.so  no_warn try_first_pass
+</code></pre></div>
+
+<p>Заставляем систему использовать все наши настройки</p>
+
+<div class="highlight"><pre><code class="bash">vim /etc/nsswitch.conf
+</code></pre></div>
+
+<p>Замечание: Настройки связанные с sudoers необходимы только если на сервере LDAP есть схема с настройками sudoers</p>
+
+<div class="highlight"><pre><code class="bash">group: files cache ldap
+passwd: files cache ldap
+sudoers: ldap
+</code></pre></div>
+
+<p>ЗКЩААШЕ?</p>
+
+                </section>
+            </div>
+        </div>
+    </dd>
+</dl>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="http://jabber.srv-nix.com/freebsd/2014/03/26/freebsd-openldap-client.html" target="_blank">Join the discussion</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/freebsd/2014/03/26/freebsd-openldap-client.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/freebsd.html" rel="tag">freebsd</a>, <a href="/tags/openldap.html" rel="tag">openldap</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+

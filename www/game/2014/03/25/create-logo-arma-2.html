@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zrEDTiP0xgJYfIhexhD8C_CBtEQQrJa1fnOmXrzyhVM" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="b-canvas">
+    <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
+        <ul class="b-menu__list">
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">SRV-NIX.COM</span></a></li>
+            <li class="b-menu__item"><a href="http://srv-nix.com/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
+            <li class="b-menu__item"><a href="https://www.google.ru/search?q=google.com&oq=google.com&#newwindow=1&q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
+        </ul>
+    </nav>
+
+  <article class="b-document">
+      <header class="b-document-header">
+    <div class="b-document-header__section">
+        Authtor:<br/>
+        Posted at:<br/>
+    </div>
+    <div class="b-document-header__section">
+        A. Semenov<br/>
+        25 Mar 2014<br/>
+    </div>
+</header>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        NAME
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+                <h1>Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)</h1>
+    </dd>
+</dl>
+<dl class="b-document-section">
+    <dt class="b-document-section__title">
+        Description
+    </dt>
+    <dd class="b-document-section__body b-pure-content">
+        <div class="b-document-body">
+            <div class="b-pure-content">
+                <section>
+                    <p>С целью идентификации вашего отряда в ARMAII предусмотрена возможность добавления
+на бойца и технику уникальной метки или логотипа. Таким образом ваши друзья, или всё же враги, могут узнавать вас по картинке. К сожалению, в моде DayZ работает только логотип на используемой технике.</p>
+
+<!--more-->
+
+<p>Создаем XML-файл &quot;squad.xml&quot; примерно такого содержания:</p>
+
+<div class="highlight"><pre><code class="bash">&lt;code&gt;&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span>?&gt;
+&lt;!DOCTYPE squad SYSTEM <span class="s2">&quot;squad.dtd&quot;</span>&gt;
+&lt;?xml-stylesheet <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;squad.xsl?&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/xsl&quot;</span>?&gt;
+&lt;squad <span class="nv">nick</span><span class="o">=</span><span class="s2">&quot;&quot;</span>&gt; &lt;!-- то что вы хотите увидеть в квадратных скобках у ника --&gt;
+    &lt;name&gt;&lt;/name&gt; &lt;!-- имя клана/отряда <span class="o">(</span>полностью<span class="o">)</span> --&gt;
+    &lt;email&gt;&lt;/email&gt; &lt;!-- официальный ящик отряда <span class="o">(</span>или лидера<span class="o">)</span> --&gt;
+    &lt;web&gt;&lt;/web&gt; &lt;!-- вебсайт отряда --&gt;
+    &lt;picture&gt;&lt;/picture&gt; &lt;!-- лого отряда. --&gt;
+    &lt;title&gt;&lt;/title&gt; &lt;!-- описание отряда в окне информации --&gt;
+&lt;member <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nv">nick</span><span class="o">=</span><span class="s2">&quot;&quot;</span>&gt; &lt;!-- PID участника отряда и его имя --&gt;
+        &lt;name&gt;&lt;/name&gt; &lt;!-- опционально: реальное имя или снова ник игрока --&gt;
+        &lt;email&gt;&lt;/email&gt; &lt;!-- опционально: почта участника отряда --&gt;
+        &lt;icq&gt;&lt;/icq&gt; &lt;!-- опционально: ICQ, я использую для отображения своего скайпа --&gt;
+        &lt;remark&gt;&lt;/remark&gt; &lt;!-- <span class="s2">&quot;Комментарий игрока&quot;</span> всё что вы хотели бы сказать. Не отмечается в игре на текстурах, только в информации игрока --&gt;
+    &lt;/member&gt;
+&lt;/squad&gt;&lt;/code&gt; 
+</code></pre></div>
+
+<p>Теперь у вас будет имя отряда и подписи для техники, а так же у имени вашего бойца в квадратных скобках появится аббревиатура отряда указанная в &quot;squad nick=&quot;. Далее самое сложное, если вы хотите получить лого на технике нужно скачать и установить программу по <a href="http://www.armaholic.com/page.php?id=1563">ссылке</a>.</p>
+
+<p>Теперь редактируем картинку в соответствии с описанием в <a href="http://community.bistudio.com/wiki/squad.xml#How_to_create_a_logo_for_the_use_with_.22squad.xml.22">ВиКи</a> (я рекомендую использовать свободную для использования программу <a href="http://gimp.ru/viewpage.php?page_id=8">GIMP</a>) и конвертируем в установленной программе TexView2. Далее необходимо все файлы выложить на открытый хостинг, например на <a href="https://www.dropbox.com/">dropbox</a>, и получить внешнюю ссылку на &quot;squad.xml&quot;. Все файлы должны лежать на одном уровне с этим файлом. Полученную ссылку указываем в разделе URL окна настроек профиля в игре</p>
+
+<p>Почитать можно <a href="http://community.bistudio.com/wiki/squad.xml">тут</a>, <a href="http://www.armaholic.com/forums.php?m=posts&amp;q=13927">тут</a></p>
+
+<p>Все файлы можно скачать <a href="http://dl.dropbox.com/u/5034281/ARMA/example.tgz">тут</a></p>
+
+<p>Для самых маленьких:</p>
+
+<ol>
+<li><a href="https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial.webm">Создание</a> картинки в GIMP</li>
+<li><a href="https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial_02.webm">Добавление</a> и сохранение в TexView2</li>
+<li><a href="https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial_01.webm">Добавление</a> файлов на Dropbox</li>
+</ol>
+
+<ul>
+<li>Регистрируемся на сайте https://www.dropbox.com</li>
+<li>После регистрации на вашем аккаунте будет несколько ГБ свободного места и папка Public</li>
+<li>Именно в эту папку нужно разместить файлы полученные выше (я создал в публичной папке папку с именем &quot;ARMAII&quot;)</li>
+<li>Далее кликаем правой кнопкой мыши по файлу squad.xml и выбираем &quot;Copy publik link&quot;</li>
+<li>Ссылка переместится в буфер обмена, заходим в игру и вставляем ссылку в поле URL</li>
+</ul>
+
+                </section>
+            </div>
+        </div>
+    </dd>
+</dl>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+            wilful.su
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="http://jabber.srv-nix.com/game/2014/03/25/create-logo-arma-2.html" target="_blank">Join the discussion</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+            <a href=/game/2014/03/25/create-logo-arma-2.html>&#5123</a>
+        </div>
+    </div>
+    <div class="b-footer__row">
+        <div class="b-footer__section b-footer__section_type_left">
+        </div>
+        <div class="b-footer__section b-footer__section_type_center">
+            <a href="/tags/arma.html" rel="tag">arma</a>, <a href="/tags/dayz.html" rel="tag">dayz</a>, <a href="/tags/game.html" rel="tag">game</a>
+        </div>
+        <div class="b-footer__section b-footer__section_type_right">
+        </div>
+    </div>
+</footer>
+
+  </article>
+
+</div>
+</body>
+</html>
+
