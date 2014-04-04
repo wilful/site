@@ -48,11 +48,9 @@
         <div class="b-document-body">
             <div class="b-pure-content">
                 <section>
-                    <p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
-
-<!--more-->
-
-<p>Выключаем VPS на которой используется раздел LVM.
+                    <p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck
+&lt;!--more--&gt;
+Выключаем VPS на которой используется раздел LVM.
 Увеличиваем сам том:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="c"># lvextend -L +2G /dev/mapper/vms-vps--test</span>

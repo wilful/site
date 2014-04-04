@@ -10,15 +10,14 @@ tags:
 - zabbix
 - ldap
 ---
-
+Простая инструкция на случай, если вы после очередного обновления или по случайности потеряли привилегированный доступ к админке сервера zabbix.
 <!--more-->
-
-Подключаемся к БД сервера. 
-Меняем пароль
++ Подключаемся к БД сервера. 
++ Меняем пароль
 {% highlight mysql %}
 UPDATE `zabbix`.`users` SET passwd=md5('mynewpassword') WHERE `alias`='Admin';
 {% endhighlight %}
-Отключаем LDAP
++ Отключаем LDAP
 {% highlight mysql %}
 UPDATE  `zabbix`.`config` SET  `authentication_type` =  '0' WHERE  `config`.`configid` =1;
 {% endhighlight %}

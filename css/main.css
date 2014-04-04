@@ -220,16 +220,17 @@ br {
 .b-content-list__item-preview {
     display:inline-block;
     white-space:normal;
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 100%;
+    margin:0 0 0 2.8em;
+    color: #aaa;
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 100%;
 }
 .b-content-list__item-date {
     display:inline-block;
     white-space:normal;
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+    color: #aaa;
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 80%;
 }
 
 .b-menu {

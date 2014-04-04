@@ -21,7 +21,8 @@
     <item>
       <title>Zabbix. Сброс пароля администратора и отключение LDAP</title>
       <link>http://srv-nix.com/linux/2014/03/26/zabbix-ldap-admin-password.html</link>
-      <description></description>
+      <description>&lt;p&gt;Простая инструкция на случай, если вы после очередного обновления или по случайности потеряли привилегированный доступ к админке сервера zabbix.&lt;/p&gt;
+</description>
       <pubDate>Wed, 26 Mar 2014 19:07:19 -0000</pubDate>
       <guid>http://srv-nix.com/linux/2014/03/26/zabbix-ldap-admin-password.html</guid>
       <dc:date>2014-03-26T19:07:19Z</dc:date>
