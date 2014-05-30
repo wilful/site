@@ -1,6 +1,6 @@
 ---
 title: "Пишем свой модуль для wilshell, краткое HOWTO"
-published: true
+published: false
 layout: post
 date: 2014-03-25 11:52:16 +0600
 categories: shell

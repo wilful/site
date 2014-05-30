@@ -1,18 +1,19 @@
 #!/bin/bash
 : ${1?"Not enough parameters. Usage: $SCRIPTNAME NameOfFile"}
 
+DATE=`date +%F`
 DOMAIN="srv-nix.com"
 DIR="/usr/local/www/${DOMAIN}/"
 JABBER_DIR="/usr/local/www/jabber.${DOMAIN}/"
-FILENAME="${DIR}/_posts/`date +%F`-$1.markdown"
-JABBER_FILENAME="${JABBER_DIR}/_posts/`date +%F`-$1.markdown"
+FILENAME="${DIR}/_drafts/$DATE-$1.markdown"
+JABBER_FILENAME="${JABBER_DIR}/_posts/$DATE-$1.markdown"
 PUBLISH_DATE=`date +'%F %T %z'`
 
 if [[ ! -e $FILENAME ]]; then
 cat > $FILENAME <<EOF
 ---
 title: "$1"
-published: false
+published: true
 layout: post
 date: $PUBLISH_DATE
 categories: linux
@@ -41,6 +42,8 @@ EOF
 fi
 {
     cd $JABBER_DIR &&
+        jekyll build
+    cd $DIR &&
         jekyll build
 }
 

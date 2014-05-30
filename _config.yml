@@ -7,7 +7,7 @@ exclude:      [ 'commit.sh', 'scripts' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
 
-paginate:     7
+paginate:     77
 
 excerpt_separator: <!--more-->
 
@@ -24,6 +24,7 @@ sitemap:
     - '/hidden/2014-01-01-default.html'
     - '/hidden/feed.html'
     - '/tags.html'
+    - 'draft'
   include_posts:
     - "/index.html"
   change_frequency_name: "change_frequency"

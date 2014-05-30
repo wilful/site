@@ -10,9 +10,13 @@ title: SRV-NIX.COM
     </dt>
     {% for post in paginator.posts %}
     <dd class="b-document-section__body b-pure-content">
-        <span class="b-content-list__item-date">{{ post.date | date_to_string }}</span> &raquo; <span class="b-document-title__item-list"> {{ post.title }} </span> <a href="{{ post.url }}">reading</a><br/>
+        <span class="b-document-title__item-list"><a href="{{ post.url }}">{{ post.title }}</a></span><br/>
         <span class="b-content-list__item-preview">
-            {{ post.excerpt }}
+            {% if post.excerpt =='' %}
+                ...
+            {% else %}
+                {{ post.excerpt }}
+            {% endif %}
         </span>
     </dd>
     {% endfor %}

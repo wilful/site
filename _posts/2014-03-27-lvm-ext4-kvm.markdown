@@ -13,7 +13,9 @@ tags:
 - ext4
 ---
 Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck
+
 <!--more-->
+
 Выключаем VPS на которой используется раздел LVM.
 Увеличиваем сам том:
 {% highlight bash %}

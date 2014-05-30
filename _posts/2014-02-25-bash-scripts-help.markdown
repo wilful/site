@@ -1,6 +1,6 @@
 ---
 title: "Скрипты на все случаи жизни"
-published: true
+published: false
 layout: post
 date: 2014-02-25 11:52:31 +0600
 categories: linux
