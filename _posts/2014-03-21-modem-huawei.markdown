@@ -6,9 +6,9 @@ comments: true
 categories: linux
 author: A. Semenov
 tags: 
-    - linux
-    - modem 
-    - 3g
+- linux
+- modem 
+- 3g
 ---
 
 В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.

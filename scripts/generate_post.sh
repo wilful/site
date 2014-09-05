@@ -16,6 +16,7 @@ title: "$1"
 published: true
 layout: post
 date: $PUBLISH_DATE
+comments: true
 categories: linux
 author: A. Semenov
 tags: 
@@ -34,6 +35,7 @@ cat > $JABBER_FILENAME <<EOF
 published: true
 layout: chat
 date: $PUBLISH_DATE
+comments: true
 `cat $FILENAME | grep -E '^categories:'`
 room: `echo $RANDOM`@conference.jabber.srv-nix.com
 ---
