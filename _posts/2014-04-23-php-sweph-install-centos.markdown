@@ -3,6 +3,7 @@ title: "Сборка и установка модуля php-sweph"
 published: true
 layout: post
 date: 2014-04-23 13:25:55 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

@@ -3,6 +3,7 @@ title: "CentOS. Подымаем аутентификацию на sssd и OpenL
 published: true
 layout: post
 date: 2014-03-21 09:00:00 +0000
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

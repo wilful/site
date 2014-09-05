@@ -2,6 +2,7 @@
 title: "FreeBSD. Munin - мониторинг на коленке"
 layout: post
 date: 2014-03-20 09:00:00 +0000
+comments: true
 categories: freebsd
 author: A. Semenov
 tags: 

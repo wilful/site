@@ -3,6 +3,7 @@ title: "Опасно играть под мухой"
 published: true
 layout: post
 date: 2014-03-26 00:58:01 +0600
+comments: true
 categories: dayz
 author: A. Semenov
 tags: 

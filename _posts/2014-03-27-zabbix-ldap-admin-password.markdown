@@ -3,6 +3,7 @@ title: "Zabbix. Сброс пароля администратора и откл
 published: true
 layout: post
 date: 2014-03-27 01:07:19 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

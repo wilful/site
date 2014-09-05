@@ -235,6 +235,9 @@ h3:before {
     font-family: Monaco, "Courier New", monospace;
     font-size: 100%;
 }
+.b-content-list__item-preview P:first-child {
+    margin-top:0;
+}
 .b-content-list__item-date {
     display:inline-block;
     white-space:normal;

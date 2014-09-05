@@ -3,6 +3,7 @@ title: "Использование gpart на сервере FreeBSD (Sparc64 Su
 published: false
 layout: post
 date: 2014-03-27 00:56:25 +0600
+comments: true
 categories: freebsd
 author: A. Semenov
 tags: 

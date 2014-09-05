@@ -3,6 +3,7 @@ title: "Скрипты на все случаи жизни"
 published: false
 layout: post
 date: 2014-02-25 11:52:31 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

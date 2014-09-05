@@ -3,6 +3,7 @@ title: "test-video"
 published: false
 layout: post
 date: 2014-03-26 00:47:48 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

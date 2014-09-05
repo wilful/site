@@ -3,6 +3,7 @@ title: ""
 published: true
 layout: post
 date: 2009-04-10 17:25:11 +0600
+comments: true
 categories: about
 author: A. Semenov
 tags: 

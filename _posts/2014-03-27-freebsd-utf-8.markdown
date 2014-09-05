@@ -3,6 +3,7 @@ title: "UTF-8, cyrillic console. Русификация и UTFитизация �
 published: true
 layout: post
 date: 2014-03-27 00:49:19 +0600
+comments: true
 categories: freebsd
 author: A. Semenov
 tags: 

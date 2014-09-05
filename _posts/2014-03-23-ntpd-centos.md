@@ -3,6 +3,7 @@ title: "Простейшая настройка сервера NTPD на CentOS 
 published: true
 layout: post
 date: 2014-03-23 09:00:00 +0000
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

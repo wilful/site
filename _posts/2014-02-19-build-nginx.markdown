@@ -2,6 +2,7 @@
 title: "Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"
 layout: post
 date: 2014-04-04 09:01:00 +0000
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

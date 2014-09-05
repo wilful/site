@@ -3,6 +3,7 @@ title: "Пишем свой модуль для wilshell, краткое HOWTO"
 published: false
 layout: post
 date: 2014-03-25 11:52:16 +0600
+comments: true
 categories: shell
 author: A. Semenov
 tags: 

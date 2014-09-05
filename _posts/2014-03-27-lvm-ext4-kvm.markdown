@@ -3,6 +3,7 @@ title: "LVM+KVM+EXT4, изменение размера виртуального
 published: true
 layout: post
 date: 2014-03-27 01:09:27 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

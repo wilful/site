@@ -3,6 +3,7 @@ title: "Eve Online, Ссылка для бесплатного 21-дневног
 published: true
 layout: post
 date: 2014-03-24 09:00:00 +0000
+comments: true
 categories: games
 author: A. Semenov
 tags: 

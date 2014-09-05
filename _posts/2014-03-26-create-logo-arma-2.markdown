@@ -3,6 +3,7 @@ title: "Как создать LOGO для обозначения отряда в
 published: true
 layout: post
 date: 2014-03-26 01:07:25 +0600
+comments: true
 categories: game
 author: A. Semenov
 tags: 

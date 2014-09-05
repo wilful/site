@@ -3,6 +3,7 @@ title: "Установка и настройка OpenLDAP клиента на с
 published: true
 layout: post
 date: 2014-03-27 00:32:20 +0600
+comments: true
 categories: freebsd
 author: A. Semenov
 tags: 

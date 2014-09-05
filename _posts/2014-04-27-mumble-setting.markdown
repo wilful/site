@@ -3,6 +3,7 @@ title: "Настройка клиента Mumble"
 published: true
 layout: post
 date: 2014-04-27 18:18:51 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

@@ -3,6 +3,7 @@ title: "Puppet dashboard [pending tasks] - накопил уже мужик!"
 published: true
 layout: post
 date: 2014-03-25 18:16:25 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 

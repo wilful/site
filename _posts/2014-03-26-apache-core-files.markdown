@@ -3,6 +3,7 @@ title: "CentOS. Настройка CoreDump для apache"
 published: true
 layout: post
 date: 2014-03-26 14:24:18 +0600
+comments: true
 categories: linux
 author: A. Semenov
 tags: 
