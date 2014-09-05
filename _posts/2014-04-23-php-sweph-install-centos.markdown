@@ -12,6 +12,8 @@ tags:
 - build
 ---
 
+Просто абзац
+
 <!--more-->
 
 {% highlight bash %}

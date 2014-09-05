@@ -8,6 +8,7 @@ Disallow: /search*
 Disallow: /people*
 Disallow: /tag*
 Disallow: /profile*
+Disallow: /candy*
 Disallow: /topic/*add*
 Disallow: /topic/*delete*
 
