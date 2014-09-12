@@ -298,6 +298,11 @@ h3:before {
 .b-document-section__body {
     margin:0 0 0 3.5em;
 }
+.b-content-tag__tags-preview {
+    white-space:normal;
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 100%;
+}
 
 a:link { text-decoration: none; color: black; }
 a:visited { text-decoration: none; color: #6e6d6a; } 

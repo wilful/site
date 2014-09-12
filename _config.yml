@@ -1,6 +1,6 @@
 name:         SRV-NIX.COM
 markdown:     redcarpet
-pygments:     true
+highlighter:  pygments
 destination:  ./www
 source:       .
 exclude:      [ 'commit.sh', 'scripts' ]

@@ -3,8 +3,25 @@ layout: default
 title: Теги
 permalink: tags.html
 ---
-
-<h1 class="title">Tags</h1>
-<div id="tag-cloud">
-      {{ site | tag_cloud }}
+<div>
+  <dl class="b-document-section">
+      <dt class="b-document-section__title">
+          TAGS
+      </dt>
+      <dd>
+          <span class=".b-content-tag__tags-preview">
+              {{ site | tag_cloud }}
+          </span>
+      </dd>
+  </dl>
+  <footer class="b-footer">
+      <div class="b-footer__row">
+          <div class="b-footer__section b-footer__section_type_left">
+              wilful.su<br/>
+          </div>
+          <div class="b-footer__section b-footer__section_type_right">
+              <a href='http://jekyllrb.com'>jekyll</a>
+          </div>
+      </div>
+  </footer>
 </div>

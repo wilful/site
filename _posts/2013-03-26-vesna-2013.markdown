@@ -1,0 +1,15 @@
+---
+title: "Жаркая весна 2013-го"
+published: true
+layout: post
+date: 2013-03-26 19:56:17 +0600
+comments: true
+categories: staff
+author: A. Semenov
+tags: 
+- fun
+---
+<!--more-->
+![pic01][pic01]
+
+[pic01]: {{ site.url }}/upload/de1102.jpg
