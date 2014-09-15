@@ -24,6 +24,7 @@ sitemap:
     - '/hidden/2014-01-01-default.html'
     - '/hidden/feed.html'
     - '/tags.html'
+    - '/ts3.html'
     - 'draft'
   include_posts:
     - "/index.html"

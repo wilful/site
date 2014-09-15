@@ -11,7 +11,7 @@ tags:
 - zabbix
 - ldap
 ---
-Простая инструкция на случай, если вы после очередного обновления или по случайности потеряли привилегированный доступ к админке сервера zabbix.
+Простая инструкция на случай, если вы после очередного обновления или по случайности потеряли привилегированный доступ к админке сервера [zabbix][].
 
 <!--more-->
 
@@ -25,3 +25,4 @@ UPDATE `zabbix`.`users` SET passwd=md5('mynewpassword') WHERE `alias`='Admin';
 UPDATE  `zabbix`.`config` SET  `authentication_type` =  '0' WHERE  `config`.`configid` =1;
 {% endhighlight %}
 
+[zabbix]: http://www.zabbix.com/ru/

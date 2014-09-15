@@ -2,16 +2,6 @@
     margin-left: 2.4em
 }
 
-img, iframe {
-    border: 1px solid #eee;
-    display: block;
-    margin: auto;
-    padding: 1em;
-    text-align: center;
-    max-width:100%
-    width:auto
-}
-
 .posts {
   list-style-type: none;
   margin-bottom: 2em;
@@ -309,3 +299,13 @@ a:visited { text-decoration: none; color: #6e6d6a; }
 a:hover { text-decoration: none; color: #f6bf02; }
 a:active { text-decoration: none; color: #f6bf02; }
 
+img, iframe {
+    border: 1px solid #eee;
+    display: block;
+    margin: auto;
+    padding: 1em;
+    text-align: center;
+    max-width:100%; 
+    box-sizing: border-box;
+    width:auto;
+}
