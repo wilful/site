@@ -268,9 +268,7 @@ h3:before {
     text-decoration:none;
 }
 .b-menu_viewtype_square-brackets .b-menu__item-text.b-link .b-link__text {
-//    color: #00e;
     color: #080300;
-//    text-decoration:underline;
 }
 .b-menu_viewtype_square-brackets .b-menu__item-text.b-link:hover .b-link__text,
 .b-menu_viewtype_square-brackets .b-menu__item-text.b-link:active .b-link__text {

@@ -6,12 +6,12 @@ comments: true
 categories: freebsd
 author: A. Semenov
 tags: 
-    - FreeBSD 
+    - freebsd
     - munin 
     - howto
 ---
 
-Munin - простое и надежное средство для мониторинга и визуализации "what just happened to kill our performance?" проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются на красивых графиках.
+[Munin][l02] - простое и надежное средство для мониторинга и визуализации "what just happened to kill our performance?" проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются на красивых графиках.
 
 <!--more-->
 
@@ -155,3 +155,5 @@ MAILTO=root
 [graph_url]: {{ site.url }}/upload/ef6961.png 
 
 [l01]: http://nginx.org/ru/
+[l02]: http://munin-monitoring.org/
+[l03]: https://www.freebsd.org/ru/
