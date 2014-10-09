@@ -4,7 +4,7 @@ published: true
 layout: post
 date: 2014-03-26 01:07:25 +0600
 comments: true
-categories: game
+categories: games
 author: A. Semenov
 tags: 
 - arma

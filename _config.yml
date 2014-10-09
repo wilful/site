@@ -3,10 +3,11 @@ markdown:     redcarpet
 highlighter:  pygments
 destination:  ./www
 source:       .
-exclude:      [ 'commit.sh', 'scripts' ]
+exclude:      [ 'commit.sh', 'scripts', 'README.md', 'Gemfile' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
-gray_message:    srv-nix.com
+
+gray_message: 'srv-nix.com'
 
 paginate:     77
 
