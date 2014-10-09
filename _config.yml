@@ -6,6 +6,7 @@ source:       .
 exclude:      [ 'commit.sh', 'scripts' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
+gray_message:    srv-nix.com
 
 paginate:     77
 
