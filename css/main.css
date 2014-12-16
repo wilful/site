@@ -316,3 +316,23 @@ img, iframe {
 img {
     width:auto;
 }
+
+.b-sticky-aside {
+    box-sizing:border-box;
+    position:sticky;
+    position:fixed;
+    width:16em;
+    top:0;
+    left:50%;
+    margin-left:29em;
+    border:#f8f8f8 1px solid;
+}
+
+.b-sticky-aside__header {
+    text-align:center;
+    background:#f8f8f8;
+    padding:0 1em;
+}
+.b-sticky-aside__body {
+    padding:1em;
+}
