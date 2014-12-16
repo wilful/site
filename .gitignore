@@ -2,3 +2,5 @@ _drafts/*
 upload/*
 hidden
 www/*
+.idea
+Gemfile.lock
