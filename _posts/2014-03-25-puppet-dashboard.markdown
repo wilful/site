@@ -31,7 +31,7 @@ ActiveRecord::StatementInvalid: Mysql::Error: Data too long for column 'details'
 ALTER TABLE REPORT_LOGS CHANGE COLUMN MESSAGE MESSAGE VARCHAR(65536);
 {% endhighlight %}
 Для чистоты эксперимента я почистил всю очередь запросов:
-{% highlight ruby %}
+{% highlight bash %}
 service puppet-dashboard-workers stop
 cd /usr/share/puppet-dashboard
 rm -f spool/*
