@@ -317,6 +317,10 @@ img {
     width:auto;
 }
 
+#disqus_thread iframe {
+    box-sizing: content-box;
+}
+
 .b-sticky-aside {
     box-sizing:border-box;
     position:sticky;
