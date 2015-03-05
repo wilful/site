@@ -8,8 +8,13 @@ categories: staff
 author: A. Semenov
 tags: 
 - fun
+tips:
+- Холодно же! 
+- В марте не должно быть ТАК холодно
+- Это точно март?
 ---
 <!--more-->
 ![pic01][pic01]
 
 [pic01]: {{ site.url }}/upload/de1102.jpg
+[l01]: http://ya.ru

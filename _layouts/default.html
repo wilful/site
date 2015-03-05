@@ -15,20 +15,12 @@
 <div class="b-canvas">
     <nav class="b-menu b-menu_type_inline b-menu_viewtype_square-brackets">
         <ul class="b-menu__list">
-            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">{{ site.name }}</span></a></li>
+            <li class="b-menu__item"><a href="/" class="b-menu__item-text b-link"><span class="b-link__text">&#9773{{ site.name }}</span></a></li>
             <li class="b-menu__item"><a href="{{ site.url }}/tags.html" class="b-menu__item-text b-link"><span class="b-link__text">Tags</span></a></li>
             <li class="b-menu__item"><a href="https://www.google.ru/search?q=site:srv-nix.com" target="_blank" class="b-menu__item-text b-link"><span class="b-link__text">Search</span></a></li>
             <li class="b-menu__item"><a href="{{ site.url }}/rss.xml" class="b-menu__item-text b-link" target="_blank"><span class="b-link__text">RSS</span></a></li>
-            <li class="b-menu__item"><a href="{{ site.url }}/TS3" class="b-menu__item-text b-link" target="_blank"><span class="b-link__text">TS3</span></a></li>
         </ul>
     </nav>
-
-    <aside class="b-sticky-aside" style="display: none;">
-        <header class="b-sticky-aside__header">Заголовок</header>
-        <section class="b-sticky-aside__body">
-            Любое содержимое блока тут.
-        </section>
-    </aside>
 
   <article class="b-document">
       {{ content }}
@@ -37,4 +29,31 @@
 </div>
 </body>
 </html>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter28082397 = new Ya.Metrika({id:28082397,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/28082397" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
 

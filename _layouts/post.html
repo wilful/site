@@ -11,6 +11,19 @@ layout: default
         {{ page.date | date_to_string }}<br/>
     </div>
 </header>
+
+<aside class="b-sticky-aside" style="display: 1;">
+    <header class="b-sticky-aside__header">[ETC]</header>
+    <section class="b-sticky-aside__body">
+        {% if page.tips != null %}
+            {% for tip in page.tips %}
+                &#8640 {{ tip }}</br>
+            {% endfor %}
+        {% endif %}
+        {{ page | tags }}
+    </section>
+</aside>
+
 <dl class="b-document-section">
     <dt class="b-document-section__title">
         NAME
