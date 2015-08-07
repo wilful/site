@@ -2,7 +2,7 @@
 title: "LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"
 published: true
 layout: post
-date: 2014-03-27 01:09:27 +0600
+date: 2014-03-29 01:09:27 +0300
 comments: true
 categories: linux
 author: A. Semenov

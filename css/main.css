@@ -340,3 +340,25 @@ img {
 .b-sticky-aside__body {
     padding:1em;
 }
+
+.b-sticky-aside-editor {
+    box-sizing:border-box;
+    position:sticky;
+    position:fixed;
+    width:50em;
+    top:0;
+    left:0%;
+    margin-left:0em;
+    border:#f8f8f8 1px solid;
+}
+.b-sticky-aside-editor__header {
+    text-align:center;
+    background:#000000;
+    color: #ffff00;
+    padding:0 1em;
+}
+.b-sticky-aside-editor__body {
+    color: #33cc33;
+    background:#000000;
+    padding:1em;
+}

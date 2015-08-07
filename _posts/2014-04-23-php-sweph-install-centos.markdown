@@ -18,9 +18,9 @@ tags:
 <!--more-->
 
 {% highlight bash %}
-yum install php-devel php subversion -y
+yum install php-devel php subversion wget tar gcc file -y
 BUILD=/usr/src
-SWEURL=ftp://ftp.astro.com/pub/swisseph/swe_unix_src_1.80.00.tar.gz
+SWEURL=ftp://ftp.astro.com/pub/swisseph/swe_unix_src_2.01.00.tar.gz
 INCLUDEDIR=/usr/local/include
 LIBDIR=/usr/local/lib
 PHPMODDIR=/usr/lib64/php/modules
@@ -28,6 +28,9 @@ pushd $BUILD
 wget $SWEURL
 mkdir -p $BUILD/swe
 tar xf $(basename $SWEURL) -C $BUILD/swe
+pushd swe/src
+make
+popd
 ln -s $BUILD/swe/src/libswe.a $LIBDIR
 ln -s $BUILD/swe/src/sweodef.h $INCLUDEDIR
 ln -s $BUILD/swe/src/swephexp.h $INCLUDEDIR
