@@ -152,7 +152,7 @@ MAILTO=root
 #END_MUNIN_MAIN
 {% endhighlight %}
 
-[graph_url]: {{ site.url }}/upload/ef6961.png 
+[graph_url]: {{ site.static }}/ef6961.png 
 
 [l01]: http://nginx.org/ru/
 [l02]: http://munin-monitoring.org/

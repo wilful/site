@@ -12,4 +12,4 @@ tags:
 <!--more-->
 ![pic01][pic01]
 
-[pic01]: {{ site.url }}/upload/karta-mira-15.png
+[pic01]: {{ site.static }}/karta-mira-15.png

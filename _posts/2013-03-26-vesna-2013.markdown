@@ -16,5 +16,5 @@ tips:
 <!--more-->
 ![pic01][pic01]
 
-[pic01]: {{ site.url }}/upload/de1102.jpg
+[pic01]: {{ site.static }}/de1102.jpg
 [l01]: http://ya.ru

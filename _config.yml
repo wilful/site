@@ -7,6 +7,7 @@ source:       .
 exclude:      [ 'commit.sh', 'scripts', 'README.md', 'Gemfile' ]
 timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
+static:       http://static.srv-nix.com
 comments:     yes
 
 gray_message: 'srv-nix.com'
