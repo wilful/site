@@ -9,6 +9,7 @@ timezone:     Europe/Yekaterinburg
 url:          http://srv-nix.com
 static:       http://static.srv-nix.com
 comments:     yes
+gems:         [jekyll-paginate]
 
 gray_message: 'srv-nix.com'
 

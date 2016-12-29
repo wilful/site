@@ -19,30 +19,31 @@ tags:
 {% highlight bash %}
 #!/bin/bash
 
+: ${2?"Not enough parameters. Usage: $FUNCNAME CMD SCRIPT [PARAMS]"}
+
 BIN=$(which bash)
-SCRIPT=$1
+CMD=$1; shift
+SCRIPT=$1; shift
+SCRIPT_PARAMS=$@
 SCRIPT_NAME=$(basename $SCRIPT)
-LOCKDIR='/tmp'
+[[ ! $USER ]] && USER=nobody
+LOCKDIR="/tmp/locks-$USER"
 STALE_AGE=4 #hours
-CMD=${2:-'/usr/bin/php'}
 PIDFILE=$LOCKDIR/$SCRIPT_NAME/pid
 LOCKFILE=$LOCKDIR/$SCRIPT_NAME/lock
 LOGFILE=$LOCKDIR/$SCRIPT_NAME/log
 
-fail() {
-    local m=$1
 
-    echo $m 1>&2 &&
-        exit 1
-}
-clean() {
-    local f=$1
+fail() { local m=$1; echo $m 1>&2 && exit 1; }
+clean() { local f=$1; rm -rf $f; }
 
-    rm -rf $f
-}
+[[ ! -d ${LOCKDIR} ]] && \
+    if ! mkdir ${LOCKDIR} 2>&1 &>/dev/null; then
+        fail "[$(date +%s)]: Can't create locks dir [$LOCKDIR]"
+    fi
 
 if mkdir $LOCKDIR/$SCRIPT_NAME &> /dev/null; then
-    eval "$CMD $SCRIPT &"  2>&1 &>$LOGFILE # || fail "Error while starting script $SCRIPT"
+    eval "$CMD $SCRIPT $SCRIPT_PARAMS &"  2>&1 &>$LOGFILE # || fail "Error while starting script $SCRIPT"
     PID=$!
     echo $!>$PIDFILE
     touch $LOCKFILE
@@ -58,7 +59,7 @@ else
     if ! kill -s 0 $PID 2>&1 &>/dev/null; then
         echo "[$(date +%s)]: Process not found, try to restarting $SCRIPT" 1>&2
         clean $LOCKDIR/$SCRIPT_NAME
-        $BIN $0 "$SCRIPT" &&
+        $BIN $0 $CMD $SCRIPT $SCRIPT_PARAMS &&
             exit 0
         fail "[$(date +%s)]: Can't to start script $SCRIPT"
     else
@@ -72,7 +73,7 @@ else
         fi
         echo "[$(date +%s)]: Removing stale lock folder: $LOCKDIR/$SCRIPT_NAME" 1>&2
         clean $LOCKDIR/$SCRIPT_NAME
-        $BIN $0 "$SCRIPT"
+        $BIN $0 $CMD $SCRIPT $SCRIPT_PARAMS
     fi
 fi
 {% endhighlight %}

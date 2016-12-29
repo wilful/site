@@ -22,7 +22,7 @@ _Правильная_ сборка пакетов на сервере под rp
 
 1\. Для начала нужно установить пакеты:
 {% highlight bash %}
-yum install -y rpmdevtools gcc make yum-utils # Дописать пакеты, необходимые для сборки
+yum install -y rpmdevtools gcc make yum-utils sudo tar # Дописать пакеты, необходимые для сборки
 {% endhighlight %}
 2\. Добавляем в систему пользователя, от которого будет выполняться сборка:
 {% highlight bash %}
