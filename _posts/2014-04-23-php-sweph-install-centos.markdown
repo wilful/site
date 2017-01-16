@@ -6,7 +6,7 @@ date: 2014-04-23 13:25:55 +0600
 comments: true
 categories: linux
 author: A. Semenov
-tags: 
+tags:
 - centos
 - linux
 - php
@@ -15,12 +15,14 @@ tags:
 
 Просто абзац
 
+UPD(16.01.17)...
+
 <!--more-->
 
 {% highlight bash %}
-yum install php-devel php subversion wget tar gcc file -y
+yum install php-devel php subversion wget tar gcc file make git -y
 BUILD=/usr/src
-SWEURL=ftp://ftp.astro.com/pub/swisseph/swe_unix_src_2.01.00.tar.gz
+SWEURL=ftp://ftp.astro.com/pub/swisseph/swe_unix_src_2.06.tar.gz
 INCLUDEDIR=/usr/local/include
 LIBDIR=/usr/local/lib
 PHPMODDIR=/usr/lib64/php/modules
@@ -34,7 +36,7 @@ popd
 ln -s $BUILD/swe/src/libswe.a $LIBDIR
 ln -s $BUILD/swe/src/sweodef.h $INCLUDEDIR
 ln -s $BUILD/swe/src/swephexp.h $INCLUDEDIR
-svn checkout http://php-sweph.googlecode.com/svn/trunk/ php-sweph
+git clone https://github.com/cyjoelchen/php-sweph
 pushd php-sweph
 phpize
 ./configure  --enable-sweph
