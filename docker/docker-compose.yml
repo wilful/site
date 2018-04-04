@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+  volumes:
+    - "../src/srv-nix.com.template:/etc/nginx/conf.d/srv-nix.com.template:Z"
+    - "../srv-nix.com/src/output/:/srv/srv-nix.com/www:Z"
+  ports:
+     - "8080:80"
+  environment:
+     - NGINX_HOST=srv-nix.com
+     - NGINX_PORT=80
+     - NGINX_PORT_SSL=443
+  command: /bin/bash -c "envsubst < /etc/nginx/conf.d/srv-nix.com.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  depend_on: pelican
+
+  pelican:
+    image: pilican:latest
+    volumes:
+      - "files/pelicanconf.py:/srv/pelicanconf.py:Z"
+      - "../src/:/srv/site/:Z"
+    command: /bin/bash -c 'cd /srv/site/; pelican content'
+    #NEWSITE# command: /bin/bash -c 'cd /srv/site/; pelican-quickstart'
+

@@ -1,9 +1,7 @@
-_drafts/*
-config/*
-upload/*
-scripts/*
-hidden
-www/*
-.idea
-Gemfile.lock
-yandex_*
+src/develop_server.sh
+src/fabfile.py
+src/Makefile
+src/output/*
+src/pelicanconf.py
+src/publishconf.py
+src/__pycache__
