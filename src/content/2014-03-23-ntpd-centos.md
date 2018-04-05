@@ -4,13 +4,16 @@ Category: linux
 Authors: A. Semenov
 Tags: linux, ntpd
 
-<!--more-->
-yum install -y ntp
-service ntpd restart
-chkconfig ntpd on
+    yum install -y ntp
+    service ntpd restart
+    chkconfig ntpd on
+
 После чего ждем правки времени
-date
+
+    date
+
 Не знаю, как вызвать принудительно, в Debian достаточно было вызвать ntpdate
 
 Делается почти так же, до запуска демона ntpd
-ntpdate pool.ntp.org
+
+    ntpdate pool.ntp.org

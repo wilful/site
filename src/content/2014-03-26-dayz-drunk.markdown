@@ -4,6 +4,4 @@ Category: dayz
 Authors: A. Semenov
 Tags: game, dayz
 
-<!--more-->
-
 <iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe>
