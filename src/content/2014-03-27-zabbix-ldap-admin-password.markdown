@@ -10,8 +10,11 @@ Tags: linux, zabbix, ldap
 
 + Подключаемся к БД сервера. 
 + Меняем пароль
-UPDATE `zabbix`.`users` SET passwd=md5('mynewpassword') WHERE `alias`='Admin';
+
+    UPDATE `zabbix`.`users` SET passwd=md5('mynewpassword') WHERE `alias`='Admin';
+
 + Отключаем LDAP
-UPDATE  `zabbix`.`config` SET  `authentication_type` =  '0' WHERE  `config`.`configid` =1;
+
+    UPDATE  `zabbix`.`config` SET  `authentication_type` =  '0' WHERE  `config`.`configid` =1;
 
 [zabbix]: http://www.zabbix.com/ru/

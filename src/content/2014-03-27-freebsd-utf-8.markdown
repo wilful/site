@@ -4,16 +4,19 @@ Category: freebsd
 Authors: A. Semenov
 Tags: freebsd, utf8
 
-<!--more-->
-
 Правим файл /etc/login.conf
-russian|Russian Users Accounts:\
-:charset=UTF-8:\
-:lang=ru_RU.UTF-8:\
-:tc=default:
+
+    russian|Russian Users Accounts:\
+    :charset=UTF-8:\
+    :lang=ru_RU.UTF-8:\
+    :tc=default:
+
 Применяем изменения
-cap_mkdb /etc/login.conf
+
+    cap_mkdb /etc/login.conf
+
 Устанавливаем язык по умолчанию для нужных пользователей
-pw usermod -n ${username} -L russian
-reboot
+
+    pw usermod -n ${username} -L russian
+    reboot
 
