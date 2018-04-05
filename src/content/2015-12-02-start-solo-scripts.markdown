@@ -7,7 +7,6 @@ Tags: linux, cron
 
 Пример скрипта для запуска скриптов с блокировкой из крона
 
-    :::shell
     #!/bin/bash
 
     : ${2?"Not enough parameters. Usage: $FUNCNAME CMD SCRIPT [PARAMS]"}

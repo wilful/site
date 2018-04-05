@@ -11,6 +11,7 @@ Tags: linux, collectd, graphite
 анализ метрик.
 
 Из обновлений:
+
     Write Graphite plugin: The new "write_graphite" plugin writes value lists to Carbon, the storage layer of the Graphite time-series database. Thanks to Scott Sanders and Pierre-Yves Ritschard for their work.
 
 <!--more-->

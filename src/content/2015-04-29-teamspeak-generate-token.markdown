@@ -6,17 +6,16 @@ Tags: FreeBSD, Linux, TeamSpeak, Admin
 
 Запускаем с нужным паролем:
 
-/path/to/bin/teamspeak <any parameters> serveradmin_password=secret
+    /path/to/bin/teamspeak <any parameters> serveradmin_password=secret
 
-<!--more-->
 
 Подключаемся:
 
-telnet 127.0.0.1 10011
+    telnet 127.0.0.1 10011
 
 Фигачим:
 
-login serveradmin secret
-use 1
-tokenadd tokentype=0 tokenid1=6 tokenid2=0
+    login serveradmin secret
+    use 1
+    tokenadd tokentype=0 tokenid1=6 tokenid2=0
 
