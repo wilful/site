@@ -137,6 +137,7 @@ ruby bin/rails server webrick -e production
 
 Если всё хорошо, и сервер запустился, то добавляем в конфиг /opt/nginx/conf/nginx.conf следующие настройки:
 
+    :::nginx
     passenger_log_level 5;
     passenger_debug_log_file /opt/nginx/logs/passenger.log;
     server {
