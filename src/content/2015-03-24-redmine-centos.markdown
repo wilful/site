@@ -109,11 +109,12 @@ Tags: linux, redmine, LXC, cgroup, centos
     chown redmine:nginx -R files/ log/ tmp/ public/plugin_assets
 
 На этом установка и базовая настройка окончена, теперь попробуем запустить сервер:
-ruby bin/rails server webrick -e production
+
+    ruby bin/rails server webrick -e production
 
 Эта строка будет означать успешный запуск:
 
-[2015-03-24 10:50:49] INFO  WEBrick::HTTPServer#start: pid=24657 port=3000
+    [2015-03-24 10:50:49] INFO  WEBrick::HTTPServer#start: pid=24657 port=3000
 
 ## Установка Nginx с модулем Passenger
 
