@@ -1,21 +1,15 @@
-title: "Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)"
-published: true
-layout: post
-date: 2014-03-26 01:07:25 +0600
-comments: true
-categories: games
-author: A. Semenov
-tags: 
-- arma
-- dayz
-- game
+Title: "Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)"
+Date: 2014-03-26 01:07:25 +0600
+Category: games
+Authors: A. Semenov
+Tags: arma, dayz, game
+
 С целью идентификации вашего отряда в ARMAII предусмотрена возможность добавления
 на бойца и технику уникальной метки или логотипа. Таким образом ваши друзья, или всё же враги, могут узнавать вас по картинке. К сожалению, в моде DayZ работает только логотип на используемой технике.
 
 <!--more-->
 
 Создаем XML-файл "squad.xml" примерно такого содержания:
-{% highlight bash %}
 <code><?xml version="1.0"?>
 <!DOCTYPE squad SYSTEM "squad.dtd">
 <?xml-stylesheet href="squad.xsl?" type="text/xsl"?>
@@ -24,7 +18,7 @@ tags:
     <email></email> <!-- официальный ящик отряда (или лидера) -->
     <web></web> <!-- вебсайт отряда -->
     <picture></picture> <!-- лого отряда. -->
-    <title></title> <!-- описание отряда в окне информации -->
+    <Title></Title> <!-- описание отряда в окне информации -->
 <member id="" nick=""> <!-- PID участника отряда и его имя -->
         <name></name> <!-- опционально: реальное имя или снова ник игрока -->
         <email></email> <!-- опционально: почта участника отряда -->
@@ -32,7 +26,6 @@ tags:
         <remark></remark> <!-- "Комментарий игрока" всё что вы хотели бы сказать. Не отмечается в игре на текстурах, только в информации игрока -->
     </member>
 </squad></code> 
-{% endhighlight %}
 
 Теперь у вас будет имя отряда и подписи для техники, а так же у имени вашего бойца в квадратных скобках появится аббревиатура отряда указанная в "squad nick=". Далее самое сложное, если вы хотите получить лого на технике нужно скачать и установить программу по [ссылке][l07].
 
@@ -57,9 +50,9 @@ tags:
 [l01]: http://community.bistudio.com/wiki/squad.xml
 [l02]: http://www.armaholic.com/forums.php?m=posts&q=13927
 [l03]: http://dl.dropbox.com/u/5034281/ARMA/example.tgz
-[l04]: https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial.webm
-[l05]: https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial_02.webm
-[l06]: https://dl.dropbox.com/u/5034281/ARMA/tutorials/DayZ_tutorial_01.webm
+[l04]: https://www.dropbox.com/s/bq3j4gc61ja46ks/DayZ_tutorial.webm?dl=0
+[l05]: https://www.dropbox.com/s/0duiij5cxkm5o0x/DayZ_tutorial_02.webm?dl=0
+[l06]: https://www.dropbox.com/s/2q9aytptwxw27lm/DayZ_tutorial_01.webm?dl=0
 [l07]: http://www.armaholic.com/page.php?id=1563
 [l08]: http://community.bistudio.com/wiki/squad.xml#How_to_create_a_logo_for_the_use_with_.22squad.xml.22
 [l09]: http://gimp.ru/viewpage.php?page_id=8

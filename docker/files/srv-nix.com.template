@@ -3,13 +3,13 @@ server {
 
     server_name ${NGINX_HOST};
 
-    set $docroot      "/srv/${NGINX_HOST}/www";
-    set $app_env      "production";
+    set ${S}docroot      "/srv/${NGINX_HOST}/www";
+    set ${S}app_env      "production";
 
     autoindex off;
     index   index.html;
     charset utf-8;
-    root    $docroot;
+    root    ${S}docroot;
     client_max_body_size 100m;
 
     access_log /var/log/nginx/${NGINX_HOST}-access.log;
@@ -23,7 +23,7 @@ server {
 
     location / {
         default_type    text/html;
-        root $docroot;
+        root ${S}docroot;
     }
 
 }

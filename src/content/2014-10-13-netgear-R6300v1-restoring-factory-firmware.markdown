@@ -1,13 +1,8 @@
-title: "Как восстановить заводскую прошивку роутера NetGear R6300v1"
-published: true
-layout: post
-date: 2014-10-13 12:19:38 +0600
-comments: true
-categories: router
-author: A. Semenov
-tags: 
-- router
-- howto
+Title: "Как восстановить заводскую прошивку роутера NetGear R6300v1"
+Date: 2014-10-13 12:19:38 +0600
+Category: router
+Authors: A. Semenov
+Tags: router, howto
 
 Дорогие мученники!
 
@@ -34,18 +29,14 @@ tags:
 что и означало переход роутера в "Read mode". И можно приступать к загрузке прошивки. 
 
 На момент написания статьи актуальной была следующая [прошивка][l02]
-{% highlight bash %}
 FWLINK=http://www.downloads.netgear.com/files/GDC/R6300/R6300_V1.0.2.70_1.0.50.zip
 SRCFLD=/tmp
 cd $SRCFLD && wget $FWLINK
-{% endhighlight %}
 
 После скачивания нужно отправить прошивку в наш кирпич
-{% highlight bash %}
 cd $SRCFLD
 unzip ${FWLINK##*/}
 tftp -m binary 192.168.1.1 -c put R6300*.chk
-{% endhighlight %}
 
 Если звёды будут благосклонны к нам, то роутер перегрузится и поставит новую прошивку. 
 Через несколько минут индикатор должен загореться зеленым светом, будет гореть индикатор Wi-Fi и 

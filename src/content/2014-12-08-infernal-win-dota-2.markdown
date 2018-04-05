@@ -1,14 +1,8 @@
-title: "Как выиграть Dota 2"
-published: true
-layout: post
-date: 2014-12-08 17:47:07 +0600
-comments: true
-categories: linux
-author: A. Semenov
-tags: 
-- dota2
-- game
-- fun
+Title: "Как выиграть Dota 2"
+Date: 2014-12-08 17:47:07 +0600
+Category: linux
+Authors: A. Semenov
+Tags: dota2, game, fun
 
 <!--more-->
 

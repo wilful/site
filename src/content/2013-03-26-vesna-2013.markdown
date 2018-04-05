@@ -1,19 +1,8 @@
-title: "Жаркая весна 2013-го"
-published: true
-layout: post
-date: 2013-03-26 19:56:17 +0600
-comments: true
-categories: staff
-author: A. Semenov
-tags:
-- fun
-- test
-tips:
-- Холодно же!
-- В марте не должно быть ТАК холодно
-- Это точно март?
+Title: "Жаркая весна 2013-го"
+Date: 2013-03-26 19:56:17 +0600
+Category: staff
+Authors: A. Semenov
 
-<!--more-->
 ![pic01][pic01]
 
 [pic01]: {{ site.static }}/de1102.jpg

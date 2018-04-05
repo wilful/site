@@ -1,11 +1,8 @@
-title: "CentOS. SSSD и OpenLDAP"
-published: true
-layout: post
-date: 2014-03-21 09:00:00 +0000
-comments: true
-categories: linux
-author: A. Semenov
-:tags: linux, openldap, howto, CentOS
+Title: "CentOS. SSSD и OpenLDAP"
+Date: 2014-03-21 09:00:00 +0000
+Category: linux
+Authors: A. Semenov
+Tags: linux, openldap, howto, CentOS
 
 В [предыдущем][l01] топике я показал, как можно быстро настроить ваш сервер OpenLDAP на использование TLS соединений, чтобы наши враги не могли получить сведения из трафика между сервером и клиентом. В дополнении хотелось бы продемонстрировать настройку групповых политик доступа на сервер под управлением CentOS 6. В качестве клиента будем использовать демона SSSD, который начиная с 6.4 ветки стал сервисом аутентификации по умолчанию. 
 
@@ -15,17 +12,14 @@ author: A. Semenov
 Если вы используете сторонние репозитории или свои сборки, то необходимо убедиться, что OpenLDAP собран с поддержкой memberOf. Это необходимо для того, чтобы мы могли с помощью фильтра демона sssd разграничивать доступ на сервер. Сам атрибут является динамическим и создается в момент обновления сведений о пользователях и группах на сервере. 
 ## Конфигурация сервера:
 Чтобы активировать модуль нужно добавить в slapd.conf следующее 
-{% highlight bash %}
 # Загружаем наложение
 moduleload      memberof.la 
 # После инициализации БД указываем наш оверлей и дополнительные опции (man slapo-memberof)
 overlay                 memberof
 memberof-group-oc       groupOfUniqueNames
 memberof-member-ad      uniqueMember
-{% endhighlight %}
 Замечание: memberof-group-oc и memberof-member-ad я указал именно потому, что конфигурация дерева на сервере у меня отличается от стандартной. По умолчанию наложение использует класс объекта группы groupOfNames и ждет, что участники групп хранятся в атрибуте member.
 Вот так выглядит рабочий конфиг на моем тестовом окружении
-{% highlight bash %}
 # cat slapd.conf                                                                                                                                  
 include         /etc/openldap/schema/core.schema
 include         /etc/openldap/schema/cosine.schema
@@ -49,43 +43,31 @@ directory       /var/lib/ldap
 overlay                 memberof
 memberof-group-oc       groupOfUniqueNames
 memberof-member-ad      uniqueMember
-{% endhighlight %}
 У меня сервер уже был заполнен под завязку, по этому для генерации нового атрибута потребовалось перезалить всю базу на сервер.
 Делаем дамп текущей рабочей конфигурации
-{% highlight bash %}
 ldapsearch -x -LLL -D 'cn=root,o=example,c=ru' -w secret  -b 'o=example,c=ru' > /tmp/init.ldif
-{% endhighlight %}
 Чистим DIT
-{% highlight bash %}
 service slapd stop
 rm -rf /var/lib/ldap/*
 service slapd start
-{% endhighlight %}
 Возвращаем все записи на исходную
-{% highlight bash %}
 ldapmodify -a -v -x -D 'cn=root,o=example,c=ru' -w sercret  -f /tmp/init.ldif
-{% endhighlight %}
 После чего проверяем наличие атрибута memberOf
-{% highlight bash %}
 #ldapsearch -x -LL  -b 'o=example,c=ru' '(uid=user)' memberOf
 version: 1
 
 dn: cn=NameSecond,ou=Sysadmins,ou=SoftwareDevelopment,ou=IT,ou=Accounts,o=
  example,c=ru
 memberOf: cn=groupname,ou=WebApps,ou=Services,o=example,c=ru
-{% endhighlight %}
 
 
 Если все прошло успешно, переходим к настройке клиента
 ## Конфигурация клиента
 На стороне клиента нужно добавить фильтр для демона sssd. Делается это добавлением следующих опций в /etc/sssd/sssd.conf
-{% highlight bash %}
 access_provider = ldap
 ldap_access_filter = memberOf=cn=usergroup,ou=UnixShell,ou=Services,o=example,c=ru
-{% endhighlight %}
 Тем самым мы сообщаем серверу что нужно пропускать только тех пользователей, у которых доступен атрибут "memberOf" и его значение равно "cn=usergroup..."
 Рабочий файл конфигурации у меня получился такой
-{% highlight bash %}
 [domain/default]
 ldap_uri = ldaps://ldap.example.ru
 ldap_tls_cacertdir = /etc/openldap/cacerts
@@ -109,11 +91,8 @@ domains = default
 [autofs]
 [ssh]
 [pac]
-{% endhighlight %}
 Перезапускаем демона
-{% highlight bash %}
 service sssd restart
-{% endhighlight %}
 
 [l01]: {% post_url 2014-03-21-openldap-tls %}
 [RFC01]: http://www.padl.com/~lukeh/rfc2307bis.txt

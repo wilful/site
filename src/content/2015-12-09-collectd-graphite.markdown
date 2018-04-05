@@ -1,12 +1,8 @@
-title: "Установка на CentOS Collectd с плагином для Graphite"
-published: true
-layout: post
-date: 2015-12-09 11:06:25 +0300
-comments: true
-categories: linux
-author: A. Semenov
-tips: asd,asd,asd
-tags: linux, collectd, graphite
+Title: "Установка на CentOS Collectd с плагином для Graphite"
+Date: 2015-12-09 11:06:25 +0300
+Category: linux
+Authors: A. Semenov
+Tags: linux, collectd, graphite
 
 Навеяно постом с [хабра][l00].
 
@@ -24,10 +20,8 @@ tags: linux, collectd, graphite
 По-этой причине я опишу сборку RPM для Collectd. Lанная процедура не сложна, но она никак не указана в документации.
 
 Качаем исходники с https://collectd.org/download.shtml
-
-    :::bash
-    VERSION=5.5.0
-    wget https://collectd.org/files/collectd-$VERSION.tar.gz`
+VERSION=5.5.0
+wget https://collectd.org/files/collectd-$VERSION.tar.gz`
 
 В tar:///collectd-$VERSION.tar.gz/contrib/redhat находится SPEC, правим его по необходимости
 
