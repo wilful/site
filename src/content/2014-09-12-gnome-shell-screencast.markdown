@@ -9,9 +9,13 @@ Tags: gnome, screencast, problem
 <!--more-->
 
 Чтобы починить необходимо доустановть пакет
-sudo pacman -Sy xdg-user-dirs
+
+    sudo pacman -Sy xdg-user-dirs
+
 Дальше запускаем от своего НЕ root пользователя
-xdg-user-dirs-update
+
+    xdg-user-dirs-update
+
 Перезапускаем Gnome (alt-f2 r)
 
 [l01]: https://ru.wikipedia.org/wiki/GNOME_Shell

@@ -5,8 +5,6 @@ Authors: A. Semenov
 Tags: mumble, client
 Mumble — бесплатное, кросс-платформенное VoIP приложение с открытым кодом.
 
-<!--more-->
-
 ## Установка
 
 ### Windows

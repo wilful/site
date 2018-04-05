@@ -29,14 +29,16 @@ Tags: router, howto
 что и означало переход роутера в "Read mode". И можно приступать к загрузке прошивки. 
 
 На момент написания статьи актуальной была следующая [прошивка][l02]
-FWLINK=http://www.downloads.netgear.com/files/GDC/R6300/R6300_V1.0.2.70_1.0.50.zip
-SRCFLD=/tmp
-cd $SRCFLD && wget $FWLINK
+
+    FWLINK=http://www.downloads.netgear.com/files/GDC/R6300/R6300_V1.0.2.70_1.0.50.zip
+    SRCFLD=/tmp
+    cd $SRCFLD && wget $FWLINK
 
 После скачивания нужно отправить прошивку в наш кирпич
-cd $SRCFLD
-unzip ${FWLINK##*/}
-tftp -m binary 192.168.1.1 -c put R6300*.chk
+
+    cd $SRCFLD
+    unzip ${FWLINK##*/}
+    tftp -m binary 192.168.1.1 -c put R6300*.chk
 
 Если звёды будут благосклонны к нам, то роутер перегрузится и поставит новую прошивку. 
 Через несколько минут индикатор должен загореться зеленым светом, будет гореть индикатор Wi-Fi и 
