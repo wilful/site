@@ -2,11 +2,10 @@ Title: "Установка и настройка Graphite WebApp через RPM"
 Date: 2015-03-05 11:39:53 +0300
 Category: linux
 Authors: A. Semenov
+Slug: install-setting-graphite
 Tags: centos, linux, graphite, rpmdev
 
 Хочется поделиться старой, но от этого не менее [хорошей и полезной заметкой][l02], автор которой рассказывает, как можно установить [Graphite][l01] в дистрибутиве CentOS, используя для этого штатные rpm-tools.
-
-<!--more-->
 
 Статья замечательна еще тем, что по сути в радиусе досигаемости гугла (менее 5 страницы поиска) она единственная.
 
@@ -56,7 +55,7 @@ Tags: centos, linux, graphite, rpmdev
     rpm -ivh dist/graphite-web-$STABLE*.src.rpm
 
 В результате выполнения команд мы получим src.rpm пакеты. В конце сборки каждого пакета вывод должен быть примерно таким:
-                     ---
+
     Executing(--clean): /bin/sh -e /var/tmp/rpm-tmp.raj2Ji
     + umask 022
     + cd /root/rpmbuild/SOURCES/graphite-web/build/bdist.linux-x86_64/rpm/BUILD
