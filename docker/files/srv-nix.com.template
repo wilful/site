@@ -13,7 +13,10 @@ server {
     client_max_body_size 100m;
 
     access_log /var/log/nginx/${NGINX_HOST}-access.log;
+    access_log /dev/stdout;
+
     error_log /var/log/nginx/${NGINX_HOST}-error.log warn;
+    error_log /dev/stdout warn;
 
     location = /robots.txt  { access_log off; log_not_found off; }
     location = /favicon.ico { access_log off; log_not_found off; }

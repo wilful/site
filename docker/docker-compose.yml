@@ -19,6 +19,9 @@ services:
     volumes:
       - "/root/git/srv-nix.com/docker/files/pelicanconf.py:/srv/pelicanconf.py:Z"
       - "/root/git/srv-nix.com/src/:/srv/site/:Z"
-    command: /bin/bash -c 'cd /srv/site/; pelican content -D -r'
-#    #NEWSITE# command: /bin/bash -c 'cd /srv/site/; pelican-quickstart'
+    command: /bin/bash -c 'cd /srv/site/; pelican content -t /srv/site/pelican-themes/bold/ -D -r'
+    #NEWSITE# command: /bin/bash -c 'cd /srv/site/; pelican-quickstart'
+
+#bold lazystrap monospace
+#pelican content -t /srv/pelican-themes/bold/
 

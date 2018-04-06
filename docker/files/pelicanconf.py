@@ -4,11 +4,10 @@ from __future__ import unicode_literals
 
 AUTHOR = 'wilful'
 SITENAME = 'SRV-NIX'
-SITEURL = ''
+SITEURL = 'http://srv-nix.com'
+TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
-
-TIMEZONE = 'Europe/Moscow'
 
 DEFAULT_LANG = 'English'
 
@@ -18,6 +17,11 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
+
+DISQUS_SITENAME = 'srv-nix.com'
 
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
@@ -29,7 +33,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 50
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
