@@ -1,6 +1,6 @@
 Title: "Как восстановить заводскую прошивку роутера NetGear R6300v1"
 Date: 2014-10-13 12:19:38 +0600
-Category: router
+Category: other
 Authors: A. Semenov
 Tags: router, howto
 
