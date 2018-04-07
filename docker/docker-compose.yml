@@ -3,16 +3,19 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - "/root/git/srv-nix.com/docker/files/srv-nix.com.template:/etc/nginx/conf.d/srv-nix.com.template:Z"
-      - "/root/git/srv-nix.com/src/output/:/srv/srv-nix.com/www:Z"
+      - "/root/git/srv-nix.com/docker/files/templates/:/etc/nginx/conf.d/templates/:Z"
+      - "/root/git/srv-nix.com/src/output/:/srv/sharij.info/www:Z"
+      - "/root/git/srv-nix.com/ssl:/etc/nginx/ssl:Z"
     environment:
-      - NGINX_HOST=srv-nix.com
+      - NGINX_HOST=sharij.info
       - NGINX_PORT=80
       - NGINX_PORT_SSL=443
       - S=$$
     ports:
       - "80:80"
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/srv-nix.com.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+      - "443:443"
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/templates/$$NGINX_HOST.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+#    command: /bin/bash -c "nginx -g 'daemon off;'"
 
   pelican:
     image: pelican:latest

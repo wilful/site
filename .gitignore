@@ -5,3 +5,4 @@ src/output/*
 src/pelicanconf.py
 src/publishconf.py
 src/__pycache__
+ssl/
