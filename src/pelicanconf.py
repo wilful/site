@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'wilful'
 SITENAME = 'SRV-NIX'
-SITEURL = 'http://srv-nix.com'
+SITEURL = 'https://sharij.info'
 TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
