@@ -3,9 +3,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - "/root/git/srv-nix.com/docker/files/templates/:/etc/nginx/conf.d/templates/:Z"
-      - "/root/git/srv-nix.com/src/output/:/srv/sharij.info/www:Z"
-      - "/root/git/srv-nix.com/ssl:/etc/nginx/ssl:Z"
+      - "./files/templates/:/etc/nginx/conf.d/templates/:Z"
+      - "../src/output/:/srv/sharij.info/www:Z"
     environment:
       - NGINX_HOST=sharij.info
       - NGINX_PORT=80
@@ -18,12 +17,15 @@ services:
 #    command: /bin/bash -c "nginx -g 'daemon off;'"
 
   pelican:
-    image: pelican:latest
+#    image: pelican:latest
+    build:
+      context: ./build/pelican/
     volumes:
-      - "/root/git/srv-nix.com/src/:/srv/site/:Z"
+      - "../src/:/srv/site/:Z"
     environment:
       - BLOG_THEME_NAME=bold
-    command: /bin/bash -c "cd /srv/site/; pelican content -t /srv/site/pelican-themes/$$BLOG_THEME_NAME/ -D -r"
+    command: /bin/bash -c "cd /srv/site/; pelican content -D -r"
+#    command: /bin/bash -c "cd /srv/site/; pelican content -t /srv/site/pelican-themes/$$BLOG_THEME_NAME/ -D -r"
     #NEWSITE# command: /bin/bash -c 'cd /srv/site/; pelican-quickstart'
 
 #bold lazystrap monospace
