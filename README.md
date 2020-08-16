@@ -1,4 +1,4 @@
-## Base action
+### Base action
 
     NOW=$(date +'%F %X %z')
     FNAME=src/content/$(uuidgen).md
@@ -10,5 +10,7 @@
     Tags: Default_tag
     EOF
     vim $FNAME
+
+### Simple run
 
     THEME=../../pelican-themes/waterspill; pushd src/; make html OUTPUTDIR=/srv/srv-nix.com/output/ PELICANOPTS="-t ${THEME}"; popd;
