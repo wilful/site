@@ -19,7 +19,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
-DISQUS_SITENAME = 'srv-nix.com'
+DISQUS_SITENAME = 'srv-nix-com'
 
 # Blogroll
 LINKS = ()
