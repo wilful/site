@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - collectd</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html">"Установка на CentOS Collectd с плагином для Graphite"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-12-09T11:06:25+03:00">
+                Published: Wed 09 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/collectd.html">collectd</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> </p>
+</footer><!-- /.post-info --><p>Навеяно постом с <a href="http://habrahabr.ru/company/ua-hosting/blog/272447/">хабра</a>.</p>
+<p>Начиная с версии 5.1 Collectd имеет возможность использовать Write плагин для записи статистики в time-series базе Carbon.
+Который в свою очередь является бакенд стораджем для Graphite. В данной связке можно создавать очень крутые графики или в дальнейшем производить
+анализ метрик.</p>
+<p>Из обновлений:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Write</span> <span class="nv">Graphite</span> <span class="nv">plugin</span>: <span class="nv">The</span> <span class="nv">new</span> <span class="s2">&quot;</span><span class="s">write_graphite</span><span class="s2">&quot;</span> <span class="nv">plugin</span> <span class="nv">writes</span> <span class="nv">value</span> <span class="nv">lists</span> <span class="nv">to</span> <span class="nv">Carbon</span>, <span class="nv">the</span> <span class="nv">storage</span> <span class="nv">layer</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">Graphite</span> <span class="nv">time</span><span class="o">-</span><span class="nv">series</span> <span class="nv">database</span>. <span class="nv">Thanks</span> <span class="nv">to</span> <span class="nv">Scott</span> <span class="nv">Sanders</span> <span class="nv">and</span> <span class="nv">Pierre</span><span class="o">-</span><span class="nv">Yves</span> <span class="nv">Ritschard</span> <span class="k">for</span> <span class="nv">their</span> <span class="nv">work</span>.
+</code></pre></div>
+
+<!--more-->
+
+<p>Но проблема заключается в том, что в стандартных репозиториях CentOS в наличии имеется только версия 4+</p>
+<p>По-этой причине я опишу сборку RPM для Collectd. Lанная процедура не сложна, но она никак не указана в документации.</p>
+<p>Качаем исходники с https://collectd.org/download.shtml</p>
+<div class="highlight"><pre><span></span><code><span class="nv">VERSION</span><span class="o">=</span><span class="m">5</span>.5.0
+wget https://collectd.org/files/collectd-<span class="nv">$VERSION</span>.tar.gz<span class="sb">`</span>
+</code></pre></div>
+
+<p>В tar:///collectd-$VERSION.tar.gz/contrib/redhat находится SPEC, правим его по необходимости</p>
+<p>И собираем нужные rpm. Мне пришлось собирать вот так:</p>
+<div class="highlight"><pre><span></span><code>`QA_RPATHS=$[ 0x0001|0x0010 ] rpmbuild -ba collectd.spec`
+</code></pre></div>
+
+<p>В результате получим кучу готовых для установки RPM (сам и его плагины).</p><p>There are <a href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

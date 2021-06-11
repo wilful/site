@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"FreeBSD. Munin - мониторинг на коленке"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="Munin - простое и надежное средство для мониторинга и визуализации "what just happened to kill our performance?" проблем. Сервер представляет..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/freebsd-munin-monitoring-na-kolenke.html" rel="bookmark"
+           title="Permalink to "FreeBSD. Munin - мониторинг на коленке"">"FreeBSD. Munin - мониторинг на коленке"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-20T09:00:00+00:00">
+                Published: Thu 20 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="http://munin-monitoring.org/">Munin</a> - простое и надежное средство для мониторинга и визуализации "what just happened to kill our performance?" проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются на красивых графиках.</p>
+<p>![graph][graph_url]</p>
+<h2>Установка сервера</h2>
+<div class="highlight"><pre><span></span><code>make install -C /usr/ports/sysutils/munin-master
+</code></pre></div>
+
+<p>После установки порта создаётся каталог /usr/local/www/munin/, в котором хранятся графики. Для их отображения потребуется любой веб сервер. Неплохо справляется с этими задачами сервер <a href="http://nginx.org/ru/">Nginx</a>, с минимальной конфигурацией:</p>
+<div class="highlight"><pre><span></span><code><span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mf">78.</span><span class="n">xxx</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">xxx</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+
+    <span class="n">server_name</span> <span class="n">munin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">ltd</span><span class="p">;</span>
+
+    <span class="n">set</span> <span class="o">$</span><span class="n">docroot</span>      <span class="s2">&quot;/usr/local/www/munin/&quot;</span><span class="p">;</span>
+
+    <span class="n">index</span>   <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+    <span class="n">charset</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="p">;</span>
+    <span class="n">root</span>    <span class="o">$</span><span class="n">docroot</span><span class="p">;</span>
+
+    <span class="n">access_log</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">munin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">ltd</span><span class="o">-</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="n">error_log</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">munin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">ltd</span><span class="o">-</span><span class="n">error</span><span class="o">.</span><span class="n">log</span> <span class="n">warn</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>Установка клиента</h2>
+<div class="highlight"><pre><span></span><code>make install -C /usr/ports/sysutils/munin-node
+</code></pre></div>
+
+<p>Клиент использует "плагины" для получения сведений о сервере и отправляет их в БД munin-master'а. Плагин может быть написан на любом языке, доступном на сервере, а также в каталоге /usr/local/share/munin/plugins/ находятся уже готовые к использованию скрипты для основных служб и подсистем сервера.</p>
+<p>Замечание: Если будете использовать плагины nginx_<em> и mysql_</em>, то дополнительно нужно установить два порта:</p>
+<div class="highlight"><pre><span></span><code>make install -C databases/p5-DBI
+make install -C www/p5-libwww/
+</code></pre></div>
+
+<h2>Пример использования</h2>
+<p>Для активации плагина необходимо создать символическую ссылку или скопировать скрипт в рабочую директорию ноды</p>
+<div class="highlight"><pre><span></span><code>ln -s /usr/local/share/munin/plugins/nginx_status /usr/local/etc/munin/plugins/
+</code></pre></div>
+
+<p>Далее вносятся дополнительные изменения в параметры передаваемые скрипту, если это необходимо. Для этого используется файл /usr/local/etc/munin/plugin-conf.d/plugins.conf.
+Синтаксис примерно такой:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[nginx*]</span>
+<span class="na">env.url http://localhost:8081/server-status</span>
+</code></pre></div>
+
+<p>В квадратных скобках содержится имя или regexp, совпадающий с именем файла «плагина», т.е. в данном случае настройки будут применены для всех «плагинов», содержащих в начале своего имени слово «nginx».</p>
+<div class="highlight"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="kr">local</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">munin</span><span class="o">/</span><span class="n">plugins</span><span class="p">]</span><span class="err">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">grep</span> <span class="s">&#39;nginx*&#39;</span>
+<span class="n">lrwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">root</span>  <span class="n">wheel</span>  <span class="mi">44</span> <span class="mi">19</span> <span class="err">мар</span> <span class="mi">14</span><span class="o">:</span><span class="mo">03</span> <span class="n">nginx_request</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="kr">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">munin</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">nginx_request</span>
+<span class="n">lrwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">root</span>  <span class="n">wheel</span>  <span class="mi">43</span> <span class="mi">19</span> <span class="err">мар</span> <span class="mi">14</span><span class="o">:</span><span class="mo">03</span> <span class="n">nginx_status</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="kr">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">munin</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">nginx_status</span>
+</code></pre></div>
+
+<p>Параметр env.url указывает URL-адрес для «плагина», с которого нужно считывать сведения о сервере Nginx.
+Более детально о параметрах, а так же о правилах использования, можно прочитать в заголовках всех доступных из порта плагинов. Пример для nginx_status:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/local/bin/perl -w</span>
+<span class="c1"># -*- cperl -*-</span>
+
+<span class="cm">=head1 NAME</span>
+
+<span class="cm">nginx_status - Munin plugin to show connection status for nginx</span>
+
+<span class="cm">=head1 APPLICABLE SYSTEMS</span>
+
+<span class="cm">Any nginx host</span>
+
+<span class="cm">=head1 CONFIGURATION</span>
+
+<span class="cm">This shows the default configuration of this plugin.  You can override</span>
+<span class="cm">the status URL.</span>
+
+<span class="cm">  [nginx*]</span>
+<span class="cm">      env.url http://localhost/nginx_status</span>
+
+<span class="cm">Nginx must also be configured.  Firstly the stub-status module must be</span>
+<span class="cm">compiled, and secondly it must be configured like this:</span>
+
+<span class="cm">  server {</span>
+<span class="cm">        listen 127.0.0.1;</span>
+<span class="cm">        server_name localhost;</span>
+<span class="cm">        location /nginx_status {</span>
+<span class="cm">                stub_status on;</span>
+<span class="cm">                access_log   off;</span>
+<span class="cm">                allow 127.0.0.1;</span>
+<span class="cm">                deny all;</span>
+<span class="cm">        }</span>
+<span class="cm">  }</span>
+
+<span class="cm">=head1 MAGIC MARKERS</span>
+
+<span class="cm">  #%# family=auto</span>
+<span class="cm">  #%# capabilities=autoconf</span>
+
+<span class="cm">=head1 VERSION</span>
+
+<span class="cm">  $Id$</span>
+
+<span class="cm">=head1 BUGS</span>
+
+<span class="cm">None known</span>
+
+<span class="cm">=head1 AUTHOR</span>
+
+<span class="cm">Unknown</span>
+
+<span class="cm">=head1 LICENSE</span>
+
+<span class="cm">Unknown.  Not specified by the unknown author.  Nginx has a BSD</span>
+<span class="cm">license.  Munin is GPLv2 licensed.</span>
+
+<span class="cm">=cut</span>
+</code></pre></div>
+</td></tr></table>
+<p>После всех необходимых операций запускаем демона</p>
+<div class="highlight"><pre><span></span><code>echo &#39;munin_node_enable=&quot;YES&quot;&#39; &gt;&gt; /etc/rc.conf
+service munin-node start
+</code></pre></div>
+
+<p>Для генерации HTML-страниц с графиками запускаем вручную</p>
+<div class="highlight"><pre><span></span><code>sudo -u munin /usr/local/bin/munin-cron
+</code></pre></div>
+
+<p>И проверяем наличие этой команды в crontab</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">munin</span> <span class="n">crontab</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">#</span><span class="n">BEGIN_MUNIN_MAIN</span>
+<span class="n">MAILTO</span><span class="o">=</span><span class="n">root</span>
+
+<span class="o">*/</span><span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>     <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">munin</span><span class="o">-</span><span class="n">cron</span>
+<span class="o">#</span><span class="n">END_MUNIN_MAIN</span>
+</code></pre></div>
+
+<p>[graph_url]: {{ site.static }}/ef6961.png</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'freebsd-munin-monitoring-na-kolenke.html';
+        var disqus_url = 'https://srv-nix.com/freebsd-munin-monitoring-na-kolenke.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

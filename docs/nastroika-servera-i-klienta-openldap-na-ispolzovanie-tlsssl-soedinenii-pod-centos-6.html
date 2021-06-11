@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="Я не буду вникать в детали генерации сертификатов, не буду детально рассказывать про параметры в конфигурационных файлах. Эта заметка..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li class="active"><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html" rel="bookmark"
+           title="Permalink to "Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"">"Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-21T09:00:00+00:00">
+                Published: Fri 21 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/openldap.html">openldap</a> <a href="https://srv-nix.com/tag/tls.html">TLS</a> </p>
+</footer><!-- /.post-info -->      <p>Я не буду вникать в детали генерации сертификатов, не буду детально рассказывать про параметры в конфигурационных файлах. Эта заметка предназначена для быстрой настройки подключения и демонстрации того, что можно использовать стандартные средства консоли без рукоблудства в конфигах. </p>
+<p>Во-первых, нужно сгенерировать свой сертификат и подписать с помощью него клиентский ключ.</p>
+<p>Во-вторых, добавить сертификаты в основную конфигурацию slapd и размножить на клиентских машинах с помощью authconfig и любого веб-сервера.
+На клиентах будет использоваться демон sssd, который позволяет службам обращаться не напрямую к серверу, а через демона. Тем самым обеспечивается быстродействие при использовании кэша и возможность автономной работы.</p>
+<p>Настройка сервера
+И так, переходим в каталог в котором будут храниться наши сертификаты:</p>
+<div class="highlight"><pre><span></span><code>cd /etc/openldap/cacerts/
+</code></pre></div>
+
+<p>И генерируем сертификат</p>
+<div class="highlight"><pre><span></span><code>openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout keys/ldapskey.pem -out ldapscert.pem
+</code></pre></div>
+
+<p>Замечание: в поле hostname нужно вводить реальное имя сервера OpenLDAP, по которому будет доступен сервер
+Ключ ldapscert.pem необходимо разместить на веб-сервере, доступ к которому будут иметь все клиентские машины, например так: http://key.server.ltd/ldapscert.pem
+Для надежности задаем права доступа только для пользователя ldap</p>
+<div class="highlight"><pre><span></span><code>chown -R ldap:ldap /etc/openldap/cacerts/*
+chmod 0400 /etc/openldap/cacerts/keys/ldapskey.pem
+</code></pre></div>
+
+<p>Вносим изменения для демона slapd (я всё еще использую устаревший метод правки конфигурации через /etc/openldap/slapd.conf)</p>
+<div class="highlight"><pre><span></span><code>TLSCertificateFile      /etc/openldap/cacerts/ldapscert.pem
+TLSCertificateKeyFile   /etc/openldap/cacerts/keys/ldapskey.pem
+TLSCipherSuite TLSv1+RSA:!NULL
+</code></pre></div>
+
+<p>Следующим шагом указываем серверу слушать только ldaps порт, и принимать соединения только через него.
+Для этого используется файл /etc/sysconfig/ldap</p>
+<div class="highlight"><pre><span></span><code>#   yes/no, default: yes
+SLAPD_LDAP=no
+
+# Run slapd with -h &quot;... ldapi:/// ...&quot;
+#   yes/no, default: yes
+SLAPD_LDAPI=no
+
+# Run slapd with -h &quot;... ldaps:/// ...&quot;
+#   yes/no, default: no
+SLAPD_LDAPS=yes
+</code></pre></div>
+
+<p>Перезапускаем сервер</p>
+<div class="highlight"><pre><span></span><code>/etc/init.d/slapd stop
+rm -rf /etc/openldap/slapd.d/*
+sudo -u ldap slaptest -f slapd.conf -F slapd.d/
+/etc/init.d/slapd restart
+</code></pre></div>
+
+<p>Замечание: slaptest я запускаю для того, чтобы новая форма конфигурации так же была актуальной.
+На этом настройка сервера закончена. Дополнительно нужно проверить доступность сервера по 636 порту.
+Настройка клиента
+Для конфигурации клиента будем использовать утилиту authconfig</p>
+<div class="highlight"><pre><span></span><code><span class="n">SERVER</span><span class="o">=</span><span class="s2">&quot;ldaps://ldap.server.ltd&quot;</span> <span class="c1"># Сервер для подключения и он же hostname при генерации сертификата</span>
+<span class="n">ROOTDN</span><span class="o">=</span><span class="s2">&quot;o=server,c=ltd&quot;</span> <span class="c1"># Корневая запись</span>
+<span class="n">CERTURL</span><span class="o">=</span><span class="s2">&quot;http://key.server.ltd/ldapscert.pem&quot;</span> <span class="c1"># Адрес веб-сервера на котором лежит наш подписанный клиентский ключик</span>
+<span class="n">authconfig</span> <span class="o">--</span><span class="n">ldapserver</span><span class="o">=$</span><span class="n">SERVER</span> <span class="o">--</span><span class="n">ldapbasedn</span><span class="o">=$</span><span class="n">ROOTDN</span> <span class="o">--</span><span class="n">ldaploadcacert</span><span class="o">=$</span><span class="n">CERTURL</span> <span class="o">--</span><span class="n">enablemkhomedir</span> <span class="o">--</span><span class="n">updateall</span> <span class="o">--</span><span class="n">enablesssd</span> <span class="o">--</span><span class="n">enablesssdauth</span> <span class="o">--</span><span class="n">enableldap</span> <span class="o">--</span><span class="n">enableldapauth</span> <span class="o">--</span><span class="n">disablenis</span> <span class="o">--</span><span class="n">disablekrb5</span> <span class="o">--</span><span class="n">enableldaptls</span> <span class="o">--</span><span class="n">enableldapstarttls</span>
+</code></pre></div>
+
+<p>Настройка клиента окончена, можно проверить соединение с помощью</p>
+<div class="highlight"><pre><span></span><code>id user_name
+ldapsearch -v -x -b $ROOTDN
+ldapsearch -d 1 -v -H ldaps://$SERVER
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html';
+        var disqus_url = 'https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

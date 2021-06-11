@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/read-from-stdin-and-write-to-stdout-in-vim.html">"Read from stdin and write to stdout in vim"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2020-09-17T22:27:13+05:00">
+                Published: Thu 17 September 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/andrey-semenov.html">Andrey Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li>vim</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>cat /etc/fstab | vim -
+</code></pre></div>
+
+<p>Edit text and send to another server:</p>
+<div class="highlight"><pre><span></span><code><span class="err">:</span><span class="n">w</span><span class="w"> </span><span class="err">!</span><span class="n">ssh</span><span class="w"> </span><span class="n">root</span><span class="nv">@server</span><span class="w"> </span><span class="s1">&#39;cat - &gt; /tmp/fstab&#39;</span><span class="w"></span>
+</code></pre></div><p>There are <a href="https://srv-nix.com/read-from-stdin-and-write-to-stdout-in-vim.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/error-in-zsh-on-macos.html" rel="bookmark"
+                           title="Permalink to "Error in zsh on MacOS"">"Error in zsh on MacOS"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-09-05T16:31:47+05:00">
+                Published: Sat 05 September 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/andrey-semenov.html">Andrey Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/macos.html">MacOS</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>yandex</li>
+<li>yc</li>
+</ul>
+<p>Error example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">complete</span><span class="o">:</span><span class="mi">13</span><span class="o">:</span> <span class="n">command</span> <span class="n">not</span> <span class="n">found</span><span class="o">:</span> <span class="n">compdef</span>
+</code></pre></div>
+
+<p>For fixing it error, i'm just remove all lines in .zshrc what added after installation yandex console (yc)</p>
+                <a class="readmore" href="https://srv-nix.com/error-in-zsh-on-macos.html">read more</a>
+<p>There are <a href="https://srv-nix.com/error-in-zsh-on-macos.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/powerlevel10k-as-theme-for-macos-zsh.html" rel="bookmark"
+                           title="Permalink to "Powerlevel10k as theme for MacOS zsh"">"Powerlevel10k as theme for MacOS zsh"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-09-05T13:06:18+05:00">
+                Published: Sat 05 September 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/andrey-semenov.html">Andrey Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/macos.html">MacOS</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>zsh</li>
+<li>macos</li>
+<li>shell</li>
+<li>iterm2</li>
+</ul>
+<p>If you are using MacOS and the standard Shell ZSH, I recommend choosing theme: <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a></p>
+                <a class="readmore" href="https://srv-nix.com/powerlevel10k-as-theme-for-macos-zsh.html">read more</a>
+<p>There are <a href="https://srv-nix.com/powerlevel10k-as-theme-for-macos-zsh.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/pochemu-ia-nenavizhu-skype-net-alternativ.html" rel="bookmark"
+                           title="Permalink to "Почему я ненавижу Skype? Нет альтернатив?"">"Почему я ненавижу Skype? Нет альтернатив?"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-02-01T16:55:39+03:00">
+                Published: Wed 01 February 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/default.html">default</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/skype.html">skype</a> <a href="https://srv-nix.com/tag/mustdie.html">mustdie</a> </p>
+</footer><!-- /.post-info -->                <p>Несколько "мелких" причин ненавидеть Skype:</p>
+<ul>
+<li>
+<p>Первый прикол обнаружился в Skype, когда я начал пользоваться его мобильной версией. В чем суть:
+Иногда бывают случаи, что Вас долго не было в скайпе или давно не запускали клиента на каком-то устройстве.
+После запуска мы видим огромное количество непрочитанных сообщений, которые нет никакого желания …</p></li></ul>
+                <a class="readmore" href="https://srv-nix.com/pochemu-ia-nenavizhu-skype-net-alternativ.html">read more</a>
+<p>There are <a href="https://srv-nix.com/pochemu-ia-nenavizhu-skype-net-alternativ.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html" rel="bookmark"
+                           title="Permalink to "Установка на CentOS Collectd с плагином для Graphite"">"Установка на CentOS Collectd с плагином для Graphite"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-09T11:06:25+03:00">
+                Published: Wed 09 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/collectd.html">collectd</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> </p>
+</footer><!-- /.post-info -->                <p>Навеяно постом с <a href="http://habrahabr.ru/company/ua-hosting/blog/272447/">хабра</a>.</p>
+<p>Начиная с версии 5.1 Collectd имеет возможность использовать Write плагин для записи статистики в time-series базе Carbon.
+Который в свою очередь является бакенд стораджем для Graphite. В данной связке можно создавать очень крутые графики или в дальнейшем производить
+анализ метрик.</p>
+<p>Из обновлений:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Write</span> <span class="nv">Graphite</span> <span class="nv">plugin …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html">read more</a>
+<p>There are <a href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html" rel="bookmark"
+                           title="Permalink to "Запуск скриптов с блокировкой (lock-file)"">"Запуск скриптов с блокировкой (lock-file)"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-02T07:07:46+03:00">
+                Published: Wed 02 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/cron.html">cron</a> </p>
+</footer><!-- /.post-info -->                <p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+: <span class="si">${</span><span class="nv">2</span><span class="p">?</span><span class="s2">&quot;Not enough parameters. Usage: </span><span class="nv">$FUNCNAME</span><span class="s2"> CMD SCRIPT [PARAMS]&quot;</span><span class="si">}</span>
+
+<span class="nv">BIN</span><span class="o">=</span><span class="k">$(</span>which bash<span class="k">)</span>
+<span class="nv">CMD</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
+<span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
+<span class="nv">SCRIPT_PARAMS</span><span class="o">=</span><span class="nv">$@</span>
+<span class="nv">SCRIPT_NAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$SCRIPT</span><span class="k">)</span>
+<span class="o">[[</span> ! <span class="nv">$USER</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">USER</span><span class="o">=</span>nobody
+<span class="nv">LOCKDIR</span><span class="o">=</span><span class="s2">&quot;/tmp/locks-</span><span class="nv">$USER</span><span class="s2">&quot;</span>
+<span class="nv">STALE_AGE</span><span class="o">=</span><span class="m">4</span> <span class="c1">#hours</span>
+<span class="nv">PIDFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/pid
+<span class="nv">LOCKFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html">read more</a>
+<p>There are <a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/generatsiia-novogo-tokena-dlia-teamspeak3.html" rel="bookmark"
+                           title="Permalink to "Генерация нового токена для TeamSpeak3"">"Генерация нового токена для TeamSpeak3"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-04-29T19:52:16+03:00">
+                Published: Wed 29 April 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">FreeBSD</a> <a href="https://srv-nix.com/tag/linux.html">Linux</a> <a href="https://srv-nix.com/tag/teamspeak.html">TeamSpeak</a> <a href="https://srv-nix.com/tag/admin.html">Admin</a> </p>
+</footer><!-- /.post-info -->                <p>Запускаем с нужным паролем:</p>
+<div class="highlight"><pre><span></span><code>/path/to/bin/teamspeak &lt;any parameters&gt; serveradmin_password=secret
+</code></pre></div>
+
+<p>Подключаемся:</p>
+<div class="highlight"><pre><span></span><code>telnet 127.0.0.1 10011
+</code></pre></div>
+
+<p>Фигачим:</p>
+<div class="highlight"><pre><span></span><code>login serveradmin secret
+use 1
+tokenadd tokentype=0 tokenid1=6 tokenid2=0
+</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/generatsiia-novogo-tokena-dlia-teamspeak3.html">read more</a>
+<p>There are <a href="https://srv-nix.com/generatsiia-novogo-tokena-dlia-teamspeak3.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html" rel="bookmark"
+                           title="Permalink to "Установка Redmine в изолированном контейнере LXC"">"Установка Redmine в изолированном контейнере LXC"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-24T15:44:13+03:00">
+                Published: Tue 24 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/redmine.html">redmine</a> <a href="https://srv-nix.com/tag/lxc.html">LXC</a> <a href="https://srv-nix.com/tag/cgroup.html">cgroup</a> <a href="https://srv-nix.com/tag/centos.html">centos</a> </p>
+</footer><!-- /.post-info -->                <p><a href="https://ru.wikipedia.org/wiki/Redmine">Redmine</a> - гибкий инструмент позволяющий удобно организовывать проекты и задачи, а также отслеживать ошибки. Написан он на Ruby и использует известный фреймворк <a href="https://ru.wikipedia.org/wiki/Ruby_on_Rails">Ruby on Rails</a>. GNU GPL, Open Source и все дела... (В вики более подробно)</p>
+<p>Самой большой проблемой, с которой сталкиваются люди при работе с этим монстром - это множество версионных …</p>
+                <a class="readmore" href="https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html">read more</a>
+<p>There are <a href="https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/install-setting-graphite.html" rel="bookmark"
+                           title="Permalink to "Установка и настройка Graphite WebApp через RPM"">"Установка и настройка Graphite WebApp через RPM"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-05T11:39:53+03:00">
+                Published: Thu 05 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> <a href="https://srv-nix.com/tag/rpmdev.html">rpmdev</a> </p>
+</footer><!-- /.post-info -->                <p>Хочется поделиться старой, но от этого не менее <a href="http://www.rampmeupscotty.com/blog/2012/08/07/installing-graphite-on-centos-6-dot-2/">хорошей и полезной заметкой</a>, автор которой рассказывает, как можно установить <a href="http://graphite.wikidot.com/documentation">Graphite</a> в дистрибутиве CentOS, используя для этого штатные rpm-tools.</p>
+<p>Статья замечательна еще тем, что по сути в радиусе досигаемости гугла (менее 5 страницы поиска) она единственная.</p>
+<p>И я, к сожалению, не нашел …</p>
+                <a class="readmore" href="https://srv-nix.com/install-setting-graphite.html">read more</a>
+<p>There are <a href="https://srv-nix.com/install-setting-graphite.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/kak-vyigrat-dota-2.html" rel="bookmark"
+                           title="Permalink to "Как выиграть Dota 2"">"Как выиграть Dota 2"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-08T17:47:07+06:00">
+                Published: Mon 08 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/dota2.html">dota2</a> <a href="https://srv-nix.com/tag/game.html">game</a> <a href="https://srv-nix.com/tag/fun.html">fun</a> </p>
+</footer><!-- /.post-info -->                <!--more-->
+
+<iframe width="520" height="415" src="https://www.youtube.com/embed/fjFW7PNIOjM" frameborder="0" allowfullscreen> </iframe>
+                <a class="readmore" href="https://srv-nix.com/kak-vyigrat-dota-2.html">read more</a>
+<p>There are <a href="https://srv-nix.com/kak-vyigrat-dota-2.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html" rel="bookmark"
+                           title="Permalink to "Прошивка телефона Nokia N9 на сток в Docker"">"Прошивка телефона Nokia N9 на сток в Docker"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-10T11:44:56+06:00">
+                Published: Mon 10 November 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/meego.html">meego</a> <a href="https://srv-nix.com/tag/nokian9.html">NokiaN9</a> <a href="https://srv-nix.com/tag/firmware.html">firmware</a> <a href="https://srv-nix.com/tag/hartmattan.html">hartmattan</a> </p>
+</footer><!-- /.post-info -->                <p>Сам по себе процес прошивки телефона на родную систему весьма тривиален, но в связи с тем, что больше не существует команды разработчиков ОС Meego, многие ресурсы, содержащие прошивки и программы, были заброшены. Я хочу восстановить справедливость и создать русскоязычный гайд по полному сбросу прошивки hartmattan на дефолтное состояние со всеми …</p>
+                <a class="readmore" href="https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html">read more</a>
+<p>There are <a href="https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html" rel="bookmark"
+                           title="Permalink to "Как восстановить заводскую прошивку роутера NetGear R6300v1"">"Как восстановить заводскую прошивку роутера NetGear R6300v1"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-10-13T12:19:38+06:00">
+                Published: Mon 13 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/other.html">other</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/router.html">router</a> <a href="https://srv-nix.com/tag/howto.html">howto</a> </p>
+</footer><!-- /.post-info -->                <p>Дорогие мученники!</p>
+<p>Если после неудачной попытки установить dd-wrt на сей замечательный <a href="http://support.netgear.ru/product/R6300v1">девайс</a>,
+устройство перестало проявлять характерные признаки жизни, то сегодня я вам расскажу, как вернуть 
+родную прошивку, магию зеленой лампочки и почему не нужен товарный чек. </p>
+<!--more-->
+
+<p>Итак,</p>
+<h2>Симптомы</h2>
+<ul>
+<li>Нет доступа к веб-интерфейсу</li>
+<li>Роутер находится в глубочайшей коме, не реагирует на …</li></ul>
+                <a class="readmore" href="https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html">read more</a>
+<p>There are <a href="https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html" rel="bookmark"
+                           title="Permalink to "Этимологический словарь русского языка. Семенов А.В."">"Этимологический словарь русского языка. Семенов А.В."</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-10-11T00:46:08+06:00">
+                Published: Sat 11 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/other.html">other</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/staf.html">staf</a> <a href="https://srv-nix.com/tag/jk.html">jk</a> </p>
+</footer><!-- /.post-info -->                <p>М.Н.Задорнов иногда в своих выступлениях использует этимологические значения слов, расшифровывая
+обыденные, казалось бы, слова и раскрывая незаметный за ними смысл. Например такие слова как: "здоровый", "невеста", "буржуй" и т.д.
+Я никогда не обращал внимания на эти слова и после очередного просмотра решил проверить эти
+слова по самому …</p>
+                <a class="readmore" href="https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html">read more</a>
+<p>There are <a href="https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html" rel="bookmark"
+                           title="Permalink to "Небольшие изменения в Graphite(graphite.wsgi) при обновлении Django до версии 1.7"">"Небольшие изменения в Graphite(graphite.wsgi) при обновлении Django до версии 1.7"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-26T12:42:31+06:00">
+                Published: Fri 26 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/django.html">django</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> </p>
+</footer><!-- /.post-info -->                <p>Запуск SGI для старта веб приложения <a href="http://graphite.wikidot.com/">Graphite</a> начинается со скрипта инициализации в дирректории /usr/local/etc/graphite.
+Файл называется graphite.wsgi.example и после установки порта <a href="http://graphite.wikidot.com/">Graphite</a> необходимо его вручную переименовать и соответственно
+при обновлении нужно учитывать, что обновится именно файл .example и все новшества и изменения будут в нём …</p>
+                <a class="readmore" href="https://srv-nix.com/nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html">read more</a>
+<p>There are <a href="https://srv-nix.com/nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/ne-rabotaet-screencast-v-gnome-shell-36.html" rel="bookmark"
+                           title="Permalink to "Не работает screencast в Gnome-Shell 3.6"">"Не работает screencast в Gnome-Shell 3.6"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-12T17:43:31+06:00">
+                Published: Fri 12 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/gnome.html">gnome</a> <a href="https://srv-nix.com/tag/screencast.html">screencast</a> <a href="https://srv-nix.com/tag/problem.html">problem</a> </p>
+</footer><!-- /.post-info -->                <p>После обновления <a href="https://ru.wikipedia.org/wiki/GNOME_Shell">gnome-shell</a> с версии 3.4 на 3.6 сломался встроеный скринкастер, который по умолчанию запускается комбинацией клавишь ctrl-alt-shift-r.</p>
+<!--more-->
+
+<p>Чтобы починить необходимо доустановть пакет</p>
+<div class="highlight"><pre><span></span><code>sudo pacman -Sy xdg-user-dirs
+</code></pre></div>
+
+<p>Дальше запускаем от своего НЕ root пользователя</p>
+<div class="highlight"><pre><span></span><code>xdg-user-dirs-update
+</code></pre></div>
+
+<p>Перезапускаем Gnome (alt-f2 r)</p>
+                <a class="readmore" href="https://srv-nix.com/ne-rabotaet-screencast-v-gnome-shell-36.html">read more</a>
+<p>There are <a href="https://srv-nix.com/ne-rabotaet-screencast-v-gnome-shell-36.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/nastroika-bridge-interfeisa-v-centos.html" rel="bookmark"
+                           title="Permalink to "Настройка bridge-интерфейса в CentOS"">"Настройка bridge-интерфейса в CentOS"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-07T20:10:02+06:00">
+                Published: Sun 07 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/bridge.html">bridge</a> </p>
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>yum install bridge-utils
+
+# cat /etc/sysconfig/network-scripts/ifcfg-bridge0
+DEVICE=&quot;bridge0&quot; 
+TYPE=Bridge
+BOOTPROTO=&quot;static&quot; 
+IPADDR=&quot;xxx.xxx.xxx.xxx&quot; 
+GATEWAY=&quot;xxx.xxx.xxx.xxx&quot; 
+DNS1=&quot;xxx.xxx.xxx.xxx&quot;
+ONBOOT=&quot;yes&quot; 
+IPV6INIT=&quot;no&quot; 
+PEERDNS=&quot;yes&quot;
+
+# cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+DEVICE=eth0
+BOOTPROTO=&quot;static&quot; 
+BRIDGE=&quot;bridge0&quot; 
+ONBOOT=yes
+Собственно всё …</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/nastroika-bridge-interfeisa-v-centos.html">read more</a>
+<p>There are <a href="https://srv-nix.com/nastroika-bridge-interfeisa-v-centos.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html" rel="bookmark"
+                           title="Permalink to "CentOS. Upgrade zabbix с версии 1.8 до 2.0"">"CentOS. Upgrade zabbix с версии 1.8 до 2.0"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-07T19:45:05+06:00">
+                Published: Sun 07 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/zabbix.html">zabbix</a> </p>
+</footer><!-- /.post-info -->                <p>В репозиториях <a href="http://www.centos.org/">CentOS</a> появился <a href="http://www.zabbix.com/ru/">Zabbix</a> версии 2.0, просто праздник какой-то, но нет худа без добра. Изменения в новой версии затронули базу данных во всех интересных местах и просто обновиться недостаточно, также нам нужно будет пропатчить базу в соответствии с нововведениями. </p>
+<!--more-->
+
+<p>Вся процедура обновления выполняется в соответствии с официальной документацией …</p>
+                <a class="readmore" href="https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html">read more</a>
+<p>There are <a href="https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/nastroika-klienta-mumble.html" rel="bookmark"
+                           title="Permalink to "Настройка клиента Mumble"">"Настройка клиента Mumble"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-27T18:18:51+06:00">
+                Published: Sun 27 April 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/mumble.html">mumble</a> <a href="https://srv-nix.com/tag/client.html">client</a> </p>
+</footer><!-- /.post-info -->                <p>Mumble — бесплатное, кросс-платформенное VoIP приложение с открытым кодом.</p>
+<h2>Установка</h2>
+<h3>Windows</h3>
+<p>Достаточно скачать и установить .msi клиента по <a href="http://mumble.sourceforge.net/Installing_Mumble#Windows">ссылке</a></p>
+<h3>Linux</h3>
+<p>Клиент есть в официальном репозитории, но можно подключить PPA по <a href="http://mumble.sourceforge.net/Installing_Mumble#Ubuntu">ссылке</a></p>
+<h2>Подключение</h2>
+<p>1. Запускаем клиента.</p>
+<div class="highlight"><pre><span></span><code><span class="err">Сервер</span> <span class="o">--&gt;</span> <span class="err">Подключиться</span>
+</code></pre></div>
+
+<p>2. Выбираем опции меню</p>
+<p>3. Нажимаем </p>
+<div class="highlight"><pre><span></span><code>Добавить новый
+</code></pre></div>
+
+<p>4. Вводим данные</p>
+<p><strong>Название:</strong> Любое, например …</p>
+                <a class="readmore" href="https://srv-nix.com/nastroika-klienta-mumble.html">read more</a>
+<p>There are <a href="https://srv-nix.com/nastroika-klienta-mumble.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html" rel="bookmark"
+                           title="Permalink to "Сборка и установка модуля php-sweph"">"Сборка и установка модуля php-sweph"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-23T13:25:55+06:00">
+                Published: Wed 23 April 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/php.html">php</a> <a href="https://srv-nix.com/tag/build.html">build</a> </p>
+</footer><!-- /.post-info -->                <p>Просто абзац</p>
+<p>UPD(16.01.17)...</p>
+<div class="highlight"><pre><span></span><code><span class="nv">yum</span> <span class="nv">install</span> <span class="nv">php</span><span class="o">-</span><span class="nv">devel</span> <span class="nv">php</span> <span class="nv">subversion</span> <span class="nv">wget</span> <span class="nv">tar</span> <span class="nv">gcc</span> <span class="nv">file</span> <span class="nv">make</span> <span class="nv">git</span> <span class="o">-</span><span class="nv">y</span>
+<span class="nv">BUILD</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">src</span>
+<span class="nv">SWEURL</span><span class="o">=</span><span class="nv">ftp</span>:<span class="o">//</span><span class="nv">ftp</span>.<span class="nv">astro</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">pub</span><span class="o">/</span><span class="nv">swisseph</span><span class="o">/</span><span class="nv">swe_unix_src_2</span>.<span class="mi">06</span>.<span class="nv">tar</span>.<span class="nv">gz</span>
+<span class="nv">INCLUDEDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="k">include</span>
+<span class="nv">LIBDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">lib</span>
+<span class="nv">PHPMODDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">lib64</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">modules</span>
+<span class="nv">pushd</span> <span class="mh">$B</span><span class="nv">UILD</span>
+<span class="nv">wget …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html">read more</a>
+<p>There are <a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html" rel="bookmark"
+                           title="Permalink to "Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"">"Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-04T09:01:00+00:00">
+                Published: Fri 04 April 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких "make install".  </p>
+<h4>Подготовка сервера к сборке</h4>
+<p>1. Для начала нужно установить пакеты:</p>
+<div class="highlight"><pre><span></span><code><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">gcc</span> <span class="n">make</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="c1"># Дописать пакеты, необходимые для сборки</span>
+</code></pre></div>
+
+<p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
+<div class="highlight"><pre><span></span><code>useradd -m rpmbuild
+</code></pre></div>
+
+<p>3 …</p>
+                <a class="readmore" href="https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html">read more</a>
+<p>There are <a href="https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html" rel="bookmark"
+                           title="Permalink to "LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"">"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-29T01:09:27+03:00">
+                Published: Sat 29 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/lvm.html">lvm</a> <a href="https://srv-nix.com/tag/kvm.html">kvm</a> <a href="https://srv-nix.com/tag/fs.html">fs</a> <a href="https://srv-nix.com/tag/ext4.html">ext4</a> </p>
+</footer><!-- /.post-info -->                <p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
+<p>Выключаем VPS на которой используется раздел LVM.
+Увеличиваем сам том:</p>
+<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>'+2G' - размер на который увеличиваем диск
+Теперь открываем раздел и пересоздаём таблицу разделов.</p>
+<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
+</code></pre></div>
+
+<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
+<div class="highlight"><pre><span></span><code># kpartx -a /dev …</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html">read more</a>
+<p>There are <a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/zabbix-sbros-parolia-administratora-i-otkliuchenie-ldap.html" rel="bookmark"
+                           title="Permalink to "Zabbix. Сброс пароля администратора и отключение LDAP"">"Zabbix. Сброс пароля администратора и отключение LDAP"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T01:07:19+06:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/zabbix.html">zabbix</a> <a href="https://srv-nix.com/tag/ldap.html">ldap</a> </p>
+</footer><!-- /.post-info -->                <p>Простая инструкция на случай, если вы после очередного обновления или по случайности потеряли привилегированный доступ к админке сервера <a href="http://www.zabbix.com/ru/">zabbix</a>.</p>
+<!--more-->
+
+<ul>
+<li>Подключаемся к БД сервера. </li>
+<li>
+<p>Меняем пароль</p>
+<p>UPDATE <code>zabbix</code>.<code>users</code> SET passwd=md5('mynewpassword') WHERE <code>alias</code>='Admin';</p>
+</li>
+<li>
+<p>Отключаем LDAP</p>
+<p>UPDATE  <code>zabbix</code>.<code>config</code> SET  <code>authentication_type</code> =  '0' WHERE  <code>config</code>.<code>configid</code> =1;</p>
+</li>
+</ul>
+                <a class="readmore" href="https://srv-nix.com/zabbix-sbros-parolia-administratora-i-otkliuchenie-ldap.html">read more</a>
+<p>There are <a href="https://srv-nix.com/zabbix-sbros-parolia-administratora-i-otkliuchenie-ldap.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/ispolzovanie-gpart-na-servere-freebsd-sparc64-sun-v215.html" rel="bookmark"
+                           title="Permalink to "Использование gpart на сервере FreeBSD (Sparc64 Sun v215)"">"Использование gpart на сервере FreeBSD (Sparc64 Sun v215)"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T00:56:25+06:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/gpart.html">gpart</a> <a href="https://srv-nix.com/tag/sparc.html">sparc</a> </p>
+</footer><!-- /.post-info -->                <p>Собственно всё как в мануалах, для разметки используем VTOC8.</p>
+<div class="highlight"><pre><span></span><code>gpart create -s VTOC8 -f x /dev/xxx
+gpart commit
+</code></pre></div>
+
+<p>У меня получилось вот так</p>
+<div class="highlight"><pre><span></span><code>#<span class="nv">gpart</span> <span class="k">show</span>
+<span class="o">=&gt;</span>        <span class="mi">0</span>  <span class="mi">143203410</span>  <span class="nv">da0</span>  <span class="nv">VTOC8</span>  <span class="ss">(</span><span class="mi">68</span><span class="nv">G</span><span class="ss">)</span>
+          <span class="mi">0</span>   <span class="mi">10474380</span>    <span class="mi">1</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">ufs</span>  <span class="ss">(</span><span class="mi">5</span><span class="nv">G</span><span class="ss">)</span>
+   <span class="mi">10474380</span>   <span class="mi">16771860</span>    <span class="mi">2</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">swap</span>  <span class="ss">(</span><span class="mi">8</span><span class="nv">G</span><span class="ss">)</span>
+   <span class="mi">27246240</span>  <span class="mi">111137670</span>    <span class="mi">4</span>  <span class="nv">freebsd …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/ispolzovanie-gpart-na-servere-freebsd-sparc64-sun-v215.html">read more</a>
+<p>There are <a href="https://srv-nix.com/ispolzovanie-gpart-na-servere-freebsd-sparc64-sun-v215.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/utf-8-cyrillic-console-rusifikatsiia-i-utfitizatsiia-konsoli-freebsd.html" rel="bookmark"
+                           title="Permalink to "UTF-8, cyrillic console. Русификация и UTFитизация консоли FreeBSD"">"UTF-8, cyrillic console. Русификация и UTFитизация консоли FreeBSD"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T00:49:19+06:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/utf8.html">utf8</a> </p>
+</footer><!-- /.post-info -->                <p>Правим файл /etc/login.conf</p>
+<div class="highlight"><pre><span></span><code>russian|Russian Users Accounts:\
+:charset=UTF-8:\
+:lang=ru_RU.UTF-8:\
+:tc=default:
+</code></pre></div>
+
+<p>Применяем изменения</p>
+<div class="highlight"><pre><span></span><code>cap_mkdb /etc/login.conf
+</code></pre></div>
+
+<p>Устанавливаем язык по умолчанию для нужных пользователей</p>
+<div class="highlight"><pre><span></span><code>pw usermod -n <span class="cp">${</span><span class="n">username</span><span class="cp">}</span> -L russian
+reboot
+</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/utf-8-cyrillic-console-rusifikatsiia-i-utfitizatsiia-konsoli-freebsd.html">read more</a>
+<p>There are <a href="https://srv-nix.com/utf-8-cyrillic-console-rusifikatsiia-i-utfitizatsiia-konsoli-freebsd.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/ustanovka-i-nastroika-openldap-klienta-na-server-freebsd-sparc64-sun-v215.html" rel="bookmark"
+                           title="Permalink to "Установка и настройка OpenLDAP клиента на сервер FreeBSD (Sparc64 Sun v215)"">"Установка и настройка OpenLDAP клиента на сервер FreeBSD (Sparc64 Sun v215)"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T00:32:20+06:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/openldap.html">openldap</a> </p>
+</footer><!-- /.post-info -->                <p>Чего меньше всего ожидаешь, работая системным администратором? Правильно! Того, что после первой установки придется еще 3 раза разворачивать FreeBSD на Sun v215 5-6 летней давности, удалённо, без доступа к KVM. Поэтому оставлю тут куски трудов для памятки. </p>
+<p>Для подключения к OpenLDAP серверу нам нужны следующие порты: security/pam_mkhomedir security/pam_ldap …</p>
+                <a class="readmore" href="https://srv-nix.com/ustanovka-i-nastroika-openldap-klienta-na-server-freebsd-sparc64-sun-v215.html">read more</a>
+<p>There are <a href="https://srv-nix.com/ustanovka-i-nastroika-openldap-klienta-na-server-freebsd-sparc64-sun-v215.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/centos-nastroika-coredump-dlia-apache.html" rel="bookmark"
+                           title="Permalink to "CentOS. Настройка CoreDump для apache"">"CentOS. Настройка CoreDump для apache"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T14:24:18+06:00">
+                Published: Wed 26 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/apache.html">apache</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/core.html">core</a> </p>
+</footer><!-- /.post-info -->                <p>Активируем параметр в конфигурации</p>
+<div class="highlight"><pre><span></span><code>CoreDumpDirectory /tmp
+</code></pre></div>
+
+<p>Насколько я понял, фиолетово какое значение выставлять, просто без этой директивы не работает (:
+Говорим ядру где будем хранить "корки"</p>
+<div class="highlight"><pre><span></span><code><span class="n">echo</span> <span class="s2">&quot;/var/tmp/httpd-core.%p&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">core_pattern</span>
+</code></pre></div>
+
+<p>В папке должны быть права для пользователя, от которого запущен apache
+Разрешаем создание "корок"</p>
+<div class="highlight"><pre><span></span><code># cat /etc …</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/centos-nastroika-coredump-dlia-apache.html">read more</a>
+<p>There are <a href="https://srv-nix.com/centos-nastroika-coredump-dlia-apache.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/kak-sozdat-logo-dlia-oboznacheniia-otriada-v-dayz-arma-ii-mod.html" rel="bookmark"
+                           title="Permalink to "Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)"">"Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T01:07:25+06:00">
+                Published: Wed 26 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/games.html">games</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/arma.html">arma</a> <a href="https://srv-nix.com/tag/dayz.html">dayz</a> <a href="https://srv-nix.com/tag/game.html">game</a> </p>
+</footer><!-- /.post-info -->                <p>С целью идентификации вашего отряда в ARMAII предусмотрена возможность добавления
+на бойца и технику уникальной метки или логотипа. Таким образом ваши друзья, или всё же враги, могут узнавать вас по картинке. К сожалению, в моде DayZ работает только логотип на используемой технике.</p>
+<p>Создаем XML-файл "squad.xml" примерно такого содержания:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;code …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/kak-sozdat-logo-dlia-oboznacheniia-otriada-v-dayz-arma-ii-mod.html">read more</a>
+<p>There are <a href="https://srv-nix.com/kak-sozdat-logo-dlia-oboznacheniia-otriada-v-dayz-arma-ii-mod.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html" rel="bookmark"
+                           title="Permalink to "Опасно играть под мухой"">"Опасно играть под мухой"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T00:58:01+06:00">
+                Published: Wed 26 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/games.html">games</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/game.html">game</a> <a href="https://srv-nix.com/tag/dayz.html">dayz</a> </p>
+</footer><!-- /.post-info -->                <iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe>
+                <a class="readmore" href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html">read more</a>
+<p>There are <a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html" rel="bookmark"
+                           title="Permalink to "Puppet dashboard [pending tasks] - накопил уже мужик!"">"Puppet dashboard [pending tasks] - накопил уже мужик!"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-25T18:16:25+06:00">
+                Published: Tue 25 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/puppet.html">puppet</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/error.html">error</a> </p>
+</footer><!-- /.post-info -->                <p>Puppet Dashboard состоит из двух частей - это собственно рельсовый веб движок (puppet-dashboard для CentOS) и демон собирающий статистику puppet-dashboard-worker. Со вторым у меня получилась неприятная ситуация: он просто перестал обрабатывать поступающие запросы на обновление данных. Как выяснилось позже - это происходило из-за одного проблемного запроса, который не позволял демону пройти до …</p>
+                <a class="readmore" href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html">read more</a>
+<p>There are <a href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/pishem-svoi-modul-dlia-wilshell-kratkoe-howto.html" rel="bookmark"
+                           title="Permalink to "Пишем свой модуль для wilshell, краткое HOWTO"">"Пишем свой модуль для wilshell, краткое HOWTO"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-25T11:52:16+06:00">
+                Published: Tue 25 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/shell.html">shell</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/bash.html">bash</a> <a href="https://srv-nix.com/tag/shell.html">shell</a> <a href="https://srv-nix.com/tag/scripts.html">scripts</a> </p>
+</footer><!-- /.post-info -->                <p>Блок определений:</p>
+<div class="highlight"><pre><span></span><code><span class="n">NAME</span><span class="o">=</span><span class="s">&#39;default&#39;</span>
+<span class="n">AUTHOR</span><span class="o">=</span><span class="s">&#39;wilful&#39;</span>
+<span class="n">DESCRIPTION</span><span class="o">=</span><span class="s">&#39;An example of module configuration&#39;</span>
+<span class="n">USAGE</span><span class="o">=</span><span class="err">&#39;</span><span class="o">-</span><span class="n">a</span>  <span class="err">Первый</span> <span class="err">ключ</span><span class="p">,</span> <span class="err">флаг</span> <span class="err">запуска</span>
+<span class="err">Можно</span> <span class="err">поставить</span> 
+    <span class="err">табы</span> <span class="err">или</span> <span class="err">например</span> <span class="err">\</span><span class="n">n</span> <span class="err">перенос</span> <span class="err">строки</span>
+<span class="o">-</span><span class="n">b</span>  <span class="err">Второй</span> <span class="err">ключ</span><span class="p">,</span> <span class="err">значение</span> <span class="err">для</span> <span class="err">запуска&#39;</span>
+<span class="n">MODULE_DEPENDS</span><span class="o">=</span><span class="p">(</span> <span class="s">&#39;lock&#39;</span> <span class="p">)</span>
+
+    <span class="n">NAME</span> <span class="o">-</span> <span class="err">имя</span> <span class="err">модуля</span><span class="p">,</span> <span class="err">на</span> <span class="err">основании</span> <span class="err">этой</span> <span class="err">переменной</span> <span class="err">строятся</span> <span class="err">внутренние</span> <span class="err">вызовы</span> <span class="err">к</span> <span class="err">модулю</span>
+    <span class="n">AUTHOR</span> <span class="o">-</span> <span class="err">Собственно</span> <span class="err">автор</span> <span class="err">модуля …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/pishem-svoi-modul-dlia-wilshell-kratkoe-howto.html">read more</a>
+<p>There are <a href="https://srv-nix.com/pishem-svoi-modul-dlia-wilshell-kratkoe-howto.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html" rel="bookmark"
+                           title="Permalink to "Eve Online, Ссылка для бесплатного 21-дневного периода игры"">"Eve Online, Ссылка для бесплатного 21-дневного периода игры"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-24T09:00:00+00:00">
+                Published: Mon 24 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/games.html">games</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/eve.html">eve</a> <a href="https://srv-nix.com/tag/game.html">game</a> <a href="https://srv-nix.com/tag/online.html">online</a> </p>
+</footer><!-- /.post-info -->                <p>Welcom to <a href="https://secure.eveonline.com/trial/?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4&amp;action=buddy">Eve</a></p>
+                <a class="readmore" href="https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html">read more</a>
+<p>There are <a href="https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/prosteishaia-nastroika-servera-ntpd-na-centos-6.html" rel="bookmark"
+                           title="Permalink to "Простейшая настройка сервера NTPD на CentOS 6"">"Простейшая настройка сервера NTPD на CentOS 6"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T09:00:00+00:00">
+                Published: Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/ntpd.html">ntpd</a> </p>
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>yum install -y ntp
+service ntpd restart
+chkconfig ntpd on
+</code></pre></div>
+
+<p>После чего ждем правки времени</p>
+<div class="highlight"><pre><span></span><code>date
+</code></pre></div>
+
+<p>Не знаю, как вызвать принудительно, в Debian достаточно было вызвать ntpdate</p>
+<p>Делается почти так же, до запуска демона ntpd</p>
+<div class="highlight"><pre><span></span><code>ntpdate pool.ntp.org
+</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/prosteishaia-nastroika-servera-ntpd-na-centos-6.html">read more</a>
+<p>There are <a href="https://srv-nix.com/prosteishaia-nastroika-servera-ntpd-na-centos-6.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html" rel="bookmark"
+                           title="Permalink to "Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."">"Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T09:00:00+00:00">
+                Published: Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/puppet.html">puppet</a> </p>
+</footer><!-- /.post-info -->                <p>Проблема возникла на одной из нод puppet после смены hostname и генерации нового сертификата SSL.</p>
+<div class="highlight"><pre><span></span><code><span class="n">warning</span><span class="o">:</span> <span class="n">peer</span> <span class="n">certificate</span> <span class="n">won</span><span class="s1">&#39;t be verified in this SSL session</span>
+<span class="s1">info: Caching certificate for node01.wilful.org</span>
+<span class="s1">info: Retrieving plugin</span>
+<span class="s1">info: Caching certificate_revocation_list for ca</span>
+<span class="s1">err: /File[/var/lib/puppet/lib]: Failed to generate …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html">read more</a>
+<p>There are <a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/webalizer-prosteishaia-statistika-dlia-saita.html" rel="bookmark"
+                           title="Permalink to "webalizer, простейшая статистика для сайта"">"webalizer, простейшая статистика для сайта"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T09:00:00+00:00">
+                Published: Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/web.html">web</a> <a href="https://srv-nix.com/tag/webalizer.html">webalizer</a> <a href="https://srv-nix.com/tag/nginx.html">nginx</a> </p>
+</footer><!-- /.post-info -->                <p>Пример программы для анализа логов nginx/apache на вашем сервере. Входит в репозитории всех известных мне дистрибутивов GNU\Linux. Утилита webalizer принимает в качестве параметра логи веб-сервера в формате combined и на выхлопе получает HTML с Блэк Джеком и картинками.</p>
+<p>В простейшей конфигурации вот так выглядит сервер на nginx, который …</p>
+                <a class="readmore" href="https://srv-nix.com/webalizer-prosteishaia-statistika-dlia-saita.html">read more</a>
+<p>There are <a href="https://srv-nix.com/webalizer-prosteishaia-statistika-dlia-saita.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/centos-sssd-i-openldap.html" rel="bookmark"
+                           title="Permalink to "CentOS. SSSD и OpenLDAP"">"CentOS. SSSD и OpenLDAP"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-21T09:00:00+00:00">
+                Published: Fri 21 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/openldap.html">openldap</a> <a href="https://srv-nix.com/tag/howto.html">howto</a> <a href="https://srv-nix.com/tag/centos.html">CentOS</a> </p>
+</footer><!-- /.post-info -->                <p>В [предыдущем][l01] топике я показал, как можно быстро настроить ваш сервер OpenLDAP на использование TLS соединений, чтобы наши враги не могли получить сведения из трафика между сервером и клиентом. В дополнении хотелось бы продемонстрировать настройку групповых политик доступа на сервер под управлением CentOS 6. В качестве клиента будем использовать …</p>
+                <a class="readmore" href="https://srv-nix.com/centos-sssd-i-openldap.html">read more</a>
+<p>There are <a href="https://srv-nix.com/centos-sssd-i-openldap.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html" rel="bookmark"
+                           title="Permalink to "Linux. 3G modem Huawei [E171]"">"Linux. 3G modem Huawei [E171]"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-21T09:00:00+00:00">
+                Published: Fri 21 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/modem.html">modem</a> <a href="https://srv-nix.com/tag/3g.html">3g</a> </p>
+</footer><!-- /.post-info -->                <p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
+<p>Всё просто.
+Во-первых, нужно переключить его в режим модема. 
+Подключаем модем и смотрим его заводские маркеры:</p>
+<div class="highlight"><pre><span></span><code>#lsusb …</code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/linux-3g-modem-huawei-e171.html">read more</a>
+<p>There are <a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html" rel="bookmark"
+                           title="Permalink to "Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"">"Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-21T09:00:00+00:00">
+                Published: Fri 21 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/openldap.html">openldap</a> <a href="https://srv-nix.com/tag/tls.html">TLS</a> </p>
+</footer><!-- /.post-info -->                <p>Я не буду вникать в детали генерации сертификатов, не буду детально рассказывать про параметры в конфигурационных файлах. Эта заметка предназначена для быстрой настройки подключения и демонстрации того, что можно использовать стандартные средства консоли без рукоблудства в конфигах. </p>
+<p>Во-первых, нужно сгенерировать свой сертификат и подписать с помощью него клиентский ключ.</p>
+<p>Во-вторых …</p>
+                <a class="readmore" href="https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html">read more</a>
+<p>There are <a href="https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/freebsd-munin-monitoring-na-kolenke.html" rel="bookmark"
+                           title="Permalink to "FreeBSD. Munin - мониторинг на коленке"">"FreeBSD. Munin - мониторинг на коленке"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-20T09:00:00+00:00">
+                Published: Thu 20 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="http://munin-monitoring.org/">Munin</a> - простое и надежное средство для мониторинга и визуализации "what just happened to kill our performance?" проблем. Сервер представляет собой коллектор, получающий данные с любого устройства или скрипта, будь то SNMP или внешний скрипт. Данные поступают в базу RRD и затем с помощью специального скрипта (/usr/local/bin/munin-cron) визуализируются …</p>
+                <a class="readmore" href="https://srv-nix.com/freebsd-munin-monitoring-na-kolenke.html">read more</a>
+<p>There are <a href="https://srv-nix.com/freebsd-munin-monitoring-na-kolenke.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/skripty-na-vse-sluchai-zhizni.html" rel="bookmark"
+                           title="Permalink to "Скрипты на все случаи жизни"">"Скрипты на все случаи жизни"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-02-25T11:52:31+06:00">
+                Published: Tue 25 February 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/help.html">help</a> <a href="https://srv-nix.com/tag/howto.html">howto</a> <a href="https://srv-nix.com/tag/bash.html">bash</a> </p>
+</footer><!-- /.post-info -->                <p>Хотел просто сделать коллекцию скриптов, которые приходится писать довольно часто, а получился модульный фреймворк для работы с любыми скриптами. В базовый функционал вынесены только функции для работы с логированием, навешиванием lock-файла при необходимости, почтовые рассылки, функции для работы с выводом и прочее.</p>
+<p>Сам фреймворк можно найти <a href="https://github.com/wilful/root-shell">тут</a>.</p>
+<p>Как это работает …</p>
+                <a class="readmore" href="https://srv-nix.com/skripty-na-vse-sluchai-zhizni.html">read more</a>
+<p>There are <a href="https://srv-nix.com/skripty-na-vse-sluchai-zhizni.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"CentOS. Upgrade zabbix с версии 1.8 до 2.0"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="В репозиториях CentOS появился Zabbix версии 2.0, просто праздник какой-то, но нет худа без добра. Изменения в новой версии затронули базу данных..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li class="active"><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html" rel="bookmark"
+           title="Permalink to "CentOS. Upgrade zabbix с версии 1.8 до 2.0"">"CentOS. Upgrade zabbix с версии 1.8 до 2.0"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-07T19:45:05+06:00">
+                Published: Sun 07 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/zabbix.html">zabbix</a> </p>
+</footer><!-- /.post-info -->      <p>В репозиториях <a href="http://www.centos.org/">CentOS</a> появился <a href="http://www.zabbix.com/ru/">Zabbix</a> версии 2.0, просто праздник какой-то, но нет худа без добра. Изменения в новой версии затронули базу данных во всех интересных местах и просто обновиться недостаточно, также нам нужно будет пропатчить базу в соответствии с нововведениями. </p>
+<!--more-->
+
+<p>Вся процедура обновления выполняется в соответствии с официальной документацией, только в качестве бинарного пакета мы используем zabbix20-* из репозитория. Патч мы тоже не будем накладывать вручную, для этого, на наше счастье, разработчики Zabbix или майтайнеры CentOS побеспокоились об этом, подготовив патч SQL и небольшой скрипт для накатывания всего этого добра. Итак переходим и выполняем:</p>
+<div class="highlight"><pre><span></span><code>cd /usr/share/zabbix-mysql/upgrades/2.0
+bash upgrade -uroot -p&lt;password&gt; [ -h&lt;host&gt; ] &lt;database name&gt;
+</code></pre></div>
+
+<p>Стоит обратить внимание, что в случае, если БД сервера расположена нелокально и дефолтный безпарольный доступ прикрыт, то обязательно нужно указать доступы как параметры скрипту.</p>
+<p>Собственно, вот и все отличия, дальше следуем описанию в документации.</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'centos-upgrade-zabbix-s-versii-18-do-20.html';
+        var disqus_url = 'https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

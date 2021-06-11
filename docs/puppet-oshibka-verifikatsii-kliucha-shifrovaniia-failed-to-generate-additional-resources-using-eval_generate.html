@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="Проблема возникла на одной из нод puppet после смены hostname и генерации нового сертификата SSL. warning: peer certificate won't be verified in..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li class="active"><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html" rel="bookmark"
+           title="Permalink to "Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."">"Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T09:00:00+00:00">
+                Published: Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/puppet.html">puppet</a> </p>
+</footer><!-- /.post-info -->      <p>Проблема возникла на одной из нод puppet после смены hostname и генерации нового сертификата SSL.</p>
+<div class="highlight"><pre><span></span><code><span class="n">warning</span><span class="o">:</span> <span class="n">peer</span> <span class="n">certificate</span> <span class="n">won</span><span class="s1">&#39;t be verified in this SSL session</span>
+<span class="s1">info: Caching certificate for node01.wilful.org</span>
+<span class="s1">info: Retrieving plugin</span>
+<span class="s1">info: Caching certificate_revocation_list for ca</span>
+<span class="s1">err: /File[/var/lib/puppet/lib]: Failed to generate additional resources using &#39;</span><span class="n">eval_generate</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="n">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">B</span><span class="o">:</span> <span class="n">ce</span>
+<span class="n">rtificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="n">err</span><span class="o">:</span> <span class="sr">/File[/var/lib/puppet/</span><span class="n">lib</span><span class="o">]:</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">evaluate</span><span class="o">:</span> <span class="n">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="n">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">B</span><span class="o">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">retrieve</span> 
+<span class="n">file</span> <span class="n">metadata</span> <span class="k">for</span> <span class="n">puppet</span><span class="o">://</span><span class="n">service</span><span class="o">.</span><span class="na">site</span><span class="o">.</span><span class="na">ru</span><span class="o">/</span><span class="n">plugins</span><span class="o">:</span> <span class="n">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="n">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">B</span><span class="o">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="n">info</span><span class="o">:</span> <span class="n">Loading</span> <span class="n">facts</span> <span class="k">in</span> <span class="n">iptables</span>
+<span class="n">info</span><span class="o">:</span> <span class="n">Loading</span> <span class="n">facts</span> <span class="k">in</span> <span class="n">iptables</span>
+<span class="n">err</span><span class="o">:</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">retrieve</span> <span class="n">catalog</span> <span class="n">from</span> <span class="n">remote</span> <span class="n">server</span><span class="o">:</span> <span class="n">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="n">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">B</span><span class="o">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+<span class="n">warning</span><span class="o">:</span> <span class="n">Not</span> <span class="n">using</span> <span class="n">cache</span> <span class="n">on</span> <span class="n">failed</span> <span class="n">catalog</span>
+<span class="n">err</span><span class="o">:</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">retrieve</span> <span class="n">catalog</span><span class="o">;</span> <span class="n">skipping</span> <span class="n">run</span>
+<span class="n">err</span><span class="o">:</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">send</span> <span class="n">report</span><span class="o">:</span> <span class="n">SSL_connect</span> <span class="n">returned</span><span class="o">=</span><span class="mi">1</span> <span class="n">errno</span><span class="o">=</span><span class="mi">0</span> <span class="n">state</span><span class="o">=</span><span class="n">SSLv3</span> <span class="n">read</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">B</span><span class="o">:</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span>
+</code></pre></div>
+
+<p>Перед тем, как рвать волосы и удалять сертификаты/перезапускать сервисы/проклинать ruby, нужно проверить или настроить время на сервере. Например [так][link01]</p>
+<p>Теперь удаляем все ранее сгенерированые сертификаты</p>
+<div class="highlight"><pre><span></span><code><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="k">puppet</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span>
+</code></pre></div>
+
+<p>Тоже самое на сервере для этой ноды</p>
+<div class="highlight"><pre><span></span><code>puppet cert clean node01
+</code></pre></div>
+
+<p>Генерируем новый сертификат</p>
+<div class="highlight"><pre><span></span><code>puppetd --verbose --test --onetime
+</code></pre></div>
+
+<p>или</p>
+<div class="highlight"><pre><span></span><code>puppet agent --test
+</code></pre></div>
+
+<p>Подписываем сертификат на сервере</p>
+<div class="highlight"><pre><span></span><code>puppet cert sign node01
+</code></pre></div>
+
+<p>Проверяем результат на ноде</p>
+<div class="highlight"><pre><span></span><code>puppet agent --test
+</code></pre></div>
+
+<p>[link01]: {{ site.url }}/linux/2014/03/23/ntpd-centos.html</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html';
+        var disqus_url = 'https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

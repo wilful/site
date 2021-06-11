@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"Не работает screencast в Gnome-Shell 3.6"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="После обновления gnome-shell с версии 3.4 на 3.6 сломался встроеный скринкастер, который по умолчанию запускается комбинацией клавишь..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li class="active"><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/ne-rabotaet-screencast-v-gnome-shell-36.html" rel="bookmark"
+           title="Permalink to "Не работает screencast в Gnome-Shell 3.6"">"Не работает screencast в Gnome-Shell 3.6"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-12T17:43:31+06:00">
+                Published: Fri 12 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/gnome.html">gnome</a> <a href="https://srv-nix.com/tag/screencast.html">screencast</a> <a href="https://srv-nix.com/tag/problem.html">problem</a> </p>
+</footer><!-- /.post-info -->      <p>После обновления <a href="https://ru.wikipedia.org/wiki/GNOME_Shell">gnome-shell</a> с версии 3.4 на 3.6 сломался встроеный скринкастер, который по умолчанию запускается комбинацией клавишь ctrl-alt-shift-r.</p>
+<!--more-->
+
+<p>Чтобы починить необходимо доустановть пакет</p>
+<div class="highlight"><pre><span></span><code>sudo pacman -Sy xdg-user-dirs
+</code></pre></div>
+
+<p>Дальше запускаем от своего НЕ root пользователя</p>
+<div class="highlight"><pre><span></span><code>xdg-user-dirs-update
+</code></pre></div>
+
+<p>Перезапускаем Gnome (alt-f2 r)</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'ne-rabotaet-screencast-v-gnome-shell-36.html';
+        var disqus_url = 'https://srv-nix.com/ne-rabotaet-screencast-v-gnome-shell-36.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

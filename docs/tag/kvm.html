@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - kvm</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html">"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-03-29T01:09:27+03:00">
+                Published: Sat 29 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/lvm.html">lvm</a> <a href="https://srv-nix.com/tag/kvm.html">kvm</a> <a href="https://srv-nix.com/tag/fs.html">fs</a> <a href="https://srv-nix.com/tag/ext4.html">ext4</a> </p>
+</footer><!-- /.post-info --><p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
+<p>Выключаем VPS на которой используется раздел LVM.
+Увеличиваем сам том:</p>
+<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>'+2G' - размер на который увеличиваем диск
+Теперь открываем раздел и пересоздаём таблицу разделов.</p>
+<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
+</code></pre></div>
+
+<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
+<div class="highlight"><pre><span></span><code># kpartx -a /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>После чего в системе появится нужный нам раздел '/dev/mapper/vms-vps--test1'
+Проверяем раздел:</p>
+<div class="highlight"><pre><span></span><code># e2fsck -f /dev/mapper/vms-vps--test1                                                                                                               
+e2fsck 1.41.12 (17-May-2010)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/mapper/vms-fms--test1: 13/576000 files (0.0% non-contiguous), 1889245/2340856 blocks
+</code></pre></div>
+
+<p>Обновляем информацию о новом размере ФС:</p>
+<div class="highlight"><pre><span></span><code># resize2fs -p /dev/mapper/vms-vps--test1                                                                                                            
+resize2fs 1.41.12 (17-May-2010)
+Resizing the filesystem on /dev/mapper/vms-vps--test1 to 2865144 (4k) blocks.
+Begin pass 1 (max = 16)
+Extending the inode table     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+The filesystem on /dev/mapper/vms-vps--test1 is now 2865144 blocks long.
+</code></pre></div>
+
+<p>Отключаем чтение таблицы разделов:</p>
+<div class="highlight"><pre><span></span><code># kpartx -d /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>Проверяем результат:</p>
+<div class="highlight"><pre><span></span><code># lvs
+</code></pre></div>
+
+<p>После чего запускаем виртуальную машину, раздел должен быть увеличенным на указанное число.
+Всй!</p><p>There are <a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"Установка Redmine в изолированном контейнере LXC"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="Redmine - гибкий инструмент позволяющий удобно организовывать проекты и задачи, а также отслеживать ошибки. Написан он на Ruby и использует..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li class="active"><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html" rel="bookmark"
+           title="Permalink to "Установка Redmine в изолированном контейнере LXC"">"Установка Redmine в изолированном контейнере LXC"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-24T15:44:13+03:00">
+                Published: Tue 24 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/redmine.html">redmine</a> <a href="https://srv-nix.com/tag/lxc.html">LXC</a> <a href="https://srv-nix.com/tag/cgroup.html">cgroup</a> <a href="https://srv-nix.com/tag/centos.html">centos</a> </p>
+</footer><!-- /.post-info -->      <p><a href="https://ru.wikipedia.org/wiki/Redmine">Redmine</a> - гибкий инструмент позволяющий удобно организовывать проекты и задачи, а также отслеживать ошибки. Написан он на Ruby и использует известный фреймворк <a href="https://ru.wikipedia.org/wiki/Ruby_on_Rails">Ruby on Rails</a>. GNU GPL, Open Source и все дела... (В вики более подробно)</p>
+<p>Самой большой проблемой, с которой сталкиваются люди при работе с этим монстром - это множество версионных зависимостей между различными частями системы. Для решения этой проблемы рекомендуется использовать <a href="http://bundler.io/">Bundler</a> - приложение, которое выполняет установку <a href="https://rubygems.org/">gem</a>-ов и их обновление в соответствии с конфигурацией из Gemfile. Но данный механизм недостаточно прозрачен для администратора, ведь помимо установки гемов необходимо следить и за актуальными версиями самого <a href="https://www.ruby-lang.org/ru/">Ruby</a>. Также при установке плагинов зависимости могут изменяться, устанавливаются новые гемы. И так или иначе при работе с <a href="https://ru.wikipedia.org/wiki/Ruby_on_Rails">RoR</a> приложением система обрастает гигабайтами файлов, которые никаким образом не фигурируют в базе данных пакетного менеджера, да и в базе данных самого пользователя такой объем информации держать не стоит.</p>
+<p>Чтобы минимизировать вред для вашей системы и упростить процесс обновления, бэкапа, а также разворачивания тестовых окружений я использую контейнеры <a href="https://linuxcontainers.org/">LXC</a>. Сам набор утилит уже умеет создавать "клоны" систем, используя простое копирование или более продвинутые методы типа снапшотов <a href="https://ru.wikipedia.org/wiki/Btrfs">BTRFS</a> или <a href="https://ru.wikipedia.org/wiki/LVM">LVM</a>.</p>
+<h2>Установка LXC</h2>
+<div class="highlight"><pre><span></span><code>yum install lxc lxc-templates libvirt libvirt-python
+</code></pre></div>
+
+<p>Теперь запустим libvirtd, это самый простой способ создания внутренней маршрутизируемой сети для наших контейнеров:</p>
+<div class="highlight"><pre><span></span><code>service libvirtd start
+</code></pre></div>
+
+<p>По умолчанию, в качестве места установки будет использоваться /var/lib/lxc 
+Если необходимо добавить там места или вынести на отдельный диск, раздел или планету, лучше сделать это сейчас.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VMSNAME</span><span class="o">=</span><span class="n">PlzKillMe</span> <span class="c1">#Имя контейнера</span>
+<span class="n">TEMPLATE</span><span class="o">=</span><span class="n">centos</span> <span class="c1">#Шаблон будущей системы</span>
+<span class="n">LXCPATH</span><span class="o">=/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">lxc</span> <span class="c1">#Место хранения образов</span>
+<span class="n">REL</span><span class="o">=</span><span class="mi">6</span> <span class="c1">#Релиз CentOS</span>
+<span class="n">lxc</span><span class="o">-</span><span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">$</span><span class="n">VMSNAME</span> <span class="o">-</span><span class="n">t</span> <span class="o">$</span><span class="n">TEMPLATE</span> <span class="o">-</span><span class="n">P</span> <span class="o">$</span><span class="n">LXCPATH</span> <span class="o">--</span> <span class="o">--</span><span class="n">release</span><span class="o">=$</span><span class="n">REL</span>
+</code></pre></div>
+
+<p>После того как образ будет готов, вы увидите сообщение, которое будет означать успешную установку:</p>
+<div class="highlight"><pre><span></span><code><span class="n">The</span> <span class="n">temporary</span> <span class="n">root</span> <span class="n">password</span> <span class="k">is</span> <span class="n">stored</span> <span class="ow">in</span><span class="p">:</span>
+
+    <span class="s1">&#39;/var/lib/lxc/PlzKillMe/tmp_root_pass&#39;</span>
+
+<span class="n">The</span> <span class="n">root</span> <span class="n">password</span> <span class="k">is</span> <span class="n">set</span> <span class="n">up</span> <span class="k">as</span> <span class="n">expired</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">require</span> <span class="n">it</span> <span class="n">to</span> <span class="n">be</span> <span class="n">changed</span>
+<span class="n">at</span> <span class="n">first</span> <span class="n">login</span><span class="p">,</span> <span class="n">which</span> <span class="n">you</span> <span class="n">should</span> <span class="n">do</span> <span class="k">as</span> <span class="n">soon</span> <span class="k">as</span> <span class="n">possible</span><span class="o">.</span>  <span class="n">If</span> <span class="n">you</span> <span class="n">lose</span> <span class="n">the</span>
+<span class="n">root</span> <span class="n">password</span> <span class="ow">or</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">change</span> <span class="n">it</span> <span class="n">without</span> <span class="n">starting</span> <span class="n">the</span> <span class="n">container</span><span class="p">,</span> <span class="n">you</span>
+<span class="n">can</span> <span class="n">change</span> <span class="n">it</span> <span class="n">from</span> <span class="n">the</span> <span class="n">host</span> <span class="n">by</span> <span class="n">running</span> <span class="n">the</span> <span class="n">following</span> <span class="n">command</span> <span class="p">(</span><span class="n">which</span> <span class="n">will</span>
+<span class="n">also</span> <span class="n">reset</span> <span class="n">the</span> <span class="n">expired</span> <span class="n">flag</span><span class="p">):</span>
+
+    <span class="n">chroot</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">lxc</span><span class="o">/</span><span class="n">PlzKillMe</span><span class="o">/</span><span class="n">rootfs</span> <span class="n">passwd</span>
+</code></pre></div>
+
+<p>Можно запустить контейнер:</p>
+<div class="highlight"><pre><span></span><code>lxc-start -d -n $VMSNAME
+</code></pre></div>
+
+<h2>Установка Ruby</h2>
+<p>Через некоторое время после старта узнаём адрес контейнера</p>
+<div class="highlight"><pre><span></span><code>IP=$(lxc-info -n $VMSNAME | grep IP | awk &#39;{print $2}&#39;) &amp;&amp; echo $IP
+</code></pre></div>
+
+<p>И подключаемся к этому контейнеру (пароль в файле, если не меняли)</p>
+<div class="highlight"><pre><span></span><code>ssh root@$IP
+</code></pre></div>
+
+<p>"Кристаллики" будем ставить с помощью <a href="https://rvm.io/">rvm</a>
+Устанавливаем нужные пакеты</p>
+<div class="highlight"><pre><span></span><code>yum install which tar
+</code></pre></div>
+
+<p>После чего следуем официальной документации (Эти команды могут устареть, сравните с оффдоками)</p>
+<div class="highlight"><pre><span></span><code>gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+сurl -sSL https://get.rvm.io | bash -s stable
+source /etc/profile.d/rvm.sh
+</code></pre></div>
+
+<p>Устанавливаем последний релиз Ruby</p>
+<div class="highlight"><pre><span></span><code>rvm install ruby
+</code></pre></div>
+
+<p>Готово!
+Проверяем</p>
+<div class="highlight"><pre><span></span><code>ruby -v
+</code></pre></div>
+
+<h2>Получение и установка Redmine</h2>
+<div class="highlight"><pre><span></span><code>rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+yum install epel-release -y
+yum install wget nginx ImageMagick-devel mysql-server mysql-devel libcurl-devel
+</code></pre></div>
+
+<p>Качаем последнюю версию RM по <a href="http://www.redmine.org/projects/redmine/wiki/Download">ссылке</a></p>
+<div class="highlight"><pre><span></span><code>cd /opt/
+wget http://www.redmine.org/releases/redmine-3.0.1.tar.gz
+tar xf redmine-3.0.1.tar.gz
+ln -s redmine-3.0.1 redmine
+adduser redmine
+</code></pre></div>
+
+<p>Далее следуем официальной документации</p>
+<div class="highlight"><pre><span></span><code>cd /opt/redmine/
+gem install bundler mysql2
+bundle install --without development test
+</code></pre></div>
+
+<p>Настройку сервера БД я оставлю на ваше усмотрение, данные остается только прописать в config/database.yml
+В этом примере я буду использовать дефолтный сервер CentOS с правами доступа по умолчанию.</p>
+<div class="highlight"><pre><span></span><code><span class="n">cp</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">yml</span><span class="o">.</span><span class="n">example</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">service</span> <span class="n">mysqld</span> <span class="n">start</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;create database redmine character set utf8;&quot;</span>
+<span class="n">rake</span> <span class="n">generate_secret_token</span>
+<span class="n">RAILS_ENV</span><span class="o">=</span><span class="n">production</span> <span class="n">rake</span> <span class="n">db</span><span class="p">:</span><span class="n">migrate</span>
+<span class="n">RAILS_ENV</span><span class="o">=</span><span class="n">production</span> <span class="n">rake</span> <span class="n">redmine</span><span class="p">:</span><span class="n">load_default_data</span>
+<span class="n">chown</span> <span class="n">redmine</span><span class="p">:</span><span class="n">nginx</span> <span class="o">-</span><span class="n">R</span> <span class="n">files</span><span class="o">/</span> <span class="nb">log</span><span class="o">/</span> <span class="n">tmp</span><span class="o">/</span> <span class="n">public</span><span class="o">/</span><span class="n">plugin_assets</span>
+</code></pre></div>
+
+<p>На этом установка и базовая настройка окончена, теперь попробуем запустить сервер:</p>
+<div class="highlight"><pre><span></span><code>ruby bin/rails server webrick -e production
+</code></pre></div>
+
+<p>Эта строка будет означать успешный запуск:</p>
+<div class="highlight"><pre><span></span><code>[2015-03-24 10:50:49] INFO  WEBrick::HTTPServer#start: pid=24657 port=3000
+</code></pre></div>
+
+<h2>Установка Nginx с модулем Passenger</h2>
+<p>Для запуска RoR приложений будем использовать <a href="https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html">Passenger</a></p>
+<div class="highlight"><pre><span></span><code>gem install passenger
+passenger-install-nginx-module
+</code></pre></div>
+
+<p>Настройки компиляции Nginx я оставил по умолчанию, никаких изменений я не делал, да и нет смысла, это же контейнер, который в любой момент может быть удален или создан заново по данному гайду</p>
+<p>После сборки готовый к работе Nginx будет находится в /opt/nginx, нам лишь остаётся запускать его системным init скриптом от нашего старого nginx.
+Немного подправим файл с настройками /etc/sysconfig/nginx к следующему виду:</p>
+<div class="highlight"><pre><span></span><code>NGINX=/opt/nginx/sbin/nginx
+CONFFILE=/opt/nginx/conf/nginx.conf
+PIDFILE=/opt/nginx/logs/nginx.pid
+</code></pre></div>
+
+<p>Попробуем запустить?</p>
+<div class="highlight"><pre><span></span><code>service nginx start
+</code></pre></div>
+
+<p>Если всё хорошо, и сервер запустился, то добавляем в конфиг /opt/nginx/conf/nginx.conf следующие настройки:</p>
+<div class="highlight"><pre><span></span><code><span class="k">passenger_log_level</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">passenger_debug_log_file</span> <span class="s">/opt/nginx/logs/passenger.log</span><span class="p">;</span>
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span>  <span class="s">redmine.myhost.ru</span><span class="p">;</span>
+    <span class="kn">client_max_body_size</span>       <span class="mi">128m</span><span class="p">;</span>
+    <span class="kn">root</span> <span class="s">/opt/redmine/public/</span><span class="p">;</span>
+    <span class="kn">passenger_user</span> <span class="s">redmine</span><span class="p">;</span>
+    <span class="kn">passenger_group</span> <span class="s">nginx</span><span class="p">;</span>
+    <span class="kn">passenger_enabled</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">passenger_min_instances</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">passenger_pre_start</span> <span class="s">http://redmine.myhost.ru/</span><span class="p">;</span>
+</code></pre></div>
+
+<p>!! Отредактируйте опции в соответствии с вашими условиями. !!</p>
+<p>Перезапускаем Nginx и получаем на $IP:80 ваш любимый RM. 
+У меня всё. Дальше вы настраиваете проксирование трафика с хоста в гостя как вам удобнее (haproxy, nginx и т.п.)
+По умолчанию для входа используются admin/admin </p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'ustanovka-redmine-v-izolirovannom-konteinere-lxc.html';
+        var disqus_url = 'https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

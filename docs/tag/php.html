@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - php</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html">"Сборка и установка модуля php-sweph"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-04-23T13:25:55+06:00">
+                Published: Wed 23 April 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/php.html">php</a> <a href="https://srv-nix.com/tag/build.html">build</a> </p>
+</footer><!-- /.post-info --><p>Просто абзац</p>
+<p>UPD(16.01.17)...</p>
+<div class="highlight"><pre><span></span><code><span class="nv">yum</span> <span class="nv">install</span> <span class="nv">php</span><span class="o">-</span><span class="nv">devel</span> <span class="nv">php</span> <span class="nv">subversion</span> <span class="nv">wget</span> <span class="nv">tar</span> <span class="nv">gcc</span> <span class="nv">file</span> <span class="nv">make</span> <span class="nv">git</span> <span class="o">-</span><span class="nv">y</span>
+<span class="nv">BUILD</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">src</span>
+<span class="nv">SWEURL</span><span class="o">=</span><span class="nv">ftp</span>:<span class="o">//</span><span class="nv">ftp</span>.<span class="nv">astro</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">pub</span><span class="o">/</span><span class="nv">swisseph</span><span class="o">/</span><span class="nv">swe_unix_src_2</span>.<span class="mi">06</span>.<span class="nv">tar</span>.<span class="nv">gz</span>
+<span class="nv">INCLUDEDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="k">include</span>
+<span class="nv">LIBDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">lib</span>
+<span class="nv">PHPMODDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">lib64</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">modules</span>
+<span class="nv">pushd</span> <span class="mh">$B</span><span class="nv">UILD</span>
+<span class="nv">wget</span> $<span class="nv">SWEURL</span>
+<span class="nv">mkdir</span> <span class="o">-</span><span class="nv">p</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">swe</span>
+<span class="nv">tar</span> <span class="nv">xf</span> $<span class="ss">(</span><span class="k">basename</span> $<span class="nv">SWEURL</span><span class="ss">)</span> <span class="o">-</span><span class="nv">C</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">swe</span>
+<span class="nv">pushd</span> <span class="nv">swe</span><span class="o">/</span><span class="nv">src</span>
+<span class="nv">make</span>
+<span class="nv">popd</span>
+<span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">swe</span><span class="o">/</span><span class="nv">src</span><span class="o">/</span><span class="nv">libswe</span>.<span class="nv">a</span> $<span class="nv">LIBDIR</span>
+<span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">swe</span><span class="o">/</span><span class="nv">src</span><span class="o">/</span><span class="nv">sweodef</span>.<span class="nv">h</span> $<span class="nv">INCLUDEDIR</span>
+<span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">swe</span><span class="o">/</span><span class="nv">src</span><span class="o">/</span><span class="nv">swephexp</span>.<span class="nv">h</span> $<span class="nv">INCLUDEDIR</span>
+<span class="nv">git</span> <span class="nv">clone</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">github</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">cyjoelchen</span><span class="o">/</span><span class="nv">php</span><span class="o">-</span><span class="nv">sweph</span>
+<span class="nv">pushd</span> <span class="nv">php</span><span class="o">-</span><span class="nv">sweph</span>
+<span class="nv">phpize</span>
+.<span class="o">/</span><span class="nv">configure</span>  <span class="o">--</span><span class="nv">enable</span><span class="o">-</span><span class="nv">sweph</span>
+<span class="nv">make</span>
+<span class="nv">rm</span> $<span class="nv">LIBDIR</span><span class="o">/</span><span class="nv">libswe</span>.<span class="nv">a</span> $<span class="nv">INCLUDEDIR</span><span class="o">/</span>{<span class="nv">sweodef</span>.<span class="nv">h</span>,<span class="nv">swephexp</span>.<span class="nv">h</span>}
+<span class="nv">ln</span> <span class="o">-</span><span class="nv">sf</span> <span class="mh">$B</span><span class="nv">UILD</span><span class="o">/</span><span class="nv">php</span><span class="o">-</span><span class="nv">sweph</span><span class="o">/</span><span class="nv">modules</span><span class="o">/</span><span class="nv">sweph</span>.<span class="nv">so</span> $<span class="nv">PHPMODDIR</span>
+<span class="nv">cat</span> <span class="o">&gt;/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">php</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">sweph</span>.<span class="nv">ini</span> <span class="o">&lt;&lt;</span><span class="nv">EOF</span>
+<span class="nv">extension</span><span class="o">=</span><span class="nv">sweph</span>.<span class="nv">so</span>
+<span class="nv">EOF</span>
+<span class="nv">php</span> <span class="o">-</span><span class="nv">m</span> <span class="o">|</span> <span class="nv">grep</span> <span class="nv">sweph</span>
+</code></pre></div><p>There are <a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

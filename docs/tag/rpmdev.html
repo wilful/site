@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - rpmdev</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/install-setting-graphite.html">"Установка и настройка Graphite WebApp через RPM"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-03-05T11:39:53+03:00">
+                Published: Thu 05 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/centos.html">centos</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> <a href="https://srv-nix.com/tag/rpmdev.html">rpmdev</a> </p>
+</footer><!-- /.post-info --><p>Хочется поделиться старой, но от этого не менее <a href="http://www.rampmeupscotty.com/blog/2012/08/07/installing-graphite-on-centos-6-dot-2/">хорошей и полезной заметкой</a>, автор которой рассказывает, как можно установить <a href="http://graphite.wikidot.com/documentation">Graphite</a> в дистрибутиве CentOS, используя для этого штатные rpm-tools.</p>
+<p>Статья замечательна еще тем, что по сути в радиусе досигаемости гугла (менее 5 страницы поиска) она единственная.</p>
+<p>И я, к сожалению, не нашел в <a href="http://graphite.wikidot.com/documentation">официальной документации</a> раздела, в котором была бы описана данная процедура. Но она есть! И на момент написания этого поста отлично работает!</p>
+<p>Как я уже говорил, статья не блещет новизной, и поэтому будем считать этот пост свободным переводом оригинальной статьи автора с дополнениями и правками от меня.</p>
+<p>Первым делом ставим все необходимые для сборки пакеты:</p>
+<div class="highlight"><pre><span></span><code><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">gcc</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="n">curl</span> <span class="n">curl</span><span class="o">-</span><span class="n">devel</span> <span class="n">openssl</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">python</span> <span class="n">python</span><span class="o">-</span><span class="n">ldap</span> <span class="n">python</span><span class="o">-</span><span class="n">memcached</span> <span class="n">python</span><span class="o">-</span><span class="n">sqlite2</span> <span class="n">pycairo</span> <span class="n">python</span><span class="o">-</span><span class="n">twisted</span> <span class="n">Django</span> <span class="n">django</span><span class="o">-</span><span class="n">tagging</span> <span class="n">bitmap</span> <span class="n">bitmap</span><span class="o">-</span><span class="n">fonts</span> <span class="n">python</span><span class="o">-</span><span class="n">devel</span> <span class="n">glibc</span><span class="o">-</span><span class="n">devel</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">openssl</span><span class="o">-</span><span class="n">devel</span> <span class="n">python</span><span class="o">-</span><span class="n">zope</span><span class="o">-</span><span class="n">interface</span> <span class="n">httpd</span> <span class="n">memcached</span> <span class="n">mod_wsgi</span> <span class="n">rpmdevtools</span>
+</code></pre></div>
+
+<p>!! Важно заметить: я выполняю все операции в изолированном контейнере LXC, по-этому я не парюсь с пользователями. Если у вас нет такой возможности, то необходимо подготовить окружение такое, как я писал раннее в <a href="http://srv-nix.com/linux/2014/04/04/build-nginx.html">статье о сборке Nginx</a> !!</p>
+<p>После установки приложений, я создаю дерево сборки от текущего пользователя и меняю текущий каталог:</p>
+<div class="highlight"><pre><span></span><code>rpmdev-setuptree
+SOURCE_DIR=&quot;~/rpmbuild/SOURCES/&quot;
+cd $SOURCE_DIR
+</code></pre></div>
+
+<p>Далее необходимо получить свежие исходные коды Graphite, Carbon и Whisper:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/graphite-project/graphite-web
+git clone https://github.com/graphite-project/carbon
+git clone https://github.com/graphite-project/whisper
+</code></pre></div>
+
+<p>В отличие от автора, я использую git репозитории, мне кажется, что такой способ установки и обновления более нагляден и удобен.</p>
+<p>Теперь переключим наши репозитории на нужные стабильные ветки (список доступных можно узнать командой 'git tag'):</p>
+<div class="highlight"><pre><span></span><code>STABLE=&#39;0.9.12&#39;
+cd graphite-web
+git checkout tags/$STABLE
+</code></pre></div>
+
+<p>Теперь можно приступить к сборке SOURCE RPM. </p>
+<div class="highlight"><pre><span></span><code>WHISPER_DIR=&quot;$SOURCE_DIR/whisper&quot;
+CARBON_DIR=&quot;$SOURCE_DIR/carbon&quot;
+GRAPHITE_DIR=&quot;$SOURCE_DIR/graphite-web&quot;
+pushd $WHISPER_DIR
+python setup.py bdist_rpm
+rpm -ivh dist/whisper-*.src.rpm
+pushd $CARBON_DIR
+python setup.py bdist_rpm
+rpm -ivh dist/carbon-*.src.rpm
+pushd $GRAPHITE_DIR
+python setup.py bdist_rpm
+rpm -ivh dist/graphite-web-$STABLE*.src.rpm
+</code></pre></div>
+
+<p>В результате выполнения команд мы получим src.rpm пакеты. В конце сборки каждого пакета вывод должен быть примерно таким:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Executing</span><span class="p">(</span><span class="o">--</span><span class="n">clean</span><span class="p">):</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">rpm</span><span class="o">-</span><span class="n">tmp</span><span class="o">.</span><span class="n">raj2Ji</span>
+<span class="o">+</span> <span class="n">umask</span> <span class="mi">022</span>
+<span class="o">+</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">rpmbuild</span><span class="o">/</span><span class="n">SOURCES</span><span class="o">/</span><span class="n">graphite</span><span class="o">-</span><span class="n">web</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="o">.</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">rpm</span><span class="o">/</span><span class="n">BUILD</span>
+<span class="o">+</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">graphite</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="mf">0.9</span><span class="o">.</span><span class="mi">12</span>
+<span class="o">+</span> <span class="n">exit</span> <span class="mi">0</span>
+<span class="n">moving</span> <span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="o">.</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">rpm</span><span class="o">/</span><span class="n">SRPMS</span><span class="o">/</span><span class="n">graphite</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="mf">0.9</span><span class="o">.</span><span class="mi">12</span><span class="o">-</span><span class="mf">1.</span><span class="n">src</span><span class="o">.</span><span class="n">rpm</span> <span class="o">-&gt;</span> <span class="n">dist</span>
+<span class="n">moving</span> <span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="o">.</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">rpm</span><span class="o">/</span><span class="n">RPMS</span><span class="o">/</span><span class="n">noarch</span><span class="o">/</span><span class="n">graphite</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="mf">0.9</span><span class="o">.</span><span class="mi">12</span><span class="o">-</span><span class="mf">1.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span> <span class="o">-&gt;</span> <span class="n">dist</span>
+</code></pre></div>
+
+<p>В результате в сборочной директории сервера мы получим архивы с исходниками и SPEC файлы:</p>
+<div class="highlight"><pre><span></span><code>ls -l ~/rpmbuild/SPECS
+carbon.spec
+graphite-web.spec
+whisper.spec
+</code></pre></div>
+
+<p>Сборка исходных кодов у меня прошла без каких-либо затруднений, выполнял как обычно:</p>
+<div class="highlight"><pre><span></span><code>cd ~/rpmbuild/SPECS
+rpmbuild -ba carbon.spec
+rpmbuild -ba whisper.spec
+rpmbuild -ba graphite-web.spec
+</code></pre></div>
+
+<p>Теперь можно установить полученные в ~/rpmbuild/RPMS/ пакеты в систему, устанавливать нужно начиная с Whisper</p>
+<div class="highlight"><pre><span></span><code>yum --nogpgcheck localinstall -y ../RPMS/noarch/whisper*.noarch.rpm
+yum --nogpgcheck localinstall -y ../RPMS/noarch/carbon*.noarch.rpm
+yum --nogpgcheck localinstall -y ../RPMS/noarch/graphite-web*.noarch.rpm
+</code></pre></div>
+
+<p>Нет времени дописать статью. Продолжение будет после выхода Half-Life 3...</p><p>There are <a href="https://srv-nix.com/install-setting-graphite.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

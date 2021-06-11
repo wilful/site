@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - puppet</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html">"Puppet dashboard [pending tasks] - накопил уже мужик!"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-03-25T18:16:25+06:00">
+                Published: Tue 25 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/puppet.html">puppet</a> <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/error.html">error</a> </p>
+</footer><!-- /.post-info --><p>Puppet Dashboard состоит из двух частей - это собственно рельсовый веб движок (puppet-dashboard для CentOS) и демон собирающий статистику puppet-dashboard-worker. Со вторым у меня получилась неприятная ситуация: он просто перестал обрабатывать поступающие запросы на обновление данных. Как выяснилось позже - это происходило из-за одного проблемного запроса, который не позволял демону пройти до конца очереди. На тот момент очередь уже состояла из более чем 6000 запросов.</p>
+<p>Итак, диагностика проблемы</p>
+<ul>
+<li>На вебинтерфейсе скапливаются запросы "pending tasks"</li>
+<li>Статус серверов стал "Unresponsive"</li>
+<li>Ощущение, что что-то не так...</li>
+</ul>
+<p>Логи для коллектора репортов находятся в /usr/share/puppet-dashboard-worker/log. Мне удалось разглядеть в них ошибку содержащую примерно такой текст:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ActiveRecord</span><span class="o">::</span><span class="n">StatementInvalid</span><span class="o">:</span> <span class="n">Mysql</span><span class="o">::</span><span class="k">Error</span><span class="o">:</span> <span class="k">Data</span> <span class="n">too</span> <span class="kt">long</span> <span class="k">for</span> <span class="k">column</span> <span class="s1">&#39;details&#39;</span> <span class="k">at</span> <span class="k">row</span> <span class="mi">1</span><span class="o">:</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n n-Quoted">`delayed_job_failures`</span>
+</code></pre></div>
+
+<p>Запрос который необходимо было выполнить превышал допустимый размер в поле таблицы. Для исправления воспользовался следующим запросом:</p>
+<div class="highlight"><pre><span></span><code>ALTER TABLE REPORT_LOGS CHANGE COLUMN MESSAGE MESSAGE VARCHAR(65536);
+</code></pre></div>
+
+<p>Для чистоты эксперимента я почистил всю очередь запросов:</p>
+<div class="highlight"><pre><span></span><code>service puppet-dashboard-workers stop
+cd /usr/share/puppet-dashboard
+rm -f spool/*
+rake jobs:clear RAILS_ENV=production
+service puppet-dashboard-workers start
+</code></pre></div><p>There are <a href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html" rel="bookmark"
+                           title="Permalink to "Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."">"Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T09:00:00+00:00">
+                Published: Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/puppet.html">puppet</a> </p>
+</footer><!-- /.post-info -->                <p>Проблема возникла на одной из нод puppet после смены hostname и генерации нового сертификата SSL.</p>
+<div class="highlight"><pre><span></span><code><span class="n">warning</span><span class="o">:</span> <span class="n">peer</span> <span class="n">certificate</span> <span class="n">won</span><span class="s1">&#39;t be verified in this SSL session</span>
+<span class="s1">info: Caching certificate for node01.wilful.org</span>
+<span class="s1">info: Retrieving plugin</span>
+<span class="s1">info: Caching certificate_revocation_list for ca</span>
+<span class="s1">err: /File[/var/lib/puppet/lib]: Failed to generate …</span></code></pre></div>
+                <a class="readmore" href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html">read more</a>
+<p>There are <a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

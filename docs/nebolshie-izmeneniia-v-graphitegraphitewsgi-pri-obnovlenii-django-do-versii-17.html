@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>"Небольшие изменения в Graphite(graphite.wsgi) при обновлении Django до версии 1.7"</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+        <meta name="description" content="Запуск SGI для старта веб приложения Graphite начинается со скрипта инициализации в дирректории /usr/local/etc/graphite. Файл называется..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://srv-nix.com/nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html" rel="bookmark"
+           title="Permalink to "Небольшие изменения в Graphite(graphite.wsgi) при обновлении Django до версии 1.7"">"Небольшие изменения в Graphite(graphite.wsgi) при обновлении Django до версии 1.7"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-26T12:42:31+06:00">
+                Published: Fri 26 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/django.html">django</a> <a href="https://srv-nix.com/tag/graphite.html">graphite</a> </p>
+</footer><!-- /.post-info -->      <p>Запуск SGI для старта веб приложения <a href="http://graphite.wikidot.com/">Graphite</a> начинается со скрипта инициализации в дирректории /usr/local/etc/graphite.
+Файл называется graphite.wsgi.example и после установки порта <a href="http://graphite.wikidot.com/">Graphite</a> необходимо его вручную переименовать и соответственно
+при обновлении нужно учитывать, что обновится именно файл .example и все новшества и изменения будут в нём.</p>
+<!--more-->
+
+<p>После последнего обновления, graphite-web перестал у меня запускаться вот с такой, примерно, ошибкой:</p>
+<div class="highlight"><pre><span></span><code><span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python2.7/site-packages/django/apps/registry.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">131</span><span class="p">,</span> <span class="ow">in</span> <span class="n">check_models_ready</span>
+<span class="k">raise</span> <span class="n">AppRegistryNotReady</span><span class="p">(</span><span class="s2">&quot;Models aren&#39;t loaded yet.&quot;</span><span class="p">)</span>
+<span class="n">django</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">AppRegistryNotReady</span><span class="p">:</span> <span class="n">Models</span> <span class="n">aren</span><span class="s1">&#39;t loaded yet.</span>
+<span class="n">unable</span> <span class="n">to</span> <span class="n">load</span> <span class="n">app</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mountpoint</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">(</span><span class="n">callable</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">or</span> <span class="kn">import</span> <span class="nn">error</span><span class="p">)</span>
+<span class="o">***</span> <span class="n">no</span> <span class="n">app</span> <span class="n">loaded</span><span class="o">.</span> <span class="n">going</span> <span class="ow">in</span> <span class="n">full</span> <span class="n">dynamic</span> <span class="n">mode</span> <span class="o">***</span>
+<span class="o">***</span> <span class="n">uWSGI</span> <span class="ow">is</span> <span class="n">running</span> <span class="ow">in</span> <span class="n">multiple</span> <span class="n">interpreter</span> <span class="n">mode</span> <span class="o">***</span>
+</code></pre></div>
+
+<p>Причиной тому несколько обновленных строк в упомянутом выше файле, а именно вместо одной строчки:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django.core.handlers.wsgi</span>
+</code></pre></div>
+
+<p>Стало три строчки таких:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django</span>
+<span class="kn">import</span> <span class="nn">django.core.handlers.wsgi</span>
+<span class="n">django</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Добавляем в свою конфигурацию и перезапускаем uwsgi/apache/etc.</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'srv-nix-com';
+        var disqus_identifier = 'nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html';
+        var disqus_url = 'https://srv-nix.com/nebolshie-izmeneniia-v-graphitegraphitewsgi-pri-obnovlenii-django-do-versii-17.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//srv-nix-com.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

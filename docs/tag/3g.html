@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - 3g</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html">"Linux. 3G modem Huawei [E171]"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-03-21T09:00:00+00:00">
+                Published: Fri 21 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/linux.html">linux</a> <a href="https://srv-nix.com/tag/modem.html">modem</a> <a href="https://srv-nix.com/tag/3g.html">3g</a> </p>
+</footer><!-- /.post-info --><p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
+<p>Всё просто.
+Во-первых, нужно переключить его в режим модема. 
+Подключаем модем и смотрим его заводские маркеры:</p>
+<div class="highlight"><pre><span></span><code>#lsusb
+Bus 002 Device 009: ID 12d1:1446 Huawei Technologies Co., BLA-BLA-BLA
+
+12d1:1446 - Это как раз нужные нам значения.
+</code></pre></div>
+
+<p>Я заранее побеспокоился и установил необходимые пакеты, это </p>
+<div class="highlight"><pre><span></span><code>local/usb_modeswitch 1.2.5-2
+    Activating switchable USB devices on Linux.
+local/gnome-ppp 0.3.23-8
+    A GNOME 2 WvDial frontend
+</code></pre></div>
+
+<p>В пакет usb_modeswitch входят наборы пресетов для переключения девайса в режим модема, они находятся в папке /usr/share/usb_modeswitch/[МАРКЕР из lsusb]
+Для включения модема вводим команду:</p>
+<div class="highlight"><pre><span></span><code>usb_modeswitch  -v 0x12d1 -p 0x1446 -c /usr/share/usb_modeswitch/12d1\:1446
+</code></pre></div>
+
+<p>И снова проверяем вывод lsusb:</p>
+<div class="highlight"><pre><span></span><code>#lsusb
+Bus 002 Device 009: ID 12d1:1436 Huawei Technologies Co., BLA-BLA-BLA
+</code></pre></div>
+
+<p>Как видно из примера, значения изменились, что свидетельствует об успешном переключении устройства. Также должно было появиться устройство вида:</p>
+<div class="highlight"><pre><span></span><code>/dev/ttyUSB[0-9+]
+</code></pre></div>
+
+<p>Теперь можно запустить gnome-ppp, указать настройки и подключиться к сети.
+Настройки для Beeline</p>
+<div class="highlight"><pre><span></span><code>Логин  beeline
+Пароль beeline
+Номер  *99#
+</code></pre></div><p>There are <a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

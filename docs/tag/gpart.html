@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>YODA - gpart</title>
+        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://srv-nix.com/">YODA</a></h1>
+                <nav><ul>
+                    <li><a href="https://srv-nix.com/category/freebsd.html">freebsd</a></li>
+                    <li><a href="https://srv-nix.com/category/games.html">games</a></li>
+                    <li><a href="https://srv-nix.com/category/linux.html">linux</a></li>
+                    <li><a href="https://srv-nix.com/category/macos.html">MacOS</a></li>
+                    <li><a href="https://srv-nix.com/category/other.html">other</a></li>
+                    <li><a href="https://srv-nix.com/category/shell.html">shell</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://srv-nix.com/ispolzovanie-gpart-na-servere-freebsd-sparc64-sun-v215.html">"Использование gpart на сервере FreeBSD (Sparc64 Sun v215)"</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T00:56:25+06:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://srv-nix.com/author/a-semenov.html">A. Semenov</a>
+        </address>
+<p>In <a href="https://srv-nix.com/category/freebsd.html">freebsd</a>.</p>
+<p>tags: <a href="https://srv-nix.com/tag/freebsd.html">freebsd</a> <a href="https://srv-nix.com/tag/gpart.html">gpart</a> <a href="https://srv-nix.com/tag/sparc.html">sparc</a> </p>
+</footer><!-- /.post-info --><p>Собственно всё как в мануалах, для разметки используем VTOC8.</p>
+<div class="highlight"><pre><span></span><code>gpart create -s VTOC8 -f x /dev/xxx
+gpart commit
+</code></pre></div>
+
+<p>У меня получилось вот так</p>
+<div class="highlight"><pre><span></span><code>#<span class="nv">gpart</span> <span class="k">show</span>
+<span class="o">=&gt;</span>        <span class="mi">0</span>  <span class="mi">143203410</span>  <span class="nv">da0</span>  <span class="nv">VTOC8</span>  <span class="ss">(</span><span class="mi">68</span><span class="nv">G</span><span class="ss">)</span>
+          <span class="mi">0</span>   <span class="mi">10474380</span>    <span class="mi">1</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">ufs</span>  <span class="ss">(</span><span class="mi">5</span><span class="nv">G</span><span class="ss">)</span>
+   <span class="mi">10474380</span>   <span class="mi">16771860</span>    <span class="mi">2</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">swap</span>  <span class="ss">(</span><span class="mi">8</span><span class="nv">G</span><span class="ss">)</span>
+   <span class="mi">27246240</span>  <span class="mi">111137670</span>    <span class="mi">4</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">ufs</span>  <span class="ss">(</span><span class="mi">53</span><span class="nv">G</span><span class="ss">)</span>
+  <span class="mi">138383910</span>    <span class="mi">4674915</span>    <span class="mi">5</span>  <span class="nv">freebsd</span><span class="o">-</span><span class="nv">ufs</span>  <span class="ss">(</span><span class="mi">2</span>.<span class="mi">2</span><span class="nv">G</span><span class="ss">)</span>
+  <span class="mi">143058825</span>     <span class="mi">144585</span>       <span class="o">-</span> <span class="nv">free</span> <span class="o">-</span>  <span class="ss">(</span><span class="mi">70</span><span class="nv">M</span><span class="ss">)</span>
+</code></pre></div><p>There are <a href="https://srv-nix.com/ispolzovanie-gpart-na-servere-freebsd-sparc64-sun-v215.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'srv-nix-com';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
