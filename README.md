@@ -13,4 +13,4 @@
 
 ### Simple run
 
-    THEME=waterspill-en; pushd src/; make html OUTPUTDIR=/srv/srv-nix.com/output/ PELICANOPTS="-t ../themes/${THEME}"; popd;
+    pelican -s src/pelicanconf.py src/content -o docs/
