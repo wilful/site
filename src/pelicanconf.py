@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'wilful'
+AUTHOR = 'Andrey Semenov'
 SITENAME = 'Srv-Nix'
+SITESUBTITLE = 'A personal blog.'
 SITEURL = 'https://srv-nix.com'
+TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Moscow'
 
 DEFAULT_LANG = 'en'
 
@@ -20,9 +21,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
 DISQUS_SITENAME = 'srv-nix-com'
+GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 
 # Blogroll
-LINKS = ()
+LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 
 # Social widget
 SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
