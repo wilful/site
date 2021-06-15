@@ -14,9 +14,11 @@ build:
 	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME)
 
 commit:
+ifeq ($(MESSAGE),)
 	@echo "Enter commit message: "; \
-    read MESSAGE; \
-	git add .; \
+    read MESSAGE;
+endif
+	@git add .; \
     git ci -m '$$(MESSAGE)'
 
 push:
