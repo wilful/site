@@ -49,21 +49,11 @@ li.tag-4 {
     <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
 </head>
 <body>
-<div id="vk_api_transport"></div>
 <script type="text/javascript">
-  window.vkAsyncInit = function() {
-    VK.init({
-      apiId: 7880860
-    });
-  };
-
-  setTimeout(function() {
-    var el = document.createElement("script");
-    el.type = "text/javascript";
-    el.src = "https://vk.com/js/api/openapi.js?169";
-    el.async = true;
-    document.getElementById("vk_api_transport").appendChild(el);
-  }, 0);
+  VK.init({
+    apiId: 7880860,
+    onlyWidgets: true
+  });
 </script>
 <div class="container">
 	<div class="page-header">
