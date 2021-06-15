@@ -20,7 +20,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
-DISQUS_SITENAME = 'srv-nix-com'
+#DISQUS_SITENAME = 'srv-nix-com'
 VK_SITENAME = 'Srv-Nix'
 GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 
