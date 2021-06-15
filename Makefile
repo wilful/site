@@ -19,3 +19,6 @@ commit:
 
 push:
 	@$(GIT_CMD) push
+
+post:
+	bash bin/new_post
