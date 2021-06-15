@@ -25,7 +25,9 @@ DISQUS_SITENAME = 'srv-nix-com'
 LINKS = ()
 
 # Social widget
-SOCIAL = ()
+SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
+          ('VK', 'https://vk.com/srvnix'),
+          ('github', 'https://github.com/wilful/'),)
 
 DEFAULT_PAGINATION = 70
 
