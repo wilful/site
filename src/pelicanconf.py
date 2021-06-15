@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'wilful'
-SITENAME = 'YODA'
+SITENAME = 'Srv-Nix'
 SITEURL = 'https://srv-nix.com'
 
 PATH = 'content'

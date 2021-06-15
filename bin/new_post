@@ -15,4 +15,4 @@ EOF
 vim $FNAME
 echo "New post created as [${FNAME}]"
 
-#pelican -s src/pelicanconf.py src/content -o docs/
+#pelican -s src/pelicanconf.py src/content -o docs/ -t themes/aboutwilson/
