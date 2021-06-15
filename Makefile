@@ -14,8 +14,8 @@ build:
 	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME)
 
 commit:
-	$(GIT_CMD) add .
-	$(GIT_CMD) ci -a
+	@$(GIT_CMD) add .
+	@$(GIT_CMD) ci -a
 
 push:
-	git push
+	@$(GIT_CMD) push
