@@ -21,6 +21,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
 DISQUS_SITENAME = 'srv-nix-com'
+VK_SITENAME = 'Srv-Nix'
 GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 
 # Blogroll
@@ -32,6 +33,8 @@ SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
           ('github', 'https://github.com/wilful/'),)
 
 DEFAULT_PAGINATION = 70
+
+THEME_TEMPLATES_OVERRIDES = ['src/templates']
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
