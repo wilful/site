@@ -28,59 +28,14 @@
         
 
             <header>
-            <h1><a href="https://srv-nix.com" id="site-title">  </a>  <a href="https://srv-nix.com/kak-sozdat-logo-dlia-oboznacheniia-otriada-v-dayz-arma-ii-mod.html" id="page-title">"Как создать LOGO для обозначения отряда в DayZ (ARMA II mod)"</a></h1>
-<time datetime="2014-03-26T01:07:25+06:00">Wed 26 March 2014</time>            </header>
+            <h1><a href="https://srv-nix.com" id="site-title">  </a>  <a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html" id="page-title">"Опасно играть под мухой"</a></h1>
+<time datetime="2014-03-26T00:58:01+06:00">Wed 26 March 2014</time>            </header>
 
             <article>
-                <p>С целью идентификации вашего отряда в ARMAII предусмотрена возможность добавления
-на бойца и технику уникальной метки или логотипа. Таким образом ваши друзья, или всё же враги, могут узнавать вас по картинке. К сожалению, в моде DayZ работает только логотип на используемой технике.</p>
-<p>Создаем XML-файл "squad.xml" примерно такого содержания:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;code&gt;</span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE squad SYSTEM &quot;squad.dtd&quot;&gt;</span>
-<span class="cp">&lt;?xml-stylesheet href=&quot;squad.xsl?&quot; type=&quot;text/xsl&quot;?&gt;</span>
-<span class="nt">&lt;squad</span> <span class="na">nick=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- то что вы хотите увидеть в квадратных скобках у ника --&gt;</span>
-    <span class="nt">&lt;name&gt;&lt;/name&gt;</span> <span class="c">&lt;!-- имя клана/отряда (полностью) --&gt;</span>
-    <span class="nt">&lt;email&gt;&lt;/email&gt;</span> <span class="c">&lt;!-- официальный ящик отряда (или лидера) --&gt;</span>
-    <span class="nt">&lt;web&gt;&lt;/web&gt;</span> <span class="c">&lt;!-- вебсайт отряда --&gt;</span>
-    <span class="nt">&lt;picture&gt;&lt;/picture&gt;</span> <span class="c">&lt;!-- лого отряда. --&gt;</span>
-    <span class="nt">&lt;Title&gt;&lt;/Title&gt;</span> <span class="c">&lt;!-- описание отряда в окне информации --&gt;</span>
-<span class="nt">&lt;member</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">nick=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- PID участника отряда и его имя --&gt;</span>
-        <span class="nt">&lt;name&gt;&lt;/name&gt;</span> <span class="c">&lt;!-- опционально: реальное имя или снова ник игрока --&gt;</span>
-        <span class="nt">&lt;email&gt;&lt;/email&gt;</span> <span class="c">&lt;!-- опционально: почта участника отряда --&gt;</span>
-        <span class="nt">&lt;icq&gt;&lt;/icq&gt;</span> <span class="c">&lt;!-- опционально: ICQ, я использую для отображения своего скайпа --&gt;</span>
-        <span class="nt">&lt;remark&gt;&lt;/remark&gt;</span> <span class="c">&lt;!-- &quot;Комментарий игрока&quot; всё что вы хотели бы сказать. Не отмечается в игре на текстурах, только в информации игрока --&gt;</span>
-    <span class="nt">&lt;/member&gt;</span>
-<span class="nt">&lt;/squad&gt;&lt;/code&gt;</span>
-</code></pre></div>
-
-<p>Теперь у вас будет имя отряда и подписи для техники, а так же у имени вашего бойца в квадратных скобках появится аббревиатура отряда указанная в "squad nick=". Далее самое сложное, если вы хотите получить лого на технике нужно скачать и установить программу по <a href="http://www.armaholic.com/page.php?id=1563">ссылке</a>.</p>
-<p>Теперь редактируем картинку в соответствии с описанием в <a href="http://community.bistudio.com/wiki/squad.xml#How_to_create_a_logo_for_the_use_with_.22squad.xml.22">ВиКи</a> (я рекомендую использовать свободную для использования программу <a href="http://gimp.ru/viewpage.php?page_id=8">GIMP</a>) и конвертируем в установленной программе TexView2. Далее необходимо все файлы выложить на открытый хостинг, например на <a href="https://www.dropbox.com/">dropbox</a>, и получить внешнюю ссылку на "squad.xml". Все файлы должны лежать на одном уровне с этим файлом. Полученную ссылку указываем в разделе URL окна настроек профиля в игре</p>
-<p>Почитать можно <a href="http://community.bistudio.com/wiki/squad.xml">тут</a>, <a href="http://www.armaholic.com/forums.php?m=posts&amp;q=13927">тут</a></p>
-<p>Все файлы можно скачать <a href="http://dl.dropbox.com/u/5034281/ARMA/example.tgz">тут</a></p>
-<p>Для самых маленьких:</p>
-<ol>
-<li><a href="https://www.dropbox.com/s/bq3j4gc61ja46ks/DayZ_tutorial.webm?dl=0">Создание</a> картинки в GIMP</li>
-<li><a href="https://www.dropbox.com/s/0duiij5cxkm5o0x/DayZ_tutorial_02.webm?dl=0">Добавление</a> и сохранение в TexView2</li>
-<li>
-<p><a href="https://www.dropbox.com/s/2q9aytptwxw27lm/DayZ_tutorial_01.webm?dl=0">Добавление</a> файлов на Dropbox</p>
-</li>
-<li>
-<p>Регистрируемся на сайте https://www.dropbox.com</p>
-</li>
-<li>После регистрации на вашем аккаунте будет несколько ГБ свободного места и папка Public</li>
-<li>Именно в эту папку нужно разместить файлы полученные выше (я создал в публичной папке папку с именем "ARMAII")</li>
-<li>Далее кликаем правой кнопкой мыши по файлу squad.xml и выбираем "Copy publik link"</li>
-<li>Ссылка переместится в буфер обмена, заходим в игру и вставляем ссылку в поле URL</li>
-</ol><p>There are <a href="https://srv-nix.com/kak-sozdat-logo-dlia-oboznacheniia-otriada-v-dayz-arma-ii-mod.html#disqus_thread">comments</a>.</p>            </article>
+                <iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe><p>There are <a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html#disqus_thread">comments</a>.</p>            </article>
                 <section id="article-list">
                     <h2>All posts</h2>
                     <ol>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html" rel="bookmark" title="Permalink to "Опасно играть под мухой"">"Опасно играть под мухой"</a></li>
         </ol>
         </section><!-- #article-list -->
         

@@ -28,70 +28,75 @@
         
 
             <header>
-            <h1><a href="https://srv-nix.com" id="site-title">  </a>  <a href="https://srv-nix.com/pochemu-ia-nenavizhu-skype-net-alternativ.html" id="page-title">"Почему я ненавижу Skype? Нет альтернатив?"</a></h1>
-<time datetime="2017-02-01T16:55:39+03:00">Wed 01 February 2017</time>            </header>
+            <h1><a href="https://srv-nix.com" id="site-title">  </a>  <a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html" id="page-title">"Запуск скриптов с блокировкой (lock-file)"</a></h1>
+<time datetime="2015-12-02T07:07:46+03:00">Wed 02 December 2015</time>            </header>
 
             <article>
-                <p>Несколько "мелких" причин ненавидеть Skype:</p>
-<ul>
-<li>
-<p>Первый прикол обнаружился в Skype, когда я начал пользоваться его мобильной версией. В чем суть:
-Иногда бывают случаи, что Вас долго не было в скайпе или давно не запускали клиента на каком-то устройстве.
-После запуска мы видим огромное количество непрочитанных сообщений, которые нет никакого желания читать. Но при активации
-чата с такими сообщения мы попадаем не в конец переписки, а в то место, где начинаются непрочитанные сообщения и нет никакого явного
-способа переместится в конец, остаётся долго листать эти переписки. Но когда чатов больше десятка, а сообщений под сотни - в этом
-мало приятного.</p>
-</li>
-<li>
-<p>Теперь немного об этой самой прокрутке... Даже если я прокручиваю список на клиенте ПК, ссылки в тексте подгружаются ощутимо медленно,
-и получается что чат постоянно скачет и пляшет, прокрутка сбивается. Вообще ничего приятного.</p>
-</li>
-<li>
-<p>Я в 99% случаев использую режим "Занят". Потому что в данный режим позволяет мне не мучаться с настройками уведомлений этого скайпа.
-И в этом режиме нет отвратительных звуков входящих сообщений, которые порой летят по несколько штук в секунду. Всё было бы хорошо, но режим "Занят"
-работает только на уведомления и вызовы, если не ответить на вызов, то звук разрыва соединения может напугать своей внезапностью.</p>
-</li>
-</ul>
-<p>Альтернатив тьма.</p><p>There are <a href="https://srv-nix.com/pochemu-ia-nenavizhu-skype-net-alternativ.html#disqus_thread">comments</a>.</p>            </article>
+                <p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+: <span class="si">${</span><span class="nv">2</span><span class="p">?</span><span class="s2">&quot;Not enough parameters. Usage: </span><span class="nv">$FUNCNAME</span><span class="s2"> CMD SCRIPT [PARAMS]&quot;</span><span class="si">}</span>
+
+<span class="nv">BIN</span><span class="o">=</span><span class="k">$(</span>which bash<span class="k">)</span>
+<span class="nv">CMD</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
+<span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
+<span class="nv">SCRIPT_PARAMS</span><span class="o">=</span><span class="nv">$@</span>
+<span class="nv">SCRIPT_NAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$SCRIPT</span><span class="k">)</span>
+<span class="o">[[</span> ! <span class="nv">$USER</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">USER</span><span class="o">=</span>nobody
+<span class="nv">LOCKDIR</span><span class="o">=</span><span class="s2">&quot;/tmp/locks-</span><span class="nv">$USER</span><span class="s2">&quot;</span>
+<span class="nv">STALE_AGE</span><span class="o">=</span><span class="m">4</span> <span class="c1">#hours</span>
+<span class="nv">PIDFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/pid
+<span class="nv">LOCKFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/lock
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/log
+
+
+fail<span class="o">()</span> <span class="o">{</span> <span class="nb">local</span> <span class="nv">m</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$m</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span> <span class="o">}</span>
+clean<span class="o">()</span> <span class="o">{</span> <span class="nb">local</span> <span class="nv">f</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> rm -rf <span class="nv">$f</span><span class="p">;</span> <span class="o">}</span>
+
+<span class="o">[[</span> ! -d <span class="si">${</span><span class="nv">LOCKDIR</span><span class="si">}</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    <span class="k">if</span> ! mkdir <span class="si">${</span><span class="nv">LOCKDIR</span><span class="si">}</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t create locks dir [</span><span class="nv">$LOCKDIR</span><span class="s2">]&quot;</span>
+    <span class="k">fi</span>
+
+<span class="k">if</span> mkdir <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span> <span class="p">&amp;</span>&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+    <span class="nb">eval</span> <span class="s2">&quot;</span><span class="nv">$CMD</span><span class="s2"> </span><span class="nv">$SCRIPT</span><span class="s2"> </span><span class="nv">$SCRIPT_PARAMS</span><span class="s2"> &amp;&quot;</span>  <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;<span class="nv">$LOGFILE</span> <span class="c1">#\</span>
+        <span class="o">||</span> fail <span class="s2">&quot;Error while starting script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span>
+    <span class="nv">PID</span><span class="o">=</span><span class="nv">$!</span>
+    <span class="nb">echo</span> <span class="nv">$!</span>&gt;<span class="nv">$PIDFILE</span>
+    touch <span class="nv">$LOCKFILE</span>
+    <span class="k">if</span> <span class="nb">wait</span> <span class="s2">&quot;</span><span class="nv">$PID</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Success&quot;</span> <span class="p">&amp;</span>&gt;<span class="nv">$LOGFILE</span>
+        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
+    <span class="k">else</span>
+        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Something went wrong, see log: </span><span class="nv">$LOGFILE</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+    <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">else</span>
+    <span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$PIDFILE</span><span class="k">)</span>
+    <span class="k">if</span> ! <span class="nb">kill</span> -s <span class="m">0</span> <span class="nv">$PID</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Process not found, try to restarting </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
+        <span class="nv">$BIN</span> <span class="nv">$0</span> <span class="nv">$CMD</span> <span class="nv">$SCRIPT</span> <span class="nv">$SCRIPT_PARAMS</span> <span class="o">&amp;&amp;</span>
+            <span class="nb">exit</span> <span class="m">0</span>
+        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t to start script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Process already run with pid </span><span class="nv">$PID</span><span class="s2">&quot;</span> <span class="p">&amp;</span>&gt;&gt;<span class="nv">$LOGFILE</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="k">$(($(</span>date +%s<span class="k">)</span> <span class="o">-</span> <span class="k">$(</span>stat -c %Y <span class="nv">$LOCKFILE</span><span class="k">)</span> <span class="k">))</span> -gt <span class="k">$((</span> <span class="nv">$STALE_AGE</span> <span class="o">*</span><span class="m">60</span> <span class="o">*</span><span class="m">60</span> <span class="k">))</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: File </span><span class="nv">$LOCKFILE</span><span class="s2"> staled, try to restart script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: killing </span><span class="nv">$PID</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+        <span class="k">if</span> ! <span class="nb">kill</span> -15 <span class="nv">$PID</span> <span class="p">&amp;</span>&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+            fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t killing process with pid </span><span class="nv">$PID</span><span class="s2">&quot;</span>
+        <span class="k">fi</span>
+        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Removing stale lock folder: </span><span class="nv">$LOCKDIR</span><span class="s2">/</span><span class="nv">$SCRIPT_NAME</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
+        <span class="nv">$BIN</span> <span class="nv">$0</span> <span class="nv">$CMD</span> <span class="nv">$SCRIPT</span> <span class="nv">$SCRIPT_PARAMS</span>
+    <span class="k">fi</span>
+<span class="k">fi</span>
+</code></pre></div><p>There are <a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html#disqus_thread">comments</a>.</p>            </article>
                 <section id="article-list">
                     <h2>All posts</h2>
                     <ol>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/ustanovka-na-centos-collectd-s-plaginom-dlia-graphite.html" rel="bookmark" title="Permalink to "Установка на CentOS Collectd с плагином для Graphite"">"Установка на CentOS Collectd с плагином для Graphite"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html" rel="bookmark" title="Permalink to "Запуск скриптов с блокировкой (lock-file)"">"Запуск скриптов с блокировкой (lock-file)"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/generatsiia-novogo-tokena-dlia-teamspeak3.html" rel="bookmark" title="Permalink to "Генерация нового токена для TeamSpeak3"">"Генерация нового токена для TeamSpeak3"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/ustanovka-redmine-v-izolirovannom-konteinere-lxc.html" rel="bookmark" title="Permalink to "Установка Redmine в изолированном контейнере LXC"">"Установка Redmine в изолированном контейнере LXC"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/install-setting-graphite.html" rel="bookmark" title="Permalink to "Установка и настройка Graphite WebApp через RPM"">"Установка и настройка Graphite WebApp через RPM"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/centos-upgrade-zabbix-s-versii-18-do-20.html" rel="bookmark" title="Permalink to "CentOS. Upgrade zabbix с версии 1.8 до 2.0"">"CentOS. Upgrade zabbix с версии 1.8 до 2.0"</a></li>
         </ol>
         </section><!-- #article-list -->
         
@@ -109,55 +114,7 @@
         
 
  
-            <li><a href="https://srv-nix.com/zabbix-sbros-parolia-administratora-i-otkliuchenie-ldap.html" rel="bookmark" title="Permalink to "Zabbix. Сброс пароля администратора и отключение LDAP"">"Zabbix. Сброс пароля администратора и отключение LDAP"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/centos-nastroika-coredump-dlia-apache.html" rel="bookmark" title="Permalink to "CentOS. Настройка CoreDump для apache"">"CentOS. Настройка CoreDump для apache"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/puppet-dashboard-pending-tasks-nakopil-uzhe-muzhik.html" rel="bookmark" title="Permalink to "Puppet dashboard [pending tasks] - накопил уже мужик!"">"Puppet dashboard [pending tasks] - накопил уже мужик!"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/pishem-svoi-modul-dlia-wilshell-kratkoe-howto.html" rel="bookmark" title="Permalink to "Пишем свой модуль для wilshell, краткое HOWTO"">"Пишем свой модуль для wilshell, краткое HOWTO"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/prosteishaia-nastroika-servera-ntpd-na-centos-6.html" rel="bookmark" title="Permalink to "Простейшая настройка сервера NTPD на CentOS 6"">"Простейшая настройка сервера NTPD на CentOS 6"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/puppet-oshibka-verifikatsii-kliucha-shifrovaniia-failed-to-generate-additional-resources-using-eval_generate.html" rel="bookmark" title="Permalink to "Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."">"Puppet. Ошибка верификации ключа шифрования. Failed to generate additional resources using 'eval_generate'...."</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/centos-sssd-i-openldap.html" rel="bookmark" title="Permalink to "CentOS. SSSD и OpenLDAP"">"CentOS. SSSD и OpenLDAP"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
             <li><a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html" rel="bookmark" title="Permalink to "Linux. 3G modem Huawei [E171]"">"Linux. 3G modem Huawei [E171]"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-        
-
- 
-            <li><a href="https://srv-nix.com/nastroika-servera-i-klienta-openldap-na-ispolzovanie-tlsssl-soedinenii-pod-centos-6.html" rel="bookmark" title="Permalink to "Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"">"Настройка сервера и клиента OpenLDAP на использование TLS/SSL соединений под CentOS 6"</a></li>
         </ol>
         </section><!-- #article-list -->
             </div>
