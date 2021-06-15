@@ -19,7 +19,7 @@ ifeq ($(MESSAGE),)
     read MESSAGE;
 endif
 	@git add .; \
-    git ci -m '$$(MESSAGE)'
+    git ci -m $(MESSAGE)
 
 push:
 	git push
