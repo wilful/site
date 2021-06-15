@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>YODA - A. Semenov</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://srv-nix.com/theme/css/main.css" type="text/css" />
-        <link href="https://srv-nix.com/" type="application/atom+xml" rel="alternate" title="YODA ATOM Feed" />
-
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="https://srv-nix.com/css/ie.css"/>
-                <script src="https://srv-nix.com/js/IE8.js" type="text/javascript"></script><![endif]-->
-
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="https://srv-nix.com/css/ie6.css"/><![endif]-->
-
+	<meta charset="utf-8">
+	<title>YODA <small>A. Semenov</small></title>
+	<meta name="description" content="Coding, scientific development, finance, data analysis, visualization, statistics, and machine learning">
+	<meta name="author" content="wilful">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="https://srv-nix.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="https://srv-nix.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="https://srv-nix.com/theme/css/local.css" rel="stylesheet">
+	<link href="https://srv-nix.com/theme/css/pygments.css" rel="stylesheet">
 </head>
-
 <body>
-	<div id="wrap" style="width:850px">
-	    <div id="container" style="width:560px">
-
-
-            <div class="entry">
+<div class="container">
+	<div class="page-header">
+		<h1><a href="https://srv-nix.com/">YODA</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
         
         
-
-            <header>
-            <h1><a href="https://srv-nix.com" id="site-title">  </a>  <a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html" id="page-title">"Запуск скриптов с блокировкой (lock-file)"</a></h1>
-<time datetime="2015-12-02T07:07:46+03:00">Wed 02 December 2015</time>            </header>
-
-            <article>
-                <p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html">
+		<h2 itemprop="name headline">"Запуск скриптов с блокировкой (lock-file)"</h2>
+	</a>
+	<time datetime="2015-12-02T07:07:46+03:00" itemprop="datePublished">Wed 02 December 2015</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 : <span class="si">${</span><span class="nv">2</span><span class="p">?</span><span class="s2">&quot;Not enough parameters. Usage: </span><span class="nv">$FUNCNAME</span><span class="s2"> CMD SCRIPT [PARAMS]&quot;</span><span class="si">}</span>
@@ -46,154 +49,409 @@
 <span class="nv">LOCKDIR</span><span class="o">=</span><span class="s2">&quot;/tmp/locks-</span><span class="nv">$USER</span><span class="s2">&quot;</span>
 <span class="nv">STALE_AGE</span><span class="o">=</span><span class="m">4</span> <span class="c1">#hours</span>
 <span class="nv">PIDFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/pid
-<span class="nv">LOCKFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/lock
-<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/log
-
-
-fail<span class="o">()</span> <span class="o">{</span> <span class="nb">local</span> <span class="nv">m</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$m</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span> <span class="o">}</span>
-clean<span class="o">()</span> <span class="o">{</span> <span class="nb">local</span> <span class="nv">f</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> rm -rf <span class="nv">$f</span><span class="p">;</span> <span class="o">}</span>
-
-<span class="o">[[</span> ! -d <span class="si">${</span><span class="nv">LOCKDIR</span><span class="si">}</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    <span class="k">if</span> ! mkdir <span class="si">${</span><span class="nv">LOCKDIR</span><span class="si">}</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
-        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t create locks dir [</span><span class="nv">$LOCKDIR</span><span class="s2">]&quot;</span>
-    <span class="k">fi</span>
-
-<span class="k">if</span> mkdir <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span> <span class="p">&amp;</span>&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
-    <span class="nb">eval</span> <span class="s2">&quot;</span><span class="nv">$CMD</span><span class="s2"> </span><span class="nv">$SCRIPT</span><span class="s2"> </span><span class="nv">$SCRIPT_PARAMS</span><span class="s2"> &amp;&quot;</span>  <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;<span class="nv">$LOGFILE</span> <span class="c1">#\</span>
-        <span class="o">||</span> fail <span class="s2">&quot;Error while starting script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span>
-    <span class="nv">PID</span><span class="o">=</span><span class="nv">$!</span>
-    <span class="nb">echo</span> <span class="nv">$!</span>&gt;<span class="nv">$PIDFILE</span>
-    touch <span class="nv">$LOCKFILE</span>
-    <span class="k">if</span> <span class="nb">wait</span> <span class="s2">&quot;</span><span class="nv">$PID</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Success&quot;</span> <span class="p">&amp;</span>&gt;<span class="nv">$LOGFILE</span>
-        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
-    <span class="k">else</span>
-        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Something went wrong, see log: </span><span class="nv">$LOGFILE</span><span class="s2">&quot;</span>
-    <span class="k">fi</span>
-    <span class="nb">exit</span> <span class="m">0</span>
-<span class="k">else</span>
-    <span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$PIDFILE</span><span class="k">)</span>
-    <span class="k">if</span> ! <span class="nb">kill</span> -s <span class="m">0</span> <span class="nv">$PID</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Process not found, try to restarting </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
-        <span class="nv">$BIN</span> <span class="nv">$0</span> <span class="nv">$CMD</span> <span class="nv">$SCRIPT</span> <span class="nv">$SCRIPT_PARAMS</span> <span class="o">&amp;&amp;</span>
-            <span class="nb">exit</span> <span class="m">0</span>
-        fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t to start script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span>
-    <span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Process already run with pid </span><span class="nv">$PID</span><span class="s2">&quot;</span> <span class="p">&amp;</span>&gt;&gt;<span class="nv">$LOGFILE</span>
-    <span class="k">fi</span>
-    <span class="k">if</span> <span class="o">[[</span> <span class="k">$(($(</span>date +%s<span class="k">)</span> <span class="o">-</span> <span class="k">$(</span>stat -c %Y <span class="nv">$LOCKFILE</span><span class="k">)</span> <span class="k">))</span> -gt <span class="k">$((</span> <span class="nv">$STALE_AGE</span> <span class="o">*</span><span class="m">60</span> <span class="o">*</span><span class="m">60</span> <span class="k">))</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: File </span><span class="nv">$LOCKFILE</span><span class="s2"> staled, try to restart script </span><span class="nv">$SCRIPT</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: killing </span><span class="nv">$PID</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-        <span class="k">if</span> ! <span class="nb">kill</span> -15 <span class="nv">$PID</span> <span class="p">&amp;</span>&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
-            fail <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Can&#39;t killing process with pid </span><span class="nv">$PID</span><span class="s2">&quot;</span>
-        <span class="k">fi</span>
-        <span class="nb">echo</span> <span class="s2">&quot;[</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">]: Removing stale lock folder: </span><span class="nv">$LOCKDIR</span><span class="s2">/</span><span class="nv">$SCRIPT_NAME</span><span class="s2">&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-        clean <span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>
-        <span class="nv">$BIN</span> <span class="nv">$0</span> <span class="nv">$CMD</span> <span class="nv">$SCRIPT</span> <span class="nv">$SCRIPT_PARAMS</span>
-    <span class="k">fi</span>
-<span class="k">fi</span>
-</code></pre></div><p>There are <a href="https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html#disqus_thread">comments</a>.</p>            </article>
-                <section id="article-list">
-                    <h2>All posts</h2>
-                    <ol>
-        </ol>
-        </section><!-- #article-list -->
-        
-
+<span class="nv">LOCKFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME …</span></code></pre></div></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/kak-vyigrat-dota-2.html" rel="bookmark" title="Permalink to "Как выиграть Dota 2"">"Как выиграть Dota 2"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/linux.html" rel="tag">linux</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/cron.html" rel="tag">cron</a>
+	</span>
+</div>
+<hr>
         
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/kak-vyigrat-dota-2.html">
+		<h2 itemprop="name headline">"Как выиграть Dota 2"</h2>
+	</a>
+	<time datetime="2014-12-08T17:47:07+06:00" itemprop="datePublished">Mon 08 December 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><!--more-->
 
+<iframe width="520" height="415" src="https://www.youtube.com/embed/fjFW7PNIOjM" frameborder="0" allowfullscreen> </iframe></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html" rel="bookmark" title="Permalink to "Прошивка телефона Nokia N9 на сток в Docker"">"Прошивка телефона Nokia N9 на сток в Docker"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/dota2.html" rel="tag">dota2</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/game.html" rel="tag">game</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/fun.html" rel="tag">fun</a>
+	</span>
+</div>
+<hr>
         
-
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html">
+		<h2 itemprop="name headline">"Прошивка телефона Nokia N9 на сток в Docker"</h2>
+	</a>
+	<time datetime="2014-11-10T11:44:56+06:00" itemprop="datePublished">Mon 10 November 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Сам по себе процес прошивки телефона на родную систему весьма тривиален, но в связи с тем, что больше не существует команды разработчиков ОС Meego, многие ресурсы, содержащие прошивки и программы, были заброшены. Я хочу восстановить справедливость и создать русскоязычный гайд по полному сбросу прошивки hartmattan на дефолтное состояние со всеми …</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html" rel="bookmark" title="Permalink to "Как восстановить заводскую прошивку роутера NetGear R6300v1"">"Как восстановить заводскую прошивку роутера NetGear R6300v1"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/meego.html" rel="tag">meego</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/nokian9.html" rel="tag">NokiaN9</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/firmware.html" rel="tag">firmware</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/hartmattan.html" rel="tag">hartmattan</a>
+	</span>
+</div>
+<hr>
         
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html">
+		<h2 itemprop="name headline">"Как восстановить заводскую прошивку роутера NetGear R6300v1"</h2>
+	</a>
+	<time datetime="2014-10-13T12:19:38+06:00" itemprop="datePublished">Mon 13 October 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Дорогие мученники!</p>
+<p>Если после неудачной попытки установить dd-wrt на сей замечательный <a href="http://support.netgear.ru/product/R6300v1">девайс</a>,
+устройство перестало проявлять характерные признаки жизни, то сегодня я вам расскажу, как вернуть 
+родную прошивку, магию зеленой лампочки и почему не нужен товарный чек. </p>
+<!--more-->
 
+<p>Итак,</p>
+<h2>Симптомы</h2>
+<ul>
+<li>Нет доступа к веб-интерфейсу</li>
+<li>Роутер находится в глубочайшей коме, не реагирует на …</li></ul></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/other.html" rel="category">other</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html" rel="bookmark" title="Permalink to "Этимологический словарь русского языка. Семенов А.В."">"Этимологический словарь русского языка. Семенов А.В."</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/router.html" rel="tag">router</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/howto.html" rel="tag">howto</a>
+	</span>
+</div>
+<hr>
         
-
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html">
+		<h2 itemprop="name headline">"Этимологический словарь русского языка. Семенов А.В."</h2>
+	</a>
+	<time datetime="2014-10-11T00:46:08+06:00" itemprop="datePublished">Sat 11 October 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>М.Н.Задорнов иногда в своих выступлениях использует этимологические значения слов, расшифровывая
+обыденные, казалось бы, слова и раскрывая незаметный за ними смысл. Например такие слова как: "здоровый", "невеста", "буржуй" и т.д.
+Я никогда не обращал внимания на эти слова и после очередного просмотра решил проверить эти
+слова по самому …</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/other.html" rel="category">other</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html" rel="bookmark" title="Permalink to "Сборка и установка модуля php-sweph"">"Сборка и установка модуля php-sweph"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/staf.html" rel="tag">staf</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/jk.html" rel="tag">jk</a>
+	</span>
+</div>
+<hr>
         
-
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html">
+		<h2 itemprop="name headline">"Сборка и установка модуля php-sweph"</h2>
+	</a>
+	<time datetime="2014-04-23T13:25:55+06:00" itemprop="datePublished">Wed 23 April 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Просто абзац</p>
+<p>UPD(16.01.17)...</p>
+<div class="highlight"><pre><span></span><code><span class="nv">yum</span> <span class="nv">install</span> <span class="nv">php</span><span class="o">-</span><span class="nv">devel</span> <span class="nv">php</span> <span class="nv">subversion</span> <span class="nv">wget</span> <span class="nv">tar</span> <span class="nv">gcc</span> <span class="nv">file</span> <span class="nv">make</span> <span class="nv">git</span> <span class="o">-</span><span class="nv">y</span>
+<span class="nv">BUILD</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">src</span>
+<span class="nv">SWEURL</span><span class="o">=</span><span class="nv">ftp</span>:<span class="o">//</span><span class="nv">ftp</span>.<span class="nv">astro</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">pub</span><span class="o">/</span><span class="nv">swisseph</span><span class="o">/</span><span class="nv">swe_unix_src_2</span>.<span class="mi">06</span>.<span class="nv">tar</span>.<span class="nv">gz</span>
+<span class="nv">INCLUDEDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="k">include</span>
+<span class="nv">LIBDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">lib</span>
+<span class="nv">PHPMODDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">lib64</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">modules</span>
+<span class="nv">pushd</span> <span class="mh">$B</span><span class="nv">UILD</span>
+<span class="nv">wget …</span></code></pre></div></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html" rel="bookmark" title="Permalink to "Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"">"Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/centos.html" rel="tag">centos</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/linux.html" rel="tag">linux</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/php.html" rel="tag">php</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/build.html" rel="tag">build</a>
+	</span>
+</div>
+<hr>
         
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html">
+		<h2 itemprop="name headline">"Сборка ПО из SOURCE rpm пакета на сервере CentOS 6 (nginx+LDAP)"</h2>
+	</a>
+	<time datetime="2014-04-04T09:01:00+00:00" itemprop="datePublished">Fri 04 April 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких "make install".  </p>
+<h4>Подготовка сервера к сборке</h4>
+<p>1. Для начала нужно установить пакеты:</p>
+<div class="highlight"><pre><span></span><code><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">gcc</span> <span class="n">make</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="c1"># Дописать пакеты, необходимые для сборки</span>
+</code></pre></div>
 
- 
-            <li><a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html" rel="bookmark" title="Permalink to "LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"">"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+<p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
+<div class="highlight"><pre><span></span><code>useradd -m rpmbuild
+</code></pre></div>
+
+<p>3 …</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
+</div>
+<hr>
         
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html">
+		<h2 itemprop="name headline">"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"</h2>
+	</a>
+	<time datetime="2014-03-29T01:09:27+03:00" itemprop="datePublished">Sat 29 March 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
+<p>Выключаем VPS на которой используется раздел LVM.
+Увеличиваем сам том:</p>
+<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
+</code></pre></div>
 
+<p>'+2G' - размер на который увеличиваем диск
+Теперь открываем раздел и пересоздаём таблицу разделов.</p>
+<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
+</code></pre></div>
+
+<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
+<div class="highlight"><pre><span></span><code># kpartx -a /dev …</code></pre></div></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html" rel="bookmark" title="Permalink to "Опасно играть под мухой"">"Опасно играть под мухой"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/linux.html" rel="tag">linux</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/lvm.html" rel="tag">lvm</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/kvm.html" rel="tag">kvm</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/fs.html" rel="tag">fs</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/ext4.html" rel="tag">ext4</a>
+	</span>
+</div>
+<hr>
         
-
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/opasno-igrat-pod-mukhoi.html">
+		<h2 itemprop="name headline">"Опасно играть под мухой"</h2>
+	</a>
+	<time datetime="2014-03-26T00:58:01+06:00" itemprop="datePublished">Wed 26 March 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/games.html" rel="category">games</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html" rel="bookmark" title="Permalink to "Eve Online, Ссылка для бесплатного 21-дневного периода игры"">"Eve Online, Ссылка для бесплатного 21-дневного периода игры"</a></li>
-        </ol>
-        </section><!-- #article-list -->
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/game.html" rel="tag">game</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/dayz.html" rel="tag">dayz</a>
+	</span>
+</div>
+<hr>
         
-
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html">
+		<h2 itemprop="name headline">"Eve Online, Ссылка для бесплатного 21-дневного периода игры"</h2>
+	</a>
+	<time datetime="2014-03-24T09:00:00+00:00" itemprop="datePublished">Mon 24 March 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>Welcom to <a href="https://secure.eveonline.com/trial/?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4&amp;action=buddy">Eve</a></p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/games.html" rel="category">games</a>
+	</span>
+	Tags:
  
-            <li><a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html" rel="bookmark" title="Permalink to "Linux. 3G modem Huawei [E171]"">"Linux. 3G modem Huawei [E171]"</a></li>
-        </ol>
-        </section><!-- #article-list -->
-            </div>
-        </div>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/eve.html" rel="tag">eve</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/game.html" rel="tag">game</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/online.html" rel="tag">online</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="https://srv-nix.com/linux-3g-modem-huawei-e171.html">
+		<h2 itemprop="name headline">"Linux. 3G modem Huawei [E171]"</h2>
+	</a>
+	<time datetime="2014-03-21T09:00:00+00:00" itemprop="datePublished">Fri 21 March 2014</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">A. Semenov</span>
+	</span>
+	<div class="summary"><p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
+<p>Всё просто.
+Во-первых, нужно переключить его в режим модема. 
+Подключаем модем и смотрим его заводские маркеры:</p>
+<div class="highlight"><pre><span></span><code>#lsusb …</code></pre></div></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/linux.html" rel="tag">linux</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/modem.html" rel="tag">modem</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="https://srv-nix.com/tag/3g.html" rel="tag">3g</a>
+	</span>
+</div>
+<hr>
+ <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
+    <li class="active"><a href="https://srv-nix.com/author/a-semenov.html">1</a></li>
 
-        <div id="sidebar">
-            <h1><a href="https://srv-nix.com " title="title">YODA</a></h1>
-            <span class="description"> </span>
-            <!-- <span class="feed"><a href="">RSS</a> | <a href="">Atom</a></span> -->
-        </div>
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-        <div id="footer">
-            <nav>
-                <ul>
-                    <li>:: <a href="https://srv-nix.com/categories.html">Categories</a></li>
-                    <li>:: <a href="https://srv-nix.com/tags.html">Tags</a></li>
-                </ul>
-            </nav>
-
-            <div id="credits">
-                <span>Adapted from <a href="http://wordpress.org/themes/monospace">Monospace</a> || Created with <a href="">Pelican</a></span>
-            </div>
-                
-        </div>
-
+</ul>
+</div> 		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://srv-nix.com">YODA</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://srv-nix.com/category/games.html">games (2)</a></li>
+							<li><a href="https://srv-nix.com/category/linux.html">linux (8)</a></li>
+							<li><a href="https://srv-nix.com/category/macos.html">MacOS (2)</a></li>
+							<li><a href="https://srv-nix.com/category/other.html">other (2)</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; wilful 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    var disqus_shortname = 'srv-nix-com';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
 </script>
-
-    </div>
-
 </body>
 </html>
