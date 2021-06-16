@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% block og_description %}{{ article.description }}{% endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
 {% block description %}Title: {{ article.title }}; Date: {{ article.date|strftime('%Y-%m-%d') }}; Author: {{ article.author }}{% endblock %}
 {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
 {% block content %}
