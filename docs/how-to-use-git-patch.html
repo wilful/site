@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Как выиграть Dota 2 — Srv-Nix</title>
+	<title>How to use git patch — Srv-Nix</title>
     <meta property="og:description" content="" />
-    <meta property="og:title" content="Как выиграть Dota 2" />
+    <meta property="og:title" content="How to use git patch" />
     <meta property="og:type" content="article" />
 	<meta name="author" content="Andrey Semenov">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,11 +50,11 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Как выиграть Dota 2</h1>
+		<h1 itemprop="name headline" class="article-title">How to use git patch</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">A. Semenov</h4>
+			<h4 itemprop="name">Andrey Semenov</h4>
 		</span>
-		<time datetime="2014-12-08T17:47:07+06:00" itemprop="datePublished">Mon 08 December 2014</time>
+		<time datetime="2021-06-21T18:23:02+03:00" itemprop="datePublished">Mon 21 June 2021</time>
 	</div>
 	<div>
 		Category:
@@ -66,18 +66,21 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="https://srv-nix.com/tag/dota2.html" rel="tag">dota2</a>
+			<a href="https://srv-nix.com/tag/linux.html" rel="tag">linux</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="https://srv-nix.com/tag/game.html" rel="tag">game</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="https://srv-nix.com/tag/fun.html" rel="tag">fun</a>
+			<a href="https://srv-nix.com/tag/git.html" rel="tag">git</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><!--more-->
-
-<iframe width="520" height="415" src="https://www.youtube.com/embed/fjFW7PNIOjM" frameborder="0" allowfullscreen> </iframe></div>
+	<div itemprop="articleBody" class="article-body"><h3>Creating the patch</h3>
+<p><code>git format-patch -1 &lt;sha&gt;</code>
+OR
+<code>git format-patch -1 HEAD</code></p>
+<h3>Applying the patch</h3>
+<p><code>git apply --stat file.patch</code> # show stats.
+<code>git apply --check file.patch</code> # check for error before applying
+<code>git am &lt; file.patch</code> # apply the patch finally</p>
+<p>Source: https://stackoverflow.com/questions/6658313/generate-a-git-patch-for-a-specific-commit</p></div>
 	<hr>
 	<h2>Comments</h2>
 <div id="vk_comments"></div>
