@@ -2,7 +2,7 @@
 
 NOW=$(date +'%F %X %z')
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-FNAME=$DIR/../src/content/$(uuidgen).md
+FNAME=$DIR/../src/drafts/$(uuidgen).md
 
 cat > $FNAME << EOF
 title: "default_title"
