@@ -11,6 +11,8 @@ if ENV == 'testing':
     SITEURL = 'http://localhost:8000'
 else:
     SITEURL = 'https://srv-nix.com'
+    YANDEX_METRIKA = True
+    VK_SITENAME = 'Srv-Nix'
 TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
@@ -25,7 +27,6 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
 #DISQUS_SITENAME = 'srv-nix-com'
-VK_SITENAME = 'Srv-Nix'
 GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 STATIC_PATHS = ['images']
 EXTRA_PATH_METADATA = {

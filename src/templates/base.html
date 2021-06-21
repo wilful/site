@@ -21,6 +21,7 @@
     <link rel="shortcut icon" type="image/jpg" href="/favicon.ico"/>
     <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
 	{% block head %}{% endblock %}
+    {% if YANDEX_METRIKA %}
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -35,6 +36,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/28082397" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+    {% endif %}
 </head>
 <body>
 <script type="text/javascript">
