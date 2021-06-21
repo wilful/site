@@ -26,8 +26,5 @@ push:
 post:
 	bash bin/new_post
 
-listen:
-	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME) --listen -r
-
 test:
 	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
