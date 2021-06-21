@@ -28,3 +28,6 @@ post:
 
 test:
 	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
+
+clean:
+	rm -rf $(TEST_OUT_DIR); mkdir -p $(TEST_OUT_DIR); touch $(TEST_OUT_DIR)/.gitkeep
