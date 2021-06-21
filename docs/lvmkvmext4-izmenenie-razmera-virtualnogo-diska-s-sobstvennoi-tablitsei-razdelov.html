@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов" — Srv-Nix</title>
+	<title>LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов — Srv-Nix</title>
     <meta property="og:description" content="" />
     <meta property="og:title" content="LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов" />
     <meta property="og:type" content="article" />
@@ -49,7 +49,7 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">"LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов"</h1>
+		<h1 itemprop="name headline" class="article-title">LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">A. Semenov</h4>
 		</span>
@@ -97,7 +97,7 @@
 
 <p>После чего в системе появится нужный нам раздел '/dev/mapper/vms-vps--test1'
 Проверяем раздел:</p>
-<div class="highlight"><pre><span></span><code># e2fsck -f /dev/mapper/vms-vps--test1                                                                                                               
+<div class="highlight"><pre><span></span><code># e2fsck -f /dev/mapper/vms-vps--test1
 e2fsck 1.41.12 (17-May-2010)
 Pass 1: Checking inodes, blocks, and sizes
 Pass 2: Checking directory structure
@@ -108,7 +108,7 @@ Pass 5: Checking group summary information
 </code></pre></div>
 
 <p>Обновляем информацию о новом размере ФС:</p>
-<div class="highlight"><pre><span></span><code># resize2fs -p /dev/mapper/vms-vps--test1                                                                                                            
+<div class="highlight"><pre><span></span><code># resize2fs -p /dev/mapper/vms-vps--test1
 resize2fs 1.41.12 (17-May-2010)
 Resizing the filesystem on /dev/mapper/vms-vps--test1 to 2865144 (4k) blocks.
 Begin pass 1 (max = 16)
