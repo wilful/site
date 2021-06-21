@@ -5,6 +5,7 @@ THEMES_DIR = $(WORK_DIR)/themes
 THEME = $(THEMES_DIR)/aboutwilson
 OUT_DIR = $(WORK_DIR)/docs/
 CONTENT_DIR = $(WORK_DIR)/src/content
+TEST_CONTENT_DIR = $(WORK_DIR)/src/tmp
 CONFIG = $(WORK_DIR)/src/pelicanconf.py
 GIT_CMD = $(shell which git)
 
@@ -24,4 +25,8 @@ post:
 	bash bin/new_post
 
 listen:
-	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME) --listen
+	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME) --listen -r
+
+test:
+	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(OUT_DIR) -t $(THEME)
+	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(OUT_DIR) -t $(THEME) --listen -r
