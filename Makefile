@@ -27,6 +27,7 @@ post:
 	bash bin/new_post
 
 test:
+	export PELICAN_ENV=testing; \
 	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
 
 clean:

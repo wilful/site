@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from os import getenv
 
 AUTHOR = 'Andrey Semenov'
 SITENAME = 'Srv-Nix'
 SITESUBTITLE = 'A personal blog.'
-SITEURL = 'https://srv-nix.com'
+ENV = getenv('PELICAN_ENV', 'production')
+if ENV == 'testing':
+    SITEURL = 'http://localhost:8000'
+else:
+    SITEURL = 'https://srv-nix.com'
 TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
-
 
 DEFAULT_LANG = 'en'
 
