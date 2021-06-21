@@ -12,6 +12,7 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">{{article.author or "Wilson Freitas"}}</span>
 	</span>
+	<div class="summary">{{ article.description }}</div>
 	{% if article.category %}
 	Category:
 	<span itemprop="articleSection">
