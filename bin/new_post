@@ -7,7 +7,7 @@ FNAME=$DIR/../src/drafts/$(uuidgen).md
 cat > $FNAME << EOF
 title: "default_title"
 date: $NOW
-category: linux, blog
+category: blog
 authors: Andrey Semenov
 tags: linux, nix
 EOF
