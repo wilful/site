@@ -58,21 +58,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-: <span class="si">${</span><span class="nv">2</span><span class="p">?</span><span class="s2">&quot;Not enough parameters. Usage: </span><span class="nv">$FUNCNAME</span><span class="s2"> CMD SCRIPT [PARAMS]&quot;</span><span class="si">}</span>
-
-<span class="nv">BIN</span><span class="o">=</span><span class="k">$(</span>which bash<span class="k">)</span>
-<span class="nv">CMD</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
-<span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
-<span class="nv">SCRIPT_PARAMS</span><span class="o">=</span><span class="nv">$@</span>
-<span class="nv">SCRIPT_NAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$SCRIPT</span><span class="k">)</span>
-<span class="o">[[</span> ! <span class="nv">$USER</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">USER</span><span class="o">=</span>nobody
-<span class="nv">LOCKDIR</span><span class="o">=</span><span class="s2">&quot;/tmp/locks-</span><span class="nv">$USER</span><span class="s2">&quot;</span>
-<span class="nv">STALE_AGE</span><span class="o">=</span><span class="m">4</span> <span class="c1">#hours</span>
-<span class="nv">PIDFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME</span>/pid
-<span class="nv">LOCKFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME …</span></code></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -97,9 +82,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><!--more-->
-
-<iframe width="520" height="415" src="https://www.youtube.com/embed/fjFW7PNIOjM" frameborder="0" allowfullscreen> </iframe></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -127,7 +109,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Сам по себе процес прошивки телефона на родную систему весьма тривиален, но в связи с тем, что больше не существует команды разработчиков ОС Meego, многие ресурсы, содержащие прошивки и программы, были заброшены. Я хочу восстановить справедливость и создать русскоязычный гайд по полному сбросу прошивки hartmattan на дефолтное состояние со всеми …</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -158,17 +139,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Дорогие мученники!</p>
-<p>Если после неудачной попытки установить dd-wrt на сей замечательный <a href="http://support.netgear.ru/product/R6300v1">девайс</a>,
-устройство перестало проявлять характерные признаки жизни, то сегодня я вам расскажу, как вернуть 
-родную прошивку, магию зеленой лампочки и почему не нужен товарный чек. </p>
-<!--more-->
-
-<p>Итак,</p>
-<h2>Симптомы</h2>
-<ul>
-<li>Нет доступа к веб-интерфейсу</li>
-<li>Роутер находится в глубочайшей коме, не реагирует на …</li></ul></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/other.html" rel="category">other</a>
@@ -193,10 +163,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>М.Н.Задорнов иногда в своих выступлениях использует этимологические значения слов, расшифровывая
-обыденные, казалось бы, слова и раскрывая незаметный за ними смысл. Например такие слова как: "здоровый", "невеста", "буржуй" и т.д.
-Я никогда не обращал внимания на эти слова и после очередного просмотра решил проверить эти
-слова по самому …</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/other.html" rel="category">other</a>
@@ -221,16 +187,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Просто абзац</p>
-<p>UPD(16.01.17)...</p>
-<div class="highlight"><pre><span></span><code><span class="nv">yum</span> <span class="nv">install</span> <span class="nv">php</span><span class="o">-</span><span class="nv">devel</span> <span class="nv">php</span> <span class="nv">subversion</span> <span class="nv">wget</span> <span class="nv">tar</span> <span class="nv">gcc</span> <span class="nv">file</span> <span class="nv">make</span> <span class="nv">git</span> <span class="o">-</span><span class="nv">y</span>
-<span class="nv">BUILD</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">src</span>
-<span class="nv">SWEURL</span><span class="o">=</span><span class="nv">ftp</span>:<span class="o">//</span><span class="nv">ftp</span>.<span class="nv">astro</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">pub</span><span class="o">/</span><span class="nv">swisseph</span><span class="o">/</span><span class="nv">swe_unix_src_2</span>.<span class="mi">06</span>.<span class="nv">tar</span>.<span class="nv">gz</span>
-<span class="nv">INCLUDEDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="k">include</span>
-<span class="nv">LIBDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">lib</span>
-<span class="nv">PHPMODDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">lib64</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">modules</span>
-<span class="nv">pushd</span> <span class="mh">$B</span><span class="nv">UILD</span>
-<span class="nv">wget …</span></code></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -261,17 +217,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких "make install".  </p>
-<h4>Подготовка сервера к сборке</h4>
-<p>1. Для начала нужно установить пакеты:</p>
-<div class="highlight"><pre><span></span><code><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">gcc</span> <span class="n">make</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="c1"># Дописать пакеты, необходимые для сборки</span>
-</code></pre></div>
-
-<p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
-<div class="highlight"><pre><span></span><code>useradd -m rpmbuild
-</code></pre></div>
-
-<p>3 …</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -289,19 +234,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
-<p>Выключаем VPS на которой используется раздел LVM.
-Увеличиваем сам том:</p>
-<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
-</code></pre></div>
-
-<p>'+2G' - размер на который увеличиваем диск
-Теперь открываем раздел и пересоздаём таблицу разделов.</p>
-<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
-</code></pre></div>
-
-<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
-<div class="highlight"><pre><span></span><code># kpartx -a /dev …</code></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
@@ -335,7 +267,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/games.html" rel="category">games</a>
@@ -360,7 +291,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Welcom to <a href="https://secure.eveonline.com/trial/?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4&amp;action=buddy">Eve</a></p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/games.html" rel="category">games</a>
@@ -388,11 +318,6 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
-<p>Всё просто.
-Во-первых, нужно переключить его в режим модема. 
-Подключаем модем и смотрим его заводские маркеры:</p>
-<div class="highlight"><pre><span></span><code>#lsusb …</code></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux.html" rel="category">linux</a>
