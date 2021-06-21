@@ -5,11 +5,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 FNAME=$DIR/../src/content/$(uuidgen).md
 
 cat > $FNAME << EOF
-Title: "Default_title"
-Date: $NOW
-Category: linux
-Authors: Andrey Semenov
-Tags: Default_tag
+title: "default_title"
+date: $NOW
+category: linux, blog
+authors: Andrey Semenov
+tags: linux, nix
 EOF
 
 vim $FNAME
