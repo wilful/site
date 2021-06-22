@@ -28,9 +28,9 @@ AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
 #DISQUS_SITENAME = 'srv-nix-com'
 GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'files']
 EXTRA_PATH_METADATA = {
-    'images/robots.txt': {'path': 'robots.txt'},
+    'files/robots.txt': {'path': 'robots.txt'},
     'images/favicon.ico': {'path': 'favicon.ico'},
     'images/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
     'images/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},

@@ -1,0 +1,6 @@
+---
+default:
+  title: 'Default title'
+  category: blog
+  authors: Andrey Semenov
+  tags: linux
