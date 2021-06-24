@@ -26,10 +26,10 @@ push:
 post:
 	bash bin/new_post
 
-test:
-	export PELICAN_ENV=testing; \
-	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
-
 clean:
 	rm -rf $(OUT_DIR); mkdir -p $(OUT_DIR);
+
+test:
 	rm -rf $(TEST_OUT_DIR); mkdir -p $(TEST_OUT_DIR); touch $(TEST_OUT_DIR)/.gitkeep
+	export PELICAN_ENV=testing; \
+	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
