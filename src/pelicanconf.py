@@ -30,6 +30,7 @@ YANDEX_ANALYTICS = True
 GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 STATIC_PATHS = ['images', 'files']
 EXTRA_PATH_METADATA = {
+    'files/CNAME': {'path': 'CNAME'},
     'files/robots.txt': {'path': 'robots.txt'},
     'images/favicon.ico': {'path': 'favicon.ico'},
     'images/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},

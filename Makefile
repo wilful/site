@@ -13,7 +13,7 @@ TEST_OUT_DIR = $(WORK_DIR)/src/tmp
 
 all: build commit push
 
-build:
+build: clean
 	pelican -s $(CONFIG) $(CONTENT_DIR) -o $(OUT_DIR) -t $(THEME)
 
 commit:
@@ -31,4 +31,5 @@ test:
 	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
 
 clean:
+	rm -rf $(OUT_DIR); mkdir -p $(OUT_DIR);
 	rm -rf $(TEST_OUT_DIR); mkdir -p $(TEST_OUT_DIR); touch $(TEST_OUT_DIR)/.gitkeep
