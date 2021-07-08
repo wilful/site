@@ -8,8 +8,10 @@ CONTENT_DIR = $(WORK_DIR)/src/content
 CONFIG = $(WORK_DIR)/src/pelicanconf.py
 GIT_CMD = $(shell which git)
 
-TEST_CONTENT_DIR = $(WORK_DIR)/src/drafts
-TEST_OUT_DIR = $(WORK_DIR)/src/tmp
+drafts_files = $(WORK_DIR)/src/drafts
+tmp_folder = $(WORK_DIR)/src/tmp
+
+srcfiles := $(shell find $(drafts_files) -name "*.md")
 
 all: build commit push
 
@@ -29,7 +31,10 @@ post:
 clean:
 	rm -rf $(OUT_DIR); mkdir -p $(OUT_DIR);
 
+drafts: $(srcfiles)
+	@head -1 $^
+
 test:
-	rm -rf $(TEST_OUT_DIR); mkdir -p $(TEST_OUT_DIR); touch $(TEST_OUT_DIR)/.gitkeep
+	rm -rf $(tmp_folder); mkdir -p $(tmp_folder); touch $(tmp_folder)/.gitkeep
 	export PELICAN_ENV=testing; \
-	pelican -s $(CONFIG) $(TEST_CONTENT_DIR) -o $(TEST_OUT_DIR) -t $(THEME) --listen -r
+	pelican -s $(CONFIG) $(drafts_files) -o $(tmp_folder) -t $(THEME) --listen -r
