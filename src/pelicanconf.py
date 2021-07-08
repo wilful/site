@@ -32,6 +32,7 @@ STATIC_PATHS = ['images', 'files']
 EXTRA_PATH_METADATA = {
     'files/CNAME': {'path': 'CNAME'},
     'files/robots.txt': {'path': 'robots.txt'},
+    'files/yandex_668b8b3d4694a0d7.html': {'path': 'yandex_668b8b3d4694a0d7.html'},
     'images/favicon.ico': {'path': 'favicon.ico'},
     'images/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
     'images/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},
