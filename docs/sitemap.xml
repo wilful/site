@@ -5,426 +5,426 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://srv-nix.com/</loc>
-<lastmod>2021-07-10T09:04:41-00:00</lastmod>
+<lastmod>2021-07-10T09:36:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/pokhod-na-sofiiskie-oziora.html</loc>
+<loc>https://srv-nix.com/2d0df228-72b7-4eee-be21-459935aab0fa/index.html</loc>
 <lastmod>2021-07-09T09:25:33+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/how-to-use-git-patch.html</loc>
+<loc>https://srv-nix.com/2efdfe98-cd04-470a-be7d-765287106cca/index.html</loc>
 <lastmod>2021-06-21T18:23:02+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/post-new-messages-on-my-vk-blog.html</loc>
+<loc>https://srv-nix.com/24728bec-804a-47fe-b2d0-4608919f8e2e/index.html</loc>
 <lastmod>2021-06-15T19:54:05+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/read-from-stdin-and-write-to-stdout-in-vim.html</loc>
+<loc>https://srv-nix.com/d2957712-4e46-4006-bf1e-a0d3fb6e574b/index.html</loc>
 <lastmod>2020-09-17T22:27:13+05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/error-in-zsh-on-macos.html</loc>
+<loc>https://srv-nix.com/5c8f2e3b-6b4c-4de3-9464-76119bd66e05/index.html</loc>
 <lastmod>2020-09-05T16:31:47+05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/powerlevel10k-as-theme-for-macos-zsh.html</loc>
+<loc>https://srv-nix.com/0ecdf6a9-ec62-4001-a35e-829a21c78b21/index.html</loc>
 <lastmod>2020-09-05T13:06:18+05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/zapusk-skriptov-s-blokirovkoi-lock-file.html</loc>
+<loc>https://srv-nix.com/ffc2504a-f89d-4cc9-b330-91a717db54db/index.html</loc>
 <lastmod>2015-12-02T07:07:46+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/kak-vyigrat-dota-2.html</loc>
+<loc>https://srv-nix.com/849cc9d3-8b92-4373-b38f-77bf4bb73a8b/index.html</loc>
 <lastmod>2014-12-08T17:47:07+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/proshivka-telefona-nokia-n9-na-stok-v-docker.html</loc>
+<loc>https://srv-nix.com/41cdf74b-d208-40ae-abfc-295d1a6dd19a/index.html</loc>
 <lastmod>2014-11-10T11:44:56+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/kak-vosstanovit-zavodskuiu-proshivku-routera-netgear-r6300v1.html</loc>
+<loc>https://srv-nix.com/a75efdd6-6a4f-49e9-a888-f1cc8377ba83/index.html</loc>
 <lastmod>2014-10-13T12:19:38+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/etimologicheskii-slovar-russkogo-iazyka-semenov-av.html</loc>
+<loc>https://srv-nix.com/21b3ca9f-4946-468f-9687-76cc723bd11d/index.html</loc>
 <lastmod>2014-10-11T00:46:08+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/sborka-i-ustanovka-modulia-php-sweph.html</loc>
+<loc>https://srv-nix.com/fe2c511c-dc8e-403a-8c3b-6375e456d099/index.html</loc>
 <lastmod>2014-04-23T13:25:55+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/sborka-po-iz-source-rpm-paketa-na-servere-centos-6-nginxldap.html</loc>
+<loc>https://srv-nix.com/a738633b-2a68-47a4-9427-8780e6fc6ca4/index.html</loc>
 <lastmod>2014-04-04T09:01:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/lvmkvmext4-izmenenie-razmera-virtualnogo-diska-s-sobstvennoi-tablitsei-razdelov.html</loc>
+<loc>https://srv-nix.com/4070652e-5a78-475a-95e3-667aa4f45f01/index.html</loc>
 <lastmod>2014-03-29T01:09:27+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/opasno-igrat-pod-mukhoi.html</loc>
+<loc>https://srv-nix.com/fde4a935-99a4-4d67-871a-0487e5147f6f/index.html</loc>
 <lastmod>2014-03-26T00:58:01+06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/eve-online-ssylka-dlia-besplatnogo-21-dnevnogo-perioda-igry.html</loc>
+<loc>https://srv-nix.com/4fb8ca48-0bfe-41c3-b13d-1c9447839786/index.html</loc>
 <lastmod>2014-03-24T09:00:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/linux-3g-modem-huawei-e171.html</loc>
+<loc>https://srv-nix.com/1987bbcf-138c-40f3-8db7-0d65f3ea9158/index.html</loc>
 <lastmod>2014-03-21T09:00:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/category/blog.html</loc>
+<loc>https://srv-nix.com/category/blog/index.html</loc>
 <lastmod>2021-07-09T09:25:33+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/category/games.html</loc>
+<loc>https://srv-nix.com/category/games/index.html</loc>
 <lastmod>2014-03-26T00:58:01+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/category/linux.html</loc>
+<loc>https://srv-nix.com/category/linux/index.html</loc>
 <lastmod>2021-06-21T18:23:02+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/category/macos.html</loc>
+<loc>https://srv-nix.com/category/macos/index.html</loc>
 <lastmod>2020-09-05T16:31:47+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/category/other.html</loc>
+<loc>https://srv-nix.com/category/other/index.html</loc>
 <lastmod>2014-10-13T12:19:38+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/travel.html</loc>
+<loc>https://srv-nix.com/tag/travel/index.html</loc>
 <lastmod>2021-07-09T09:25:33+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/trash.html</loc>
+<loc>https://srv-nix.com/tag/trash/index.html</loc>
 <lastmod>2021-07-09T09:25:33+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/linux.html</loc>
+<loc>https://srv-nix.com/tag/linux/index.html</loc>
 <lastmod>2021-06-21T18:23:02+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/git.html</loc>
+<loc>https://srv-nix.com/tag/git/index.html</loc>
 <lastmod>2021-06-21T18:23:02+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/blog.html</loc>
+<loc>https://srv-nix.com/tag/blog/index.html</loc>
 <lastmod>2021-06-15T19:54:05+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/vim.html</loc>
+<loc>https://srv-nix.com/tag/vim/index.html</loc>
 <lastmod>2020-09-17T22:27:13+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/yandex.html</loc>
+<loc>https://srv-nix.com/tag/yandex/index.html</loc>
 <lastmod>2020-09-05T16:31:47+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/yc.html</loc>
+<loc>https://srv-nix.com/tag/yc/index.html</loc>
 <lastmod>2020-09-05T16:31:47+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/zsh.html</loc>
+<loc>https://srv-nix.com/tag/zsh/index.html</loc>
 <lastmod>2020-09-05T13:06:18+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/macos.html</loc>
+<loc>https://srv-nix.com/tag/macos/index.html</loc>
 <lastmod>2020-09-05T13:06:18+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/shell.html</loc>
+<loc>https://srv-nix.com/tag/shell/index.html</loc>
 <lastmod>2020-09-05T13:06:18+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/iterm2.html</loc>
+<loc>https://srv-nix.com/tag/iterm2/index.html</loc>
 <lastmod>2020-09-05T13:06:18+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/cron.html</loc>
+<loc>https://srv-nix.com/tag/cron/index.html</loc>
 <lastmod>2015-12-02T07:07:46+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/dota2.html</loc>
+<loc>https://srv-nix.com/tag/dota2/index.html</loc>
 <lastmod>2014-12-08T17:47:07+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/game.html</loc>
+<loc>https://srv-nix.com/tag/game/index.html</loc>
 <lastmod>2014-12-08T17:47:07+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/fun.html</loc>
+<loc>https://srv-nix.com/tag/fun/index.html</loc>
 <lastmod>2014-12-08T17:47:07+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/meego.html</loc>
+<loc>https://srv-nix.com/tag/meego/index.html</loc>
 <lastmod>2014-11-10T11:44:56+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/nokian9.html</loc>
+<loc>https://srv-nix.com/tag/nokian9/index.html</loc>
 <lastmod>2014-11-10T11:44:56+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/firmware.html</loc>
+<loc>https://srv-nix.com/tag/firmware/index.html</loc>
 <lastmod>2014-11-10T11:44:56+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/hartmattan.html</loc>
+<loc>https://srv-nix.com/tag/hartmattan/index.html</loc>
 <lastmod>2014-11-10T11:44:56+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/router.html</loc>
+<loc>https://srv-nix.com/tag/router/index.html</loc>
 <lastmod>2014-10-13T12:19:38+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/howto.html</loc>
+<loc>https://srv-nix.com/tag/howto/index.html</loc>
 <lastmod>2014-10-13T12:19:38+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/staf.html</loc>
+<loc>https://srv-nix.com/tag/staf/index.html</loc>
 <lastmod>2014-10-11T00:46:08+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/jk.html</loc>
+<loc>https://srv-nix.com/tag/jk/index.html</loc>
 <lastmod>2014-10-11T00:46:08+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/centos.html</loc>
+<loc>https://srv-nix.com/tag/centos/index.html</loc>
 <lastmod>2014-04-23T13:25:55+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/php.html</loc>
+<loc>https://srv-nix.com/tag/php/index.html</loc>
 <lastmod>2014-04-23T13:25:55+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/build.html</loc>
+<loc>https://srv-nix.com/tag/build/index.html</loc>
 <lastmod>2014-04-23T13:25:55+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/lvm.html</loc>
+<loc>https://srv-nix.com/tag/lvm/index.html</loc>
 <lastmod>2014-03-29T01:09:27+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/kvm.html</loc>
+<loc>https://srv-nix.com/tag/kvm/index.html</loc>
 <lastmod>2014-03-29T01:09:27+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/fs.html</loc>
+<loc>https://srv-nix.com/tag/fs/index.html</loc>
 <lastmod>2014-03-29T01:09:27+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/ext4.html</loc>
+<loc>https://srv-nix.com/tag/ext4/index.html</loc>
 <lastmod>2014-03-29T01:09:27+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/dayz.html</loc>
+<loc>https://srv-nix.com/tag/dayz/index.html</loc>
 <lastmod>2014-03-26T00:58:01+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/eve.html</loc>
+<loc>https://srv-nix.com/tag/eve/index.html</loc>
 <lastmod>2014-03-24T09:00:00+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/online.html</loc>
+<loc>https://srv-nix.com/tag/online/index.html</loc>
 <lastmod>2014-03-24T09:00:00+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/modem.html</loc>
+<loc>https://srv-nix.com/tag/modem/index.html</loc>
 <lastmod>2014-03-21T09:00:00+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/tag/3g.html</loc>
+<loc>https://srv-nix.com/tag/3g/index.html</loc>
 <lastmod>2014-03-21T09:00:00+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/author/a-semenov.html</loc>
+<loc>https://srv-nix.com/author/a-semenov/index.html</loc>
 <lastmod>2015-12-02T07:07:46+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://srv-nix.com/author/andrey-semenov.html</loc>
+<loc>https://srv-nix.com/author/andrey-semenov/index.html</loc>
 <lastmod>2021-07-09T09:25:33+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

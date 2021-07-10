@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Categories — Srv-Nix</title>
-    <meta property="og:description" content="..." />
-    <meta property="og:title" content="" />
+	<title>LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов — Srv-Nix</title>
+    <meta property="og:description" content="" />
+    <meta property="og:title" content="LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов" />
     <meta property="og:type" content="article" />
-	<meta name="description" content="The Categories page lists all categories used to classify the posts. Each post is categorized by a category helping readers find out easily what they are looking for.">
+	<meta name="description" content="Title: LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов; Date: 2014-03-29; Author: A. Semenov">
 	<meta name="author" content="Andrey Semenov">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -49,14 +49,92 @@
 			<br><small>A personal blog.</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-<h1>Categories</h1>
-<ul>
-	<li><a href="https://srv-nix.com/category/blog/index.html">blog</li>
-	<li><a href="https://srv-nix.com/category/games/index.html">games</li>
-	<li><a href="https://srv-nix.com/category/linux/index.html">linux</li>
-	<li><a href="https://srv-nix.com/category/macos/index.html">MacOS</li>
-	<li><a href="https://srv-nix.com/category/other/index.html">other</li>
-</ul>
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">LVM+KVM+EXT4, изменение размера виртуального диска с собственной таблицей разделов</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">A. Semenov</h4>
+		</span>
+		<time datetime="2014-03-29T01:09:27+03:00" itemprop="datePublished">Sat 29 March 2014</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="https://srv-nix.com/tag/linux/index.html" rel="tag">linux</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://srv-nix.com/tag/lvm/index.html" rel="tag">lvm</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://srv-nix.com/tag/kvm/index.html" rel="tag">kvm</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://srv-nix.com/tag/fs/index.html" rel="tag">fs</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://srv-nix.com/tag/ext4/index.html" rel="tag">ext4</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
+<p>Выключаем VPS на которой используется раздел LVM.
+Увеличиваем сам том:</p>
+<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>'+2G' - размер на который увеличиваем диск
+Теперь открываем раздел и пересоздаём таблицу разделов.</p>
+<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
+</code></pre></div>
+
+<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
+<div class="highlight"><pre><span></span><code># kpartx -a /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>После чего в системе появится нужный нам раздел '/dev/mapper/vms-vps--test1'
+Проверяем раздел:</p>
+<div class="highlight"><pre><span></span><code># e2fsck -f /dev/mapper/vms-vps--test1
+e2fsck 1.41.12 (17-May-2010)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/mapper/vms-fms--test1: 13/576000 files (0.0% non-contiguous), 1889245/2340856 blocks
+</code></pre></div>
+
+<p>Обновляем информацию о новом размере ФС:</p>
+<div class="highlight"><pre><span></span><code># resize2fs -p /dev/mapper/vms-vps--test1
+resize2fs 1.41.12 (17-May-2010)
+Resizing the filesystem on /dev/mapper/vms-vps--test1 to 2865144 (4k) blocks.
+Begin pass 1 (max = 16)
+Extending the inode table     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+The filesystem on /dev/mapper/vms-vps--test1 is now 2865144 blocks long.
+</code></pre></div>
+
+<p>Отключаем чтение таблицы разделов:</p>
+<div class="highlight"><pre><span></span><code># kpartx -d /dev/mapper/vms-vps--test
+</code></pre></div>
+
+<p>Проверяем результат:</p>
+<div class="highlight"><pre><span></span><code># lvs
+</code></pre></div>
+
+<p>После чего запускаем виртуальную машину, раздел должен быть увеличенным на указанное число.
+Всй!</p></div>
+	<hr>
+	<h2>Comments</h2>
+<div id="vk_comments"></div>
+<script type="text/javascript">
+ VK.Widgets.Comments('vk_comments');
+</script>
+</div>
 		</div>
 	</div> 	<!-- <hr> -->
 </div> <!-- /container -->

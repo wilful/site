@@ -16,6 +16,21 @@ else:
 TIMEZONE = 'Europe/Moscow'
 
 PATH = 'content'
+SLUGIFY_SOURCE = 'basename'
+ARTICLE_URL = '{slug}/index.html'
+ARTICLE_SAVE_AS = '{slug}/index.html'
+DRAFT_URL = 'drafts/{slug}/index.html'
+DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
+PAGE_URL = 'pages/{slug}/index.html'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
+DRAFT_PAGE_URL = 'drafts/pages/{slug}/index.html'
+DRAFT_PAGE_SAVE_AS = 'drafts/pages/{slug}/index.html'
+AUTHOR_URL = 'author/{slug}/index.html'
+AUTHOR_SAVE_AS = 'author/{slug}/index.html'
+CATEGORY_URL = 'category/{slug}/index.html'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+TAG_URL = 'tag/{slug}/index.html'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
 
 DEFAULT_LANG = 'en'
 
