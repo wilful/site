@@ -50,7 +50,6 @@ GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
 CSS_FILE = 'static/css/custom.css'
 STATIC_PATHS = ['images', 'files', 'static']
 EXTRA_PATH_METADATA = {
-    'files/extra.css': {'path': 'extra.css'},
     'files/CNAME': {'path': 'CNAME'},
     'files/robots.txt': {'path': 'robots.txt'},
     'files/yandex_webmaster.template': {'path': 'yandex_668b8b3d4694a0d7.html'},
