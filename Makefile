@@ -7,10 +7,9 @@ OUT_DIR = $(WORK_DIR)/docs/
 CONTENT_DIR = $(WORK_DIR)/src/content
 CONFIG = $(WORK_DIR)/src/pelicanconf.py
 GIT_CMD = $(shell which git)
-
-drafts_path = $(WORK_DIR)/src/drafts
 tmp_path = $(WORK_DIR)/src/tmp
 
+drafts_path = $(WORK_DIR)/src/drafts
 drafts_files := $(shell find $(drafts_path) -name "*.md")
 
 all: build commit push
@@ -20,7 +19,7 @@ build: clean
 
 commit:
 	@$(GIT_CMD) add .
-	@$(GIT_CMD) ci -a
+	@$(GIT_CMD) commit -a
 
 push:
 	@$(GIT_CMD) push
