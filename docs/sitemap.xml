@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://srv-nix.com/</loc>
-<lastmod>2021-07-10T19:18:56-00:00</lastmod>
+<lastmod>2021-07-10T19:35:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -20,6 +20,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://srv-nix.com/2efdfe98-cd04-470a-be7d-765287106cca/index.html</loc>
 <lastmod>2021-06-21T18:23:02+03:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://srv-nix.com/8789c174-5c70-4351-bf1d-17fa34db3f21/index.html</loc>
+<lastmod>2021-05-10T15:05:12+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
