@@ -67,6 +67,7 @@ LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 # Social widget
 SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
           ('VK', 'https://vk.com/srvnix'),
+          ('Instagram', 'https://www.instagram.com/wiljaeden/'),
           ('github', 'https://github.com/wilful/'),)
 
 DEFAULT_PAGINATION = 70
