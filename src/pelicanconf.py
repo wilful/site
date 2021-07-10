@@ -33,6 +33,10 @@ TAG_URL = 'tag/{slug}/index.html'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
 DEFAULT_LANG = 'en'
+DEFAULT_METADATA = {
+    'status': 'published',
+    'authors': 'Andrey Semenov'
+}
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
