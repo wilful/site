@@ -12,7 +12,7 @@ if ENV == 'testing':
 else:
     SITEURL = 'https://srv-nix.com'
     YANDEX_METRIKA = True
-    VK_SITENAME = 'Srv-Nix'
+    #VK_SITENAME = 'Srv-Nix'
     COMMENTO_SITENAME = 'Srv-Nix'
 TIMEZONE = 'Europe/Moscow'
 
