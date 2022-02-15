@@ -31,6 +31,7 @@ clean:
 	rm -rf $(OUT_DIR); mkdir -p $(OUT_DIR);
 
 drafts: $(drafts_files)
+	@echo -n "$^: "
 	@head -1 $^
 
 test:
