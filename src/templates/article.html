@@ -7,10 +7,6 @@
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
 		<h1 itemprop="name headline" class="article-title">{{ article.title }}</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">{{article.author or "Wilson Freitas"}}</h4>
-		</span>
-		<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
 	</div>
 	{% if article.category %}
 	<div>
@@ -31,6 +27,12 @@
 	</div>
 	{% endif %}
 	<div itemprop="articleBody" class="article-body">{{ article.content }}</div>
+	<div class="text-center article-header">
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">{{article.author or "Wilson Freitas"}}</h4>
+		</span>
+		<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
+	</div>
 	<hr>
 	<h2>Comments</h2>
 	{% include "twitter.html" %}
