@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 	<link href="https://srv-nix.com/static/css/custom.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <script src="https://w.tb.ru/open-messenger/widget?wId=W-AD3AAE4BC31949FBB81FA62529E30089"></script>
     <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <script defer src="https://cdn.commento.io/js/commento.js"></script>
     <!-- Yandex.Metrika counter -->
@@ -67,7 +68,7 @@
 	<div itemprop="articleBody" class="article-body"><p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких "make install".  </p>
 <h4>Подготовка сервера к сборке</h4>
 <p>1. Для начала нужно установить пакеты:</p>
-<div class="highlight"><pre><span></span><code><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">rpmdevtools</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">yum</span><span class="o">-</span><span class="n">utils</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">tar</span><span class="w"> </span><span class="c1"># Дописать пакеты, необходимые для сборки</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">gcc</span> <span class="n">make</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="c1"># Дописать пакеты, необходимые для сборки</span>
 </code></pre></div>
 
 <p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
@@ -118,12 +119,12 @@ git clone https://github.com/kvspb/nginx-auth-ldap
 </code></pre></div>
 
 <p>6. Меняем в строке номер релиза (чтобы пакет обновился при установке)</p>
-<div class="highlight"><pre><span></span><code><span class="n">Release</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="o">%{?</span><span class="n">dist</span><span class="o">}.</span><span class="n">wil</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">Release</span><span class="o">:</span> <span class="mi">4</span><span class="o">%{?</span><span class="n">dist</span><span class="o">}.</span><span class="n">wil</span>
 </code></pre></div>
 
 <p><em>ЗАМЕЧАНИЕ:</em> Я также указал суффикс wil для уникальности пакета </p>
 <p>7. Добавляем строку описания источника с исходными текстами модуля</p>
-<div class="highlight"><pre><span></span><code><span class="n">Source1001</span><span class="o">:</span><span class="w"> </span><span class="n">nginx</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">ldap</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">Source1001</span><span class="o">:</span> <span class="n">nginx</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">ldap</span>
 </code></pre></div>
 
 <p>8. Добавляем модуль в параметры сборки nginx (так же как при обычной сборке)</p>
