@@ -9,7 +9,6 @@ tags: music
 	<summary>Video</summary>
     <iframe width="520" height="415" src="https://www.youtube.com/embed/LG8ln8i_7L4" frameborder="0" allowfullscreen> </iframe>
 </details>
-
 ---
 
 [GALAGA - Английская рубашка](https://music.yandex.ru/album/6681698/track/48905691)
@@ -17,3 +16,6 @@ tags: music
 	<summary>Video</summary>
     <iframe width="520" height="415" src="https://www.youtube.com/embed/fqCW7Vh5MhA" frameborder="0" allowfullscreen> </iframe>
 </details>
+---
+
+[SKLЯR Алексей Скляренко - Про 30 лет](https://music.yandex.ru/album/15950544/track/84244750)
