@@ -4,6 +4,7 @@ src/Makefile
 src/output/*
 src/publishconf.py
 src/__pycache__
+src/pelican/__pycache__
 src/tmp/*
 src/drafts/*
 ssl/

@@ -96,9 +96,9 @@
 <p>Теперь нужно запастись терпением, потому что моему роутеру потребовалось около 10-15 минут, прежде чем индикатор заморгал зеленым светом,
 что и означало переход роутера в "Read mode". И можно приступать к загрузке прошивки. </p>
 <p>На момент написания статьи актуальной была следующая <a href="http://www.downloads.netgear.com/files/GDC/R6300/R6300_V1.0.2.70_1.0.50.zip">прошивка</a></p>
-<div class="highlight"><pre><span></span><code><span class="n">FWLINK</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">netgear</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">GDC</span><span class="o">/</span><span class="n">R6300</span><span class="o">/</span><span class="n">R6300_V1</span><span class="o">.</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">70</span><span class="n">_1</span><span class="o">.</span><span class="mf">0.50</span><span class="o">.</span><span class="n">zip</span><span class="w"></span>
-<span class="n">SRCFLD</span><span class="o">=/</span><span class="n">tmp</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="o">$</span><span class="n">SRCFLD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="o">$</span><span class="n">FWLINK</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">FWLINK</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">netgear</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">GDC</span><span class="o">/</span><span class="n">R6300</span><span class="o">/</span><span class="n">R6300_V1</span><span class="o">.</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">70</span><span class="n">_1</span><span class="o">.</span><span class="mf">0.50</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">SRCFLD</span><span class="o">=/</span><span class="n">tmp</span>
+<span class="n">cd</span> <span class="o">$</span><span class="n">SRCFLD</span> <span class="o">&amp;&amp;</span> <span class="n">wget</span> <span class="o">$</span><span class="n">FWLINK</span>
 </code></pre></div>
 
 <p>После скачивания нужно отправить прошивку в наш кирпич</p>
@@ -151,7 +151,7 @@ tftp -m binary 192.168.1.1 -c put R6300*.chk
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="https://srv-nix.com/category/blog.html">blog (3)</a></li>
+							<li><a href="https://srv-nix.com/category/blog.html">blog (4)</a></li>
 							<li><a href="https://srv-nix.com/category/games.html">games (2)</a></li>
 							<li><a href="https://srv-nix.com/category/linux.html">linux (9)</a></li>
 							<li><a href="https://srv-nix.com/category/macos.html">MacOS (2)</a></li>
