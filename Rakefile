@@ -2,10 +2,10 @@
 #FileList['src/content/*.md'].each {|md| file html_index => md}
 
 WORK_DIR = Dir.getwd
-CONFIG = WORK_DIR + '/src/pelicanconf.py'
+CONFIG = WORK_DIR + '/src/pelican/pelicanconf.py'
 CONTENT_DIR = WORK_DIR + '/src/content'
 OUT_DIR = WORK_DIR + '/docs/'
-THEMES_DIR = WORK_DIR + '/themes'
+THEMES_DIR = WORK_DIR + '/src/pelican/themes'
 THEME = THEMES_DIR + '/aboutwilson'
 TMP_PATH = WORK_DIR + '/src/tmp'
 DRAFTS_PATH = WORK_DIR + '/src/drafts'

@@ -73,7 +73,7 @@ LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 
 DEFAULT_PAGINATION = 70
 
-THEME_TEMPLATES_OVERRIDES = ['src/templates']
+THEME_TEMPLATES_OVERRIDES = ['src/pelican/templates']
 
 #PLUGIN_PATHS = ["/where/you/cloned/it/pelican-plugins/",]
 PLUGINS=["sitemap",]
