@@ -4,18 +4,19 @@ category: blog
 authors: Andrey Semenov
 tags: music
 
+---
 [ЕстьЧО - А я упоротый](https://music.yandex.ru/album/8495170/track/56978666)
 <details>
 	<summary>Video</summary>
     <iframe width="520" height="415" src="https://www.youtube.com/embed/LG8ln8i_7L4" frameborder="0" allowfullscreen> </iframe>
 </details>
----
 
+---
 [GALAGA - Английская рубашка](https://music.yandex.ru/album/6681698/track/48905691)
 <details>
 	<summary>Video</summary>
     <iframe width="520" height="415" src="https://www.youtube.com/embed/fqCW7Vh5MhA" frameborder="0" allowfullscreen> </iframe>
 </details>
----
 
+---
 [SKLЯR Алексей Скляренко - Про 30 лет](https://music.yandex.ru/album/15950544/track/84244750)
