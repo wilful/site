@@ -3,7 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Srv-Nix</title>
-	<meta name="description" content="Coding, scientific development, finance, data analysis, visualization, statistics, and machine learning">
+    <meta property="og:description" content="..." />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+	<meta name="description" content="A personal blog.">
 	<meta name="author" content="Andrey Semenov">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -16,8 +19,36 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
 	<link href="https://srv-nix.com/theme/css/local.css" rel="stylesheet">
 	<link href="https://srv-nix.com/theme/css/pygments.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+	<link href="https://srv-nix.com/static/css/custom.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <script src="https://w.tb.ru/open-messenger/widget?wId=W-AD3AAE4BC31949FBB81FA62529E30089"></script>
+    <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script defer src="https://cdn.commento.io/js/commento.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(28082397, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/28082397" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<script type="text/javascript">
+  VK.init({
+    apiId: 7880860,
+    onlyWidgets: true
+  });
+</script>
 <div class="container">
 	<div class="page-header">
 		<h1><a href="https://srv-nix.com/">Srv-Nix</a>
@@ -35,19 +66,7 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><p><a href="https://music.yandex.ru/album/8495170/track/56978666">ЕстьЧО - А я упоротый</a></p>
-<details>
-    <summary>Video</summary>
-    <iframe width="520" height="415" src="https://www.youtube.com/embed/LG8ln8i_7L4" frameborder="0" allowfullscreen> </iframe>
-</details>
-<hr>
-<p><a href="https://music.yandex.ru/album/6681698/track/48905691">GALAGA - Английская рубашка</a></p>
-<details>
-    <summary>Video</summary>
-    <iframe width="520" height="415" src="https://www.youtube.com/embed/fqCW7Vh5MhA" frameborder="0" allowfullscreen> </iframe>
-</details>
-<hr>
-<p><a href="https://music.yandex.ru/album/15950544/track/84244750">SKLЯR Алексей Скляренко - Про 30 лет</a></p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/blog/index.html" rel="category">blog</a>
@@ -69,11 +88,7 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><h3>Маршрут и местоположение</h3>
-<h4>Координаты: <code>43.449528, 41.230093</code></h4>
-<h4>Описание</h4>
-<p><a href="https://yandex.ru/maps/-/CCUe6JucWD">Софийские озера</a> находятся недалеко от поселка <a href="https://yandex.ru/maps/-/CCUe6FEFdB">Архыз</a> в Карачаево-Черкесской Республике.
-Маршрут начинается с заброски на внедорожниках в долину реки София, мимо одной из туристических полян в КЧР. Весь путь от села Архыз занимает примерно 1 час и проходит по живописной долине …</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/blog/index.html" rel="category">blog</a>
@@ -98,17 +113,7 @@
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><h3>Creating the patch</h3>
-<p><code>git format-patch -1 &lt;sha&gt;</code>
-OR
-<code>git format-patch -1 HEAD</code></p>
-<h3>Applying the patch</h3>
-<div class="highlight"><pre><span></span><code>git apply --stat file.patch <span class="c1"># show stats.</span>
-git apply --check file.patch <span class="c1"># check for error before applying</span>
-git am &lt; file.patch <span class="c1"># apply the patch finally</span>
-</code></pre></div>
-
-<p>Source: https://stackoverflow.com/questions/6658313/generate-a-git-patch-for-a-specific-commit</p></div>
+	<div class="summary">A small example of using git-patch</div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -133,20 +138,7 @@ git am &lt; file.patch <span class="c1"># apply the patch finally</span>
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><h2>Инструкция</h2>
-<p>В данной статье я бы хотел поделиться тем, как можно редактировать или добавлять публикации на этом сайте.</p>
-<h3>Установка</h3>
-<p>Клонируем репозиторий себе на localhost</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/wilful/srv-nix.com
-</code></pre></div>
-
-<p>Для сборки сайта нужен установленный генератор сайтов <a href="https://blog.getpelican.com">Pelican</a></p>
-<div class="highlight"><pre><span></span><code>cd srv-nix.com/
-pip3 install -r requirements.txt
-</code></pre></div>
-
-<h3>Использование</h3>
-<p>Создание …</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/blog/index.html" rel="category">blog</a>
@@ -168,13 +160,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><p>For example:</p>
-<div class="highlight"><pre><span></span><code>cat /etc/fstab | vim -
-</code></pre></div>
-
-<p>Edit text and send to another server:</p>
-<div class="highlight"><pre><span></span><code><span class="err">:</span><span class="n">w</span><span class="w"> </span><span class="err">!</span><span class="n">ssh</span><span class="w"> </span><span class="n">root</span><span class="nv">@server</span><span class="w"> </span><span class="s1">&#39;cat - &gt; /tmp/fstab&#39;</span><span class="w"></span>
-</code></pre></div></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -196,11 +182,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><p>Error example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">complete</span><span class="o">:</span><span class="mi">13</span><span class="o">:</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="n">compdef</span><span class="w"></span>
-</code></pre></div>
-
-<p>For fixing it error, i'm just remove all lines in .zshrc what added after installation yandex console (yc)</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/macos/index.html" rel="category">MacOS</a>
@@ -225,7 +207,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">Andrey Semenov</span>
 	</span>
-	<div class="summary"><p>If you are using MacOS and the standard Shell ZSH, I recommend choosing theme: <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a></p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/macos/index.html" rel="category">MacOS</a>
@@ -256,20 +238,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Пример скрипта для запуска скриптов с блокировкой из крона</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-: <span class="si">${</span><span class="nv">2</span><span class="p">?</span><span class="s2">&quot;Not enough parameters. Usage: </span><span class="nv">$FUNCNAME</span><span class="s2"> CMD SCRIPT [PARAMS]&quot;</span><span class="si">}</span>
-
-<span class="nv">BIN</span><span class="o">=</span><span class="k">$(</span>which bash<span class="k">)</span>
-<span class="nv">CMD</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
-<span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span> <span class="nb">shift</span>
-<span class="nv">SCRIPT_PARAMS</span><span class="o">=</span><span class="nv">$@</span>
-<span class="nv">SCRIPT_NAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$SCRIPT</span><span class="k">)</span>
-<span class="o">[[</span> ! <span class="nv">$USER</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">USER</span><span class="o">=</span>nobody
-<span class="nv">LOCKDIR</span><span class="o">=</span><span class="s2">&quot;/tmp/locks-</span><span class="nv">$USER</span><span class="s2">&quot;</span>
-<span class="nv">STALE_AGE</span><span class="o">=</span><span class="m">4</span> <span class="c1">#hours</span>
-<span class="nv">PIDFILE</span><span class="o">=</span><span class="nv">$LOCKDIR</span>/<span class="nv">$SCRIPT_NAME …</span></code></pre></div></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -294,9 +263,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><!--more-->
-
-<iframe width="520" height="415" src="https://www.youtube.com/embed/fjFW7PNIOjM" frameborder="0" allowfullscreen> </iframe></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -324,7 +291,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Сам по себе процес прошивки телефона на родную систему весьма тривиален, но в связи с тем, что больше не существует команды разработчиков ОС Meego, многие ресурсы, содержащие прошивки и программы, были заброшены. Я хочу восстановить справедливость и создать русскоязычный гайд по полному сбросу прошивки hartmattan на дефолтное состояние со всеми …</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -355,17 +322,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Дорогие мученники!</p>
-<p>Если после неудачной попытки установить dd-wrt на сей замечательный <a href="http://support.netgear.ru/product/R6300v1">девайс</a>,
-устройство перестало проявлять характерные признаки жизни, то сегодня я вам расскажу, как вернуть 
-родную прошивку, магию зеленой лампочки и почему не нужен товарный чек. </p>
-<!--more-->
-
-<p>Итак,</p>
-<h2>Симптомы</h2>
-<ul>
-<li>Нет доступа к веб-интерфейсу</li>
-<li>Роутер находится в глубочайшей коме, не реагирует на …</li></ul></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/other/index.html" rel="category">other</a>
@@ -390,10 +347,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>М.Н.Задорнов иногда в своих выступлениях использует этимологические значения слов, расшифровывая
-обыденные, казалось бы, слова и раскрывая незаметный за ними смысл. Например такие слова как: "здоровый", "невеста", "буржуй" и т.д.
-Я никогда не обращал внимания на эти слова и после очередного просмотра решил проверить эти
-слова по самому …</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/other/index.html" rel="category">other</a>
@@ -418,15 +372,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Просто абзац</p>
-<p>UPD(16.01.17)...</p>
-<div class="highlight"><pre><span></span><code><span class="nv">yum</span> <span class="nv">install</span> <span class="nv">php</span><span class="o">-</span><span class="nv">devel</span> <span class="nv">php</span> <span class="nv">subversion</span> <span class="nv">wget</span> <span class="nv">tar</span> <span class="nv">gcc</span> <span class="nv">file</span> <span class="nv">make</span> <span class="nv">git</span> <span class="o">-</span><span class="nv">y</span>
-<span class="nv">BUILD</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">src</span>
-<span class="nv">SWEURL</span><span class="o">=</span><span class="nv">ftp</span>:<span class="o">//</span><span class="nv">ftp</span>.<span class="nv">astro</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">pub</span><span class="o">/</span><span class="nv">swisseph</span><span class="o">/</span><span class="nv">swe_unix_src_2</span>.<span class="mi">06</span>.<span class="nv">tar</span>.<span class="nv">gz</span>
-<span class="nv">INCLUDEDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="k">include</span>
-<span class="nv">LIBDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">lib</span>
-<span class="nv">PHPMODDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">lib64</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">modules</span>
-<span class="nv">pushd …</span></code></pre></div></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -457,17 +403,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p><em>Правильная</em> сборка пакетов на сервере под rpm-based системами. Никаких "make install".  </p>
-<h4>Подготовка сервера к сборке</h4>
-<p>1. Для начала нужно установить пакеты:</p>
-<div class="highlight"><pre><span></span><code><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">rpmdevtools</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">yum</span><span class="o">-</span><span class="n">utils</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">tar</span><span class="w"> </span><span class="c1"># Дописать пакеты, необходимые для сборки</span><span class="w"></span>
-</code></pre></div>
-
-<p>2. Добавляем в систему пользователя, от которого будет выполняться сборка:</p>
-<div class="highlight"><pre><span></span><code>useradd -m rpmbuild
-</code></pre></div>
-
-<p>3 …</p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -485,19 +421,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Нам понадобятся: lvm2, kpartx, cfdisk, e2fsck</p>
-<p>Выключаем VPS на которой используется раздел LVM.
-Увеличиваем сам том:</p>
-<div class="highlight"><pre><span></span><code># lvextend -L +2G /dev/mapper/vms-vps--test
-</code></pre></div>
-
-<p>'+2G' - размер на который увеличиваем диск
-Теперь открываем раздел и пересоздаём таблицу разделов.</p>
-<div class="highlight"><pre><span></span><code># cfdisk /dev/mapper/vms-fms--test
-</code></pre></div>
-
-<p>Чтобы открыть нужные разделы, я воспользовался утилитой kpartx:</p>
-<div class="highlight"><pre><span></span><code># kpartx -a /dev …</code></pre></div></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -531,7 +455,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><iframe width="520" height="415" src="https://www.youtube.com/embed/xkPEcq_SM6Y" frameborder="0" allowfullscreen> </iframe></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/games/index.html" rel="category">games</a>
@@ -556,7 +480,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>Welcom to <a href="https://secure.eveonline.com/trial/?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4&amp;action=buddy">Eve</a></p></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/games/index.html" rel="category">games</a>
@@ -584,11 +508,7 @@ pip3 install -r requirements.txt
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">A. Semenov</span>
 	</span>
-	<div class="summary"><p>В моем распоряжении был модем 3G от провайдера Beeline. В качестве хоста - ArchLinux на моём ноуте. Я не использую NM из идеологических соображений, фронтенд для wvdial - потому что хотелось наглядного представления времени сессии.</p>
-<p>Всё просто.
-Во-первых, нужно переключить его в режим модема. 
-Подключаем модем и смотрим его заводские маркеры:</p>
-<div class="highlight"><pre><span></span><code>#lsusb …</code></pre></div></div>
+	<div class="summary"></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="https://srv-nix.com/category/linux/index.html" rel="category">linux</a>
@@ -618,8 +538,9 @@ pip3 install -r requirements.txt
 </div> 		</div>
 	</div> 	<!-- <hr> -->
 </div> <!-- /container -->
+<!--
 <footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
+	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row">
@@ -655,11 +576,11 @@ pip3 install -r requirements.txt
 		</div>
 	</div>
 </footer>
+-->
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center center-block aw-bottom">
 			<p>&copy; Andrey Semenov 2016</p>
-			<p>Powered by Pelican</p>
 		</div>
 	</div>
 </div>
