@@ -3,14 +3,24 @@
 NOW=$(date +'%F %X %z')
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 FNAME=$DIR/../src/drafts/$(uuidgen).md
+TITLE='default_title'
+read -r -p 'Enter the title for a post: ' TITLE
 
 cat > $FNAME << EOF
-title: default_title
-date: $NOW
+title: ${TITLE}
+date: ${NOW}
 category: blog
 authors: Andrey Semenov
 tags: linux, nix
 EOF
 
+md5sum $FNAME > /tmp/check_file
+
 vim $FNAME
-echo "New post created as [${FNAME}]"
+
+if md5sum --quiet --status -c /tmp/check_file; then
+  rm $FNAME
+else
+  ln -fs $FNAME "${DIR}/../src/list/${TITLE}.txt"
+  echo "New post created as [${FNAME}]"
+fi

@@ -8,3 +8,4 @@ src/pelican/__pycache__
 src/tmp/*
 src/drafts/*
 ssl/
+src/aliases/

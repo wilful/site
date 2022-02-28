@@ -4,14 +4,14 @@
 
 ### Usage
 
-    make post
+    rake post
 
 Move publishing post to `content` folder and run:
 
-    make
+    rake
 
 ### Testing
 
-    make post
-    make test
+    rake post
+    rake test
     open http://127.0.0.1:8000/
