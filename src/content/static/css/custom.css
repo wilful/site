@@ -1,6 +1,23 @@
 * {
-    font-family: 'Raleway', cursive !important;
+  font-family: 'Raleway', cursive !important;
 }
 a {
-    color: #1CAB2E;
+  color: #1CAB2E;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border-bottom: 1px solid gray;
+  text-align: left;
+}
+th {
+  white-space: pre-wrap;
+}
+tr:last-child {
+  margin-top: 10px;
+}
+tr:last-child {
+  border-bottom: none;
 }
