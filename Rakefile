@@ -54,7 +54,7 @@ task :aliases do
       title = f.read.match(/[tT]itle\:(.*)/)[1]
         .strip.downcase.tr(" ", "_")
       link = "#{ALIASES_PATH}/#{title}.txt"
-      File.symlink(file,line) if not File.exist?(link)
+      File.symlink(file,link) if not File.exist?(link)
     }
   end
 end

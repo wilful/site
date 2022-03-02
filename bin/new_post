@@ -21,6 +21,6 @@ vim $FNAME
 if md5sum --quiet --status -c /tmp/check_file; then
   rm $FNAME
 else
-  ln -fs $FNAME "${DIR}/../src/list/${TITLE}.txt"
+  ln -fs $FNAME "${DIR}/../src/aliases/${TITLE}.txt"
   echo "New post created as [${FNAME}]"
 fi
