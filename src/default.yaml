@@ -1,62 +1,61 @@
 ---
-settings:
-  default:
-    post:
-      title: 'Default title'
-      authors: Andrey Semenov
-      category: blog
-      tags: linux
-    siteurl: http://localhost:8000
-    timezone: Europe/Moscow
-    content:
-      path: ./content
-      lang: en
-      metadata:
-        status: published
-    frontend:
-      css_file: static/css/custom.css
-      static_paths: ['images','files','static']
-      extra_path_metadata:
-        'files/CNAME':
-          path: 'CNAME'
-        'files/robots.txt':
-          path: 'robots.txt'
-        'files/yandex_webmaster.template':
-          path: 'yandex_668b8b3d4694a0d7.html'
-        'images/favicon.ico':
-          path: 'favicon.ico'
-        'images/android-chrome-192x192.png':
-          path: 'android-chrome-192x192.png'
-        'images/android-chrome-512x512.png':
-          path: 'android-chrome-512x512.png'
-        'images/apple-touch-icon.png':
-          path: 'apple-touch-icon.png'
-        'images/favicon-16x16.png':
-          path: 'favicon-16x16.png'
-        'images/favicon-32x32.png':
-          path: 'favicon-32x32.png'}
-    links:
-      Repository: https://bitbucket.org/wi1fu1/
-    pagination: 70
-    theme:
-      templates_overrides:
-        - src/pelican/templates
-    plugins:
-      - sitemap:
-          settings:
-            format: 'xml'
-            priorities:
-                articles: 0.5
-                indexes: 0.5
-                pages: 0.5
-            changefreqs:
-                articles: 'monthly'
-                indexes: 'daily'
-                pages: 'monthly'
-  environment:
-    production:
-      settings:
-        siteurl: https://srv-nix.com
-    testing:
-      settings:
-        siteurl: https://drafts.srv-nix.com
+default:
+  post:
+    title: 'Default title'
+    authors: Andrey Semenov
+    category: blog
+    tags: linux
+  siteurl: http://localhost:8000
+  timezone: Europe/Moscow
+  content:
+    path: ./content
+    lang: en
+    metadata:
+      status: published
+  frontend:
+    css_file: static/css/custom.css
+    static_paths: ['images','files','static']
+    extra_path_metadata:
+      'files/CNAME':
+        path: 'CNAME'
+      'files/robots.txt':
+        path: 'robots.txt'
+      'files/yandex_webmaster.template':
+        path: 'yandex_668b8b3d4694a0d7.html'
+      'images/favicon.ico':
+        path: 'favicon.ico'
+      'images/android-chrome-192x192.png':
+        path: 'android-chrome-192x192.png'
+      'images/android-chrome-512x512.png':
+        path: 'android-chrome-512x512.png'
+      'images/apple-touch-icon.png':
+        path: 'apple-touch-icon.png'
+      'images/favicon-16x16.png':
+        path: 'favicon-16x16.png'
+      'images/favicon-32x32.png':
+        path: 'favicon-32x32.png'
+  links:
+    Repository: https://bitbucket.org/wi1fu1/
+  pagination: 70
+  theme:
+    templates_overrides:
+      - src/pelican/templates
+  plugins:
+    - sitemap:
+        settings:
+          format: 'xml'
+          priorities:
+              articles: 0.5
+              indexes: 0.5
+              pages: 0.5
+          changefreqs:
+              articles: 'monthly'
+              indexes: 'daily'
+              pages: 'monthly'
+environment:
+  production:
+    settings:
+      siteurl: https://srv-nix.com
+  testing:
+    settings:
+      siteurl: https://drafts.srv-nix.com

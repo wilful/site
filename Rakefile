@@ -1,6 +1,8 @@
 #html_index = 'docs/index.html'
 #FileList['src/content/*.md'].each {|md| file html_index => md}
 
+require 'yaml'
+
 WORK_DIR = Dir.getwd
 CONFIG = WORK_DIR + '/src/pelican/pelicanconf.py'
 CONTENT_DIR = WORK_DIR + '/src/content'
@@ -34,6 +36,8 @@ task :clean do
   mkdir OUT_DIR
 end
 task :commit do
+  settings = YAML.load_file("#{WORK_DIR}/src/default.yaml")
+  puts(settings)
 end
 task :test do
   ENV['PELICAN_ENV'] = 'testing'
