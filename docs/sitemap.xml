@@ -5,8 +5,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://srv-nix.com/</loc>
-<lastmod>2022-02-23T19:15:22-00:00</lastmod>
+<lastmod>2022-03-02T18:11:30-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://srv-nix.com/8886c2b8-1b99-44e0-97ff-a8fbe17c2e2a/index.html</loc>
+<lastmod>2022-03-02T15:09:24+03:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -152,7 +159,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://srv-nix.com/category/blog/index.html</loc>
-<lastmod>2022-02-23T18:44:27+02:30</lastmod>
+<lastmod>2022-03-02T15:09:24+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -181,6 +188,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://srv-nix.com/category/other/index.html</loc>
 <lastmod>2014-10-13T12:19:38+02:30</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://srv-nix.com/tag/russia/index.html</loc>
+<lastmod>2022-03-02T15:09:24+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -453,7 +467,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://srv-nix.com/author/andrey-semenov/index.html</loc>
-<lastmod>2022-02-23T18:44:27+02:30</lastmod>
+<lastmod>2022-03-02T15:09:24+02:30</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
