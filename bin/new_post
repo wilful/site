@@ -2,9 +2,14 @@
 
 NOW=$(date +'%F %X %z')
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-FNAME=$DIR/../src/drafts/$(uuidgen).md
 TITLE='default_title'
 read -r -p 'Enter the title for a post: ' TITLE
+
+gen_random() {
+  cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-7} | head -n 1
+}
+
+FNAME=$DIR/../src/drafts/$(gen_random).md
 
 cat > $FNAME << EOF
 title: ${TITLE}

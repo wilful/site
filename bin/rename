@@ -1,0 +1,15 @@
+#!/bin/bash
+
+gen_random() {
+  cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-7} | head -n 1
+}
+SOURCE='src/content/'
+
+rename.list() {
+  find $SOURCE -regextype posix-extended -regex '(.*)[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}\.md$'
+}
+
+for i in $(rename.list); do
+    mv $i $(dirname $i)/$(gen_random).md
+done
+
