@@ -24,7 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 	<link href="{{ SITEURL }}/static/css/custom.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    {% if TINKOFF_CHAT %}
     <script src="https://w.tb.ru/open-messenger/widget?wId=W-AD3AAE4BC31949FBB81FA62529E30089"></script>
+    {% endif %}
     <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <script defer src="https://cdn.commento.io/js/commento.js"></script>
 	{% block head %}{% endblock %}

@@ -21,3 +21,6 @@ tr:last-child {
 tr:last-child {
   border-bottom: none;
 }
+.bg-danger {
+  background-color: #f5f5f5;
+}

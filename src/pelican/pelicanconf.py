@@ -10,6 +10,7 @@ ENV = getenv('PELICAN_ENV', 'production')
 if ENV == 'testing':
     SITEURL = 'http://localhost:8000'
 else:
+    TINKOFF_CHAT = 'yes'
     SITEURL = 'https://srv-nix.com'
     YANDEX_METRIKA = True
     VK_SITENAME = 'Srv-Nix'
