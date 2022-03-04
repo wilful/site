@@ -17,6 +17,11 @@ else:
     #COMMENTO_SITENAME = 'Srv-Nix'
 TIMEZONE = 'Europe/Moscow'
 
+TAG_CLOUD_STEPS = 4
+TAG_CLOUD_MAX_ITEMS = 100
+TAG_CLOUD_SORTING = 'random'
+TAG_CLOUD_BADGE = False
+
 PATH = 'content'
 SLUGIFY_SOURCE = 'basename'
 ARTICLE_URL = '{slug}/index.html'
@@ -77,7 +82,7 @@ DEFAULT_PAGINATION = 70
 THEME_TEMPLATES_OVERRIDES = ['src/pelican/templates']
 
 #PLUGIN_PATHS = ["/where/you/cloned/it/pelican-plugins/",]
-PLUGINS=["sitemap",]
+PLUGINS=["sitemap","tag_cloud"]
 SITEMAP = {
     "format": "xml",
     "priorities": {
