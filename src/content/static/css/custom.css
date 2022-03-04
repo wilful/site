@@ -21,6 +21,6 @@ tr:last-child {
 tr:last-child {
   border-bottom: none;
 }
-.bg-danger {
+footer.aw-footer.bg-danger {
   background-color: #f5f5f5;
 }
