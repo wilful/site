@@ -63,6 +63,7 @@ EXTRA_PATH_METADATA = {
     'images/favicon-32x32.png': {'path': 'favicon-32x32.png'}
 }
 
+MENUITEMS = (('Tags', 'tags.html'),)
 # Blogroll
 LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 
