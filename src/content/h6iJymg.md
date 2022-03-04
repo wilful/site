@@ -1,6 +1,6 @@
 Title: Error in zsh on MacOS
 Date: 2020-09-05 16:31:47 +0500
-Category: MacOS
+Category: other
 Authors: Andrey Semenov
 Tags: yandex, yc
 

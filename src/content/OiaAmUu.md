@@ -1,6 +1,6 @@
 Title: Powerlevel10k as theme for MacOS zsh
 Date: 2020-09-05 13:06:18 +0500
-Category: MacOS
+Category: other
 Authors: Andrey Semenov
 Tags: zsh, macos, shell, iterm2
 
