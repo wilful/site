@@ -6,7 +6,7 @@ tags: russia
 
 |Сервис|Ссылки|
 |---|---|
-|Чаты|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li> <li><a href="https://tamtam.chat" target="_blank">https://tamtam.chat</a></li>|
+|Чаты|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li> <li><a href="https://tamtam.chat" target="_blank">https://tamtam.chat</a></li> <li><a href="https://yarus.ru/app" target="_blank">https://yarus.ru/app</a></li> <li><a href="https://icq.com/desktop/ru" target="_blank">https://icq.com/desktop/ru</a></li>|
 |Социальные сети|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li><li><a href="https://ok.ru" target="_blank">https://ok.ru</a></li><li><a href="https://zen.yandex.ru" target="_blank">https://zen.yandex.ru</a></li>|
 |Видеохостинги|<li><a href="https://zen.yandex.ru" target="_blank">https://zen.yandex.ru</a></li> <li><a href="https://rutube.ru" target="_blank">https://rutube.ru</a></li>|
 |Почта|<li><a href="https://mail.yandex.ru" target="_blank">https://mail.yandex.ru</a></li> <li><a href="https://mail.ru" target="_blank">https://mail.ru</a></li> <li><a href="https://mail.rambler.ru" target="_blank">https://mail.rambler.ru</a></li>|
