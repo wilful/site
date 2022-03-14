@@ -6,14 +6,14 @@ tags: russia
 
 |Сервис|Ссылки|
 |---|---|
-|Чаты|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li> <li><a href="https://tamtam.chat" target="_blank">https://tamtam.chat</a></li> <li><a href="https://yarus.ru" target="_blank">https://yarus.ru</a></li> <li><a href="https://icq.com" target="_blank">https://icq.com</a></li>|
-|Социальные сети|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li><li><a href="https://ok.ru" target="_blank">https://ok.ru</a></li><li><a href="https://zen.yandex.ru" target="_blank">https://zen.yandex.ru</a></li>|
+|Чаты|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li> <li><a href="https://tamtam.chat" target="_blank">https://tamtam.chat</a></li> <li><a href="https://yarus.ru" target="_blank">https://yarus.ru</a></li> <li><a href="https://icq.com" target="_blank">https://icq.com</a></li> <li><a href="https://tenchat.ru" target="_blank">https://tenchat.ru</a></li>|
+|Соцсети|<li><a href="https://vk.com" target="_blank">https://vk.com</a></li><li><a href="https://ok.ru" target="_blank">https://ok.ru</a></li><li><a href="https://zen.yandex.ru" target="_blank">https://zen.yandex.ru</a></li>|
 |Видеохостинги|<li><a href="https://zen.yandex.ru" target="_blank">https://zen.yandex.ru</a></li> <li><a href="https://rutube.ru" target="_blank">https://rutube.ru</a></li>|
 |Почта|<li><a href="https://mail.yandex.ru" target="_blank">https://mail.yandex.ru</a></li> <li><a href="https://mail.ru" target="_blank">https://mail.ru</a></li> <li><a href="https://mail.rambler.ru" target="_blank">https://mail.rambler.ru</a></li>|
-|Облачные технологии|<li><a href="https://cloud.yandex.com" target="_blank">https://cloud.yandex.com</a></li> <li><a href="https://cloud.mail.ru" target="_blank">https://cloud.mail.ru</a></li>|
-|Поисковые системы|<li><a href="https://ya.ru" target="_blank">https://ya.ru</a></li> <li><a href="https://www.rambler.ru" target="_blank">https://www.rambler.ru</a></li>|
+|Облака|<li><a href="https://cloud.yandex.com" target="_blank">https://cloud.yandex.com</a></li> <li><a href="https://cloud.mail.ru" target="_blank">https://cloud.mail.ru</a></li>|
+|Поиск|<li><a href="https://ya.ru" target="_blank">https://ya.ru</a></li> <li><a href="https://www.rambler.ru" target="_blank">https://www.rambler.ru</a></li>|
 |Киносервисы|<li><a href="https://wink.ru" target="_blank">https://wink.ru</a></li> <li><a href="https://kinopoisk.ru" target="_blank">https://kinopoisk.ru</a></li>|
-|Репозитории кода|???|
+|Репозитории|???|
 |Карты|<li><a href="https://yandex.ru/maps" target="_blank">https://yandex.ru/maps</a></li>|
-|RSS агрегаторы|???|
+|RSS|???|
 |VPN|<li><a href="https://warp.plus/R4VE2" target="_blank">https://warp.plus/R4VE2</a></li> <li><a href="https://rus.windscribe.com" target="_blank">https://rus.windscribe.com</a></li>|
