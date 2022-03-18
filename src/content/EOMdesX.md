@@ -4,6 +4,8 @@ category: blog
 authors: Andrey Semenov
 tags: russia
 
+<span style="background-color:">*red*</span>.
+
 |Сервис|Ссылки|
 |---|---|
 |Чаты|<li><a href="https://vk.com" target="_blank">vk.com</a></li> <li><a href="https://tamtam.chat" target="_blank">tamtam.chat</a></li> <li><a href="https://yarus.ru" target="_blank">yarus.ru</a></li> <li><a href="https://icq.com" target="_blank">icq.com</a></li> <li><a href="https://tenchat.ru" target="_blank">tenchat.ru</a></li>|

@@ -6,6 +6,6 @@ Tags: eve, game, online
 
 Welcom to [Eve][link01]
 
-[link01]: https://secure.eveonline.com/trial/?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4&action=buddy
+[link01]: https://www.eveonline.com/ru/signup?invc=cab24469-75f8-4dd7-8ce8-747d63fabbc4
 
 
