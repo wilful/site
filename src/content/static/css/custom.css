@@ -1,6 +1,17 @@
 * {
   font-family: 'Raleway', cursive !important;
 }
+h2 {
+  margin-bottom: 0px;
+}
+.summary {
+  margin-bottom: -2em;
+  margin-top: 2em;
+}
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 a {
   color: #1CAB2E;
 }
