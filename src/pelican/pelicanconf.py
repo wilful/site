@@ -8,7 +8,7 @@ SITENAME = 'Srv-Nix'
 SITESUBTITLE = 'A personal blog.'
 ENV = getenv('PELICAN_ENV', 'production')
 if ENV == 'testing':
-    SITEURL = 'http://local.srv-nix.com'
+    SITEURL = 'http://localhost:8000'
     #PORT = 80
 else:
     TINKOFF_CHAT = 'yes'
