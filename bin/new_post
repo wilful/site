@@ -15,7 +15,7 @@ cat > $FNAME << EOF
 title: ${TITLE}
 date: ${NOW}
 category: blog
-authors: Andrey Semenov
+authors: Андрей Семенов
 tags: linux, nix
 EOF
 
