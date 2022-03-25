@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 from os import getenv
 
-AUTHOR = 'Andrey Semenov'
+AUTHOR = 'Андрей Семенов'
 SITENAME = 'Srv-Nix'
 SITESUBTITLE = 'A personal blog.'
 ENV = getenv('PELICAN_ENV', 'production')
