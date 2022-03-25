@@ -18,6 +18,6 @@ tags: russia
 |Репозитории|???|
 |Карты|<li><a href="https://yandex.ru/maps" target="_blank">yandex.ru/maps</a></li>|
 |Отели|<li><a href="https://ostrovok.ru" target="_blank">ostrovok.ru</a></li> <li><a href="https://bronevik.com" target="_blank">bronevik.com</a></li> <li><a href="https://101hotels.com" target="_blank">101hotels.com</a></li>|
-|Авиабилеты|<li><a href="https://travel.yandex.ru" target="_blank">travel.yandex.ru</a></li> <li><a href="https://www.ozon.ru/travel/" target="_blank">www.ozon.ru/travel/</a></li>|
+|Авиабилеты|<li><a href="https://www.tema.ru/start/" target="_blank">www.tema.ru/start/</a></li> <li><a href="https://travel.yandex.ru" target="_blank">travel.yandex.ru</a></li> <li><a href="https://www.ozon.ru/travel/" target="_blank">www.ozon.ru/travel/</a></li>|
 |RSS|???|
 |VPN|<li><a href="https://warp.plus/R4VE2" target="_blank">warp.plus/R4VE2</a></li> <li><a href="https://rus.windscribe.com" target="_blank">rus.windscribe.com</a></li>|
