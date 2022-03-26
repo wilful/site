@@ -1,8 +1,9 @@
 * {
   font-family: 'Raleway', cursive !important;
 }
-h2 {
+h1, h2 {
   margin-bottom: 0px;
+  font-family: 'Amatic SC', cursive !important;
 }
 .summary {
   margin-bottom: 0em;
