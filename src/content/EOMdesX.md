@@ -21,3 +21,4 @@ tags: russia
 |Авиабилеты|<li><a href="https://www.tema.ru/start/" target="_blank">www.tema.ru/start/</a></li> <li><a href="https://travel.yandex.ru" target="_blank">travel.yandex.ru</a></li> <li><a href="https://www.ozon.ru/travel/" target="_blank">www.ozon.ru/travel/</a></li>|
 |RSS|???|
 |VPN|<li><a href="https://warp.plus/R4VE2" target="_blank">warp.plus/R4VE2</a></li> <li><a href="https://rus.windscribe.com" target="_blank">rus.windscribe.com</a></li>|
+|Формы|<li><a href="https://forms.yandex.ru/cloud/admin/" target="_blank">forms.yandex.ru/cloud/admin/</a></li>|
