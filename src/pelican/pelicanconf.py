@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from os import getenv
 
 AUTHOR = 'Андрей Семенов'
-SITENAME = 'Srv-Nix'
+SITENAME = 'iTmage'
 SITESUBTITLE = 'A personal blog.'
 ENV = getenv('PELICAN_ENV', 'production')
 if ENV == 'testing':
@@ -12,10 +12,9 @@ if ENV == 'testing':
     #PORT = 80
 else:
     TINKOFF_CHAT = 'yes'
-    SITEURL = 'https://srv-nix.com'
+    SITEURL = 'https://itmage.ru'
     YANDEX_METRIKA = True
     VK_SITENAME = 'Srv-Nix'
-    #COMMENTO_SITENAME = 'Srv-Nix'
 TIMEZONE = 'Europe/Moscow'
 
 TAG_CLOUD_STEPS = 4
@@ -53,8 +52,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 YANDEX_ANALYTICS = True
-#DISQUS_SITENAME = 'srv-nix-com'
-#GITHUB_URL = 'https://github.com/wilful/srv-nix.com'
+#GITHUB_URL = 'https://github.com/wilful/site'
 CSS_FILE = 'static/css/custom.css'
 STATIC_PATHS = ['images', 'files', 'static']
 EXTRA_PATH_METADATA = {
@@ -75,7 +73,7 @@ LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 
 # Social widget
 SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
-         ('VK', 'https://vk.com/srvnix'),
+         ('VK', 'https://vk.com/itmage_ru'),
          ('github', 'https://github.com/wilful/'),)
 
 DEFAULT_PAGINATION = 70
