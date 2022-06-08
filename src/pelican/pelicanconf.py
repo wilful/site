@@ -73,6 +73,7 @@ LINKS = (('Repository', 'https://bitbucket.org/wi1fu1/'),)
 
 # Social widget
 SOCIAL = (('linkedin', 'https://www.linkedin.com/in/ansemenov/'),
+         ('Blog', 'https://blog.itmage.ru'),
          ('VK', 'https://vk.com/itmage_ru'),
          ('github', 'https://github.com/wilful/'),)
 
