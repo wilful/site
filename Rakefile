@@ -15,11 +15,36 @@ TMP_PATH = WORK_DIR + '/src/tmp'
 DRAFTS_PATH = WORK_DIR + '/src/drafts'
 ALIASES_PATH = WORK_DIR + '/src/aliases'
 
-def git_reset
-  g = Git.open(WORK_DIR, :log => Logger.new(STDOUT))
-  g.fetch
-  g.reset
+class SiteGit
+  attr_reader :work_dir
+  def initialize(work_dir=WORK_DIR)
+    @work_dir = work_dir
+    @git = Git.open(WORK_DIR, :log => Logger.new(STDOUT))
+  end
+  def reset
+    @git.fetch
+    @git.reset
+  end
+  def reset
+    @git.fetch
+    @git.reset
+  end
+  def commit
+    @git.commit('Update my repo', opts = {:all => true})
+  end
 end
+
+repo = SiteGit.new
+
+namespace :git do
+  task :reset do
+    repo.reset
+  end
+  task :commit do
+    repo.commit
+  end
+end
+
 
 def run_pelican(config: CONFIG, content: CONTENT_DIR, out: OUT_DIR, theme: THEME, args: [])
   cmd = "pelican -s #{config} #{content} -o #{out} -t #{theme} #{args.join(' ')}"
@@ -35,9 +60,6 @@ end
 
 desc 'Default task for project building'
 task :default => [:build] do
-end
-task :reset do
-  git_reset
 end
 task :build do
   build_docs
