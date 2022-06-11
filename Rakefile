@@ -46,6 +46,8 @@ namespace :git do
   task :push do
     repo.push
   end
+  task :update => [:commit, :push] do
+  end
 end
 
 
