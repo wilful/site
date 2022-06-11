@@ -34,9 +34,8 @@ class SiteGit
   end
 end
 
-repo = SiteGit.new
-
 namespace :git do
+  repo = SiteGit.new
   task :reset do
     repo.reset
   end
