@@ -25,11 +25,8 @@ class SiteGit
     @git.fetch
     @git.reset
   end
-  def reset
-    @git.fetch
-    @git.reset
-  end
   def commit
+    @git.add(:all => true)
     @git.commit('Update my repo', opts = {:all => true})
   end
   def push
