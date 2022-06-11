@@ -32,6 +32,9 @@ class SiteGit
   def commit
     @git.commit('Update my repo', opts = {:all => true})
   end
+  def push
+    @git.push
+  end
 end
 
 repo = SiteGit.new
@@ -42,6 +45,9 @@ namespace :git do
   end
   task :commit do
     repo.commit
+  end
+  task :push do
+    repo.push
   end
 end
 
