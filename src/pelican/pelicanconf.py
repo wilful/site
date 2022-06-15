@@ -12,7 +12,7 @@ if ENV == 'testing':
     #PORT = 80
 else:
     TINKOFF_CHAT = 'yes'
-    SITEURL = 'https://itmage.ru'
+    SITEURL = 'https://site.itmage.ru'
     YANDEX_METRIKA = True
     VK_SITENAME = 'Srv-Nix'
 TIMEZONE = 'Europe/Moscow'
