@@ -14,7 +14,7 @@ else:
     TINKOFF_CHAT = 'yes'
     SITEURL = 'https://site.itmage.ru'
     YANDEX_METRIKA = True
-    VK_SITENAME = 'Srv-Nix'
+    VK_SITENAME = 'iTmage'
 TIMEZONE = 'Europe/Moscow'
 
 TAG_CLOUD_STEPS = 4
@@ -60,11 +60,6 @@ EXTRA_PATH_METADATA = {
     'files/robots.txt': {'path': 'robots.txt'},
     'files/yandex_webmaster.template': {'path': 'yandex_668b8b3d4694a0d7.html'},
     'images/favicon.ico': {'path': 'favicon.ico'},
-    'images/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
-    'images/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},
-    'images/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
-    'images/favicon-16x16.png': {'path': 'favicon-16x16.png'},
-    'images/favicon-32x32.png': {'path': 'favicon-32x32.png'}
 }
 
 MENUITEMS = (('Tags', 'tags.html'),)
