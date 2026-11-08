@@ -2,36 +2,32 @@
 {% block content_title %}{% endblock %}
 {% block content %}
 {% if articles %}
-{% for article in articles_page.object_list %}
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="{{ SITEURL }}/{{ article.url }}">
-		<h2 itemprop="name headline">{{ article.title }}</h2>
-	</a>
-	<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">{{article.author or "Wilson Freitas"}}</span>
-	</span>
-	<div class="summary">{{ article.description }}</div>
-	{% if article.category %}
-	Category:
-	<span itemprop="articleSection">
-		<a href="{{ SITEURL }}/{{ article.category.url }}" rel="category">{{ article.category }}</a>
-	</span>
-	{% endif %}
-	{% if article.tags %}
-	Tags:
-	{% for tag in article.tags %}
-	<span itemprop="keywords">
-		<a href="{{ SITEURL }}/{{ tag.url }}" rel="tag">{{ tag }}</a>
-	</span>
+<ul class="post-list">
+	{% for article in articles_page.object_list %}
+	<li class="post-item" itemscope itemtype="http://schema.org/BlogPosting">
+		<time class="post-date" datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.date.strftime("%Y-%m-%d") }}</time>
+		<div class="post-body">
+			<h2 class="post-title" itemprop="name headline">
+				<a href="{{ SITEURL }}/{{ article.url }}" itemprop="url">{{ article.title }}</a>
+			</h2>
+			{% if article.description %}
+			<p class="post-summary" itemprop="description">{{ article.description }}</p>
+			{% endif %}
+			<div class="post-meta" itemprop="articleSection">
+				{% if article.category %}
+				<a href="{{ SITEURL }}/{{ article.category.url }}" rel="category" itemprop="articleSection">{{ article.category }}</a>
+				{% endif %}
+				{% if article.tags %}
+				<span class="sep" aria-hidden="true">·</span>
+				{% for tag in article.tags %}
+				<a href="{{ SITEURL }}/{{ tag.url }}" rel="tag" itemprop="keywords">{{ tag }}</a>
+				{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</li>
 	{% endfor %}
-	{% endif %}
-</div>
-<hr>
-{% endfor %} {# For article #}
+</ul>
 {% include 'pagination.html' %}
-{% endif %} {# If articles #}
+{% endif %}
 {% endblock content %}
-
-

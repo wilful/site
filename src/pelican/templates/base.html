@@ -3,134 +3,141 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-    <meta property="og:description" content="{% block og_description %}...{% endblock %}" />
-    <meta property="og:title" content="{% block og_title %}{% endblock %}" />
-    <meta property="og:type" content="article" />
-	<meta name="description" content="{% block description %}A personal blog.{% endblock %}">
+	<meta property="og:description" content="{% block og_description %}{{ SITESUBTITLE or SITENAME }}{% endblock %}" />
+	<meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}" />
+	<meta property="og:type" content="article" />
+	<meta name="description" content="{% block description %}{{ SITESUBTITLE or SITENAME }}{% endblock %}">
 	<meta name="author" content="{{ AUTHOR }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
 		<script src="{{ SITEURL }}/theme/html5.js"></script>
-		<![endif]-->
-	<link href="{{ SITEURL }}/theme/css/ipython.css" rel="stylesheet">
+	<![endif]-->
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ SITEURL }}/theme/css/local.css" rel="stylesheet">
 	<link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link href="{{ SITEURL }}/static/css/custom.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-    {% if TINKOFF_CHAT %}
-    <script src="https://w.tb.ru/open-messenger/widget?wId=W-AD3AAE4BC31949FBB81FA62529E30089"></script>
-    {% endif %}
-    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
-    <script defer src="https://cdn.commento.io/js/commento.js"></script>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+	{% if TINKOFF_CHAT %}
+	<script src="https://w.tb.ru/open-messenger/widget?wId=W-AD3AAE4BC31949FBB81FA62529E30089"></script>
+	{% endif %}
+	<script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+	<script defer src="https://cdn.commento.io/js/commento.js"></script>
 	{% block head %}{% endblock %}
-    {% if YANDEX_METRIKA %}
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+	{% if YANDEX_METRIKA %}
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+	   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+	   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-       ym(28082397, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true
-       });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/28082397" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-    {% endif %}
+	   ym(28082397, "init", {
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true
+	   });
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/28082397" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+	{% endif %}
 </head>
 <body>
 <script type="text/javascript">
   VK.init({
-    apiId: 7880860,
-    onlyWidgets: true
+	apiId: 7880860,
+	onlyWidgets: true
   });
 </script>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a>
-			<br>{% if SITESUBTITLE %}<small>{{ SITESUBTITLE }}</small></h1>{% endif %}
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+<div class="site-wrap">
+	<header class="masthead">
+		<div class="container container--wide masthead-inner">
+			<div>
+				<p class="masthead-brand"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></p>
+				{% if SITESUBTITLE %}<p class="masthead-sub">{{ SITESUBTITLE }}</p>{% endif %}
+			</div>
+			<nav class="masthead-nav" aria-label="Основная навигация">
+				<a href="{{ SITEURL }}/">Записи</a>
+				{% for title, link in MENUITEMS %}
+				<a href="{{ SITEURL }}/{{ link }}">{{ title }}</a>
+				{% endfor %}
+				{% if DISPLAY_PAGES_ON_MENU %}
+				{% for page in pages %}
+				<a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a>
+				{% endfor %}
+				{% endif %}
+			</nav>
+		</div>
+	</header>
+
+	<main class="site-main" id="content">
+		<div class="container">
 			{% block content %}{% endblock %}
 		</div>
-	</div> {# End row #}
-	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Навигация</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="{{SITEURL}}">{{ SITENAME }}</a></li>
-							{% for title, link in MENUITEMS %}
-							<li><a href="{{ SITEURL }}/{{ link }}"><i class="fa fa-{{ title }} "></i> {{title}}</a></li>
-							{% endfor %}
-							{% if DISPLAY_PAGES_ON_MENU %}
-							{% for page in pages %}
-							<li><a href="{{ SITEURL }}/{{ page.url }}"><i class="fa fa-{{ page.title }} "></i> {{page.title}}</a></li>
-							{% endfor %}
-							{% endif %}
-							{% if FEED_ALL_ATOM %}
-							<li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-							{% endif %}
-							{% if FEED_ALL_RSS %}
-							<li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
-							{% endif %}
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Автор</h4>
-						<ul class="list-unstyled my-list-style">
-						{% for name, link in SOCIAL %}
-							<li><a href="{{ link }}">{{ name }}</a></li>
+	</main>
+
+	<footer class="aw-footer">
+		<div class="container container--wide">
+			<div class="row">
+				<div class="col-md-3">
+					<h4>Навигация</h4>
+					<ul class="list-unstyled my-list-style">
+						<li><a href="{{ SITEURL }}/">{{ SITENAME }}</a></li>
+						{% for title, link in MENUITEMS %}
+						<li><a href="{{ SITEURL }}/{{ link }}">{{ title }}</a></li>
 						{% endfor %}
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Категории</h4>
-						<ul class="list-unstyled my-list-style">
-							{% for cat, art in categories %}
-							<li><a href="{{SITEURL}}/category/{{cat | replace(" ", "-") | lower }}/index.html">{{cat}} ({{art | count}})</a></li>
-							{% endfor %}
-						</ul>
-					</div>
-				{% if LINKS %}
-					<div class="col-md-3">
-						<h4>Ссылки</h4>
-						<ul class="list-unstyled my-list-style">
-						{% for name, link in LINKS %}
-							<li><a href="{{ link }}">{{ name }}</a></li>
+						{% if DISPLAY_PAGES_ON_MENU %}
+						{% for page in pages %}
+						<li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
 						{% endfor %}
-						</ul>
-					</div>
-				{% endif %}
+						{% endif %}
+						{% if FEED_ALL_ATOM %}
+						<li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml">atom</a></li>
+						{% endif %}
+						{% if FEED_ALL_RSS %}
+						<li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml">rss</a></li>
+						{% endif %}
+					</ul>
 				</div>
+				<div class="col-md-3">
+					<h4>Автор</h4>
+					<ul class="list-unstyled my-list-style">
+						{% for name, link in SOCIAL %}
+						<li><a href="{{ link }}">{{ name }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<h4>Категории</h4>
+					<ul class="list-unstyled my-list-style">
+						{% for cat, art in categories %}
+						<li><a href="{{ SITEURL }}/category/{{ cat | replace(" ", "-") | lower }}/index.html">{{ cat }} ({{ art | count }})</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% if LINKS %}
+				<div class="col-md-3">
+					<h4>Ссылки</h4>
+					<ul class="list-unstyled my-list-style">
+						{% for name, link in LINKS %}
+						<li><a href="{{ link }}">{{ name }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
 			</div>
 		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-            <p>&copy; 2016-2022 {{ AUTHOR }}</br>Пиши: <a href="MAILTO:wilful@srv-nix.com">wilful@srv-nix.com</a></p>
+	</footer>
+
+	<div class="aw-bottom">
+		<div class="container container--wide text-center center-block">
+			<p>&copy; 2016–2022 {{ AUTHOR }} · Пиши: <a href="mailto:wilful@srv-nix.com">wilful@srv-nix.com</a></p>
 		</div>
 	</div>
 </div>
-<!-- JavaScript -->
+
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">

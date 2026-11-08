@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-{% block description %}All posts which refer to tag {{ tag }}{% endblock %}
-{% block title %}Tag: {{ tag }} — {{ SITENAME }}{% endblock %}
+{% block description %}Посты с тегом {{ tag }}{% endblock %}
+{% block title %}Тег: {{ tag }} — {{ SITENAME }}{% endblock %}
 {% block content %}
-<h1>Tag <small>{{tag}}</small></h1>
+<h1 class="listing-title">Тег <small>{{ tag }}</small></h1>
+<div class="table-responsive">
 <table class="table">
-    <tbody>
-    {% for article in articles %}
-        <tr>
-        <td>{{ article.date.strftime("%d %b %Y") }}</td>
-        <td><a href='{{ SITEURL }}/{{ article.url }}'>{{ article.title }}</a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
+	<tbody>
+	{% for article in articles %}
+		<tr>
+			<td><time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime("%Y-%m-%d") }}</time></td>
+			<td><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></td>
+		</tr>
+	{% endfor %}
+	</tbody>
 </table>
+</div>
 {% endblock %}
