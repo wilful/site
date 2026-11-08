@@ -1,43 +1,40 @@
 {% extends "base.html" %}
 {% block og_description %}{{ article.description }}{% endblock %}
 {% block og_title %}{{ article.title }}{% endblock %}
-{% block description %}Title: {{ article.title }}; Date: {{ article.date|strftime('%Y-%m-%d') }}; Author: {{ article.author }}{% endblock %}
+{% block description %}{{ article.title }} — {{ article.date|strftime('%Y-%m-%d') }} — {{ article.author }}{% endblock %}
 {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
 {% block content %}
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
+<article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<header class="article-header">
 		<h1 itemprop="name headline" class="article-title">{{ article.title }}</h1>
-	</div>
-	{% if article.category %}
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="{{ SITEURL }}/{{ article.category.url }}" rel="category">{{ article.category }}</a>
-		</span>
-	</div>
-	{% endif %}
-	{% if article.tags %} 
-	<div>
-		Tags:
-		{% for tag in article.tags %}
-		<span itemprop="keywords">
-			<a href="{{ SITEURL }}/{{ tag.url }}" rel="tag">{{ tag }}</a>
-		</span>
-		{% endfor %}
-	</div>
-	{% endif %}
+		<div class="article-meta">
+			<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
+			{% if article.category %}
+			<a href="{{ SITEURL }}/{{ article.category.url }}" rel="category" itemprop="articleSection">{{ article.category }}</a>
+			{% endif %}
+			{% if article.tags %}
+			{% for tag in article.tags %}
+			<a href="{{ SITEURL }}/{{ tag.url }}" rel="tag" itemprop="keywords">{{ tag }}</a>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</header>
+
 	<div itemprop="articleBody" class="article-body">{{ article.content }}</div>
-	<hr>
-	<div class="text-center article-header">
+
+	<footer class="article-footer">
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">{{article.author or "Wilson Freitas"}}</h4>
+			<span class="author-name" itemprop="name">{{ article.author or AUTHOR }}</span>
 		</span>
-		<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
-	</div>
-	<h2>Comments</h2>
-	{% include "twitter.html" %}
-	{% include 'disqus.html' %}
-	{% include 'vk.html' %}
-	{% include 'commento.html' %}
-</div>
+		 · <time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
+	</footer>
+
+	<section class="comments">
+		<h2>Комментарии</h2>
+		{% include "twitter.html" %}
+		{% include 'disqus.html' %}
+		{% include 'vk.html' %}
+		{% include 'commento.html' %}
+	</section>
+</article>
 {% endblock %}
